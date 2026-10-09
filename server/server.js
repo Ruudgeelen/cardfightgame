@@ -31,7 +31,21 @@ import {
 } from '../src/data/card.js'
 
 import { gameMultiplayer } from '../src/data/game.js'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 const app = express()
+
+const distPath = path.resolve(__dirname, '../dist')
+
+app.use(express.static(distPath))
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(distPath, 'App.vue'))
+})
 
 const server = http.createServer(app)
 
