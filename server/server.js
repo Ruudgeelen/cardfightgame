@@ -40,11 +40,6 @@ const io = new Server(server, {
         origin: '*'
     }
 })
-const PORT = process.env.PORT || 3000
-
-httpServer.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server draait op poort ${PORT}`)
-})
 
 const rooms = {}
 
@@ -688,11 +683,8 @@ io.on('connection', (socket) => {
    SERVER START
 ========================================= */
 
-server.listen(
-    3000,
-    () => {
-        console.log(
-            '🚀 Multiplayer server gestart op http://localhost:3000'
-        )
-    }
-)
+const PORT = process.env.PORT || 3000
+
+server.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Multiplayer server gestart op poort ${PORT}`)
+})
