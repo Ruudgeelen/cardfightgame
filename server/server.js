@@ -40,7 +40,11 @@ const io = new Server(server, {
         origin: '*'
     }
 })
+const PORT = process.env.PORT || 3000
 
+httpServer.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server draait op poort ${PORT}`)
+})
 
 const rooms = {}
 

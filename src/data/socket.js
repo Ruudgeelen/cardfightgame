@@ -1,9 +1,12 @@
 import { io } from 'socket.io-client'
 
-export const socket = io('http://localhost:3000', {
-    autoConnect: true,
-    reconnection: true
-})
+export const socket = io(
+    'https://cardfightgame.onrender.com',
+    {
+        autoConnect: true,
+        reconnection: true
+    }
+)
 
 socket.on('connect', () => {
     console.log('✅ Verbonden met multiplayer server')
