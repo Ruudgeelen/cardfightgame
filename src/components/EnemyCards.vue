@@ -17,6 +17,24 @@ defineProps({
         default: () => ({})
     }
 })
+
+function cardTooltip(card) {
+    return [
+        card.type && `Type: ${card.type}`,
+        card.attack && `Attack on the enemy: ${card.attack}`,
+        card.heal && `Heal your health: ${card.heal}`,
+        card.freeze && 'Freeze your own cards',
+        card.burn && `Burn the opponent cards: ${card.burn} (for ${card.burnTurns} turns)`,
+        card.attackadd && `Attack add to all your cards: ${card.attackadd}`,
+        card.healadd && `Heal add to all your cards: ${card.healadd}`,
+        card.removecardnummer && `Remove cards of the opponent: ${card.removecardnummer}`,
+        card.morecards && `Give more cards to yourself: ${card.morecards}`,
+        card.stapel && `Stapel: ${card.stapel}`,
+        card.effect && `Effect: ${card.effect}`,
+        card.effectturns && `Effect duration: ${card.effectturns} turns`,
+        card.effectvalue && `EffectPower: ${card.effectvalue}`
+    ].filter(Boolean).join('\n')
+}
 </script>
 
 <template>
@@ -34,8 +52,10 @@ defineProps({
                 :class="[
                     'card',
                     lastEnemyCard.type,
-                    lastEnemyCard.effect ? 'effect-' + lastEnemyCard.effect : ''
+                    lastEnemyCard.effect ? 'effect-' + lastEnemyCard.effect : '',
+                    'card-modern'
                 ]"
+                :data-tooltip="`${lastEnemyCard.name}\n${cardTooltip(lastEnemyCard)}`"
             >
 
                 <h3>{{ lastEnemyCard.name }}</h3>
@@ -46,53 +66,24 @@ defineProps({
                     Type: {{ lastEnemyCard.type }}
                 </p>
 
-                <p v-if="lastEnemyCard.attack">
-                    ⚔️ Attack: {{ lastEnemyCard.attack }}
-                </p>
+                <div class="card-stats">
+                    <p v-if="lastEnemyCard.attack" class="card-stat"><span>⚔️</span><b>{{ lastEnemyCard.attack }}</b></p>
+                    <p v-if="lastEnemyCard.heal" class="card-stat"><span>❤️</span><b>{{ lastEnemyCard.heal }}</b></p>
+                    <p v-if="lastEnemyCard.freeze" class="card-stat"><span>❄️</span><b>Freeze</b></p>
+                    <p v-if="lastEnemyCard.burn" class="card-stat"><span>🔥</span><b>{{ lastEnemyCard.burn }} <small>⏳ {{ lastEnemyCard.burnTurns }}</small></b></p>
+                    <p v-if="lastEnemyCard.healthbaradd" class="card-stat"><span>💚</span><b>{{ lastEnemyCard.healthbaradd }}</b></p>
+                    <p v-if="lastEnemyCard.healthbarremove" class="card-stat"><span>💔</span><b>{{ lastEnemyCard.healthbarremove }}</b></p>
+                    <p v-if="lastEnemyCard.attackadd" class="card-stat"><span>⚔️</span><b>+{{ lastEnemyCard.attackadd }}</b></p>
+                    <p v-if="lastEnemyCard.healadd" class="card-stat"><span>❤️</span><b>+{{ lastEnemyCard.healadd }}</b></p>
+                    <p v-if="lastEnemyCard.removecardnummer" class="card-stat"><span>🗑️</span><b>{{ lastEnemyCard.removecardnummer }}</b></p>
+                    <p v-if="lastEnemyCard.morecards" class="card-stat"><span>🃏</span><b>{{ lastEnemyCard.morecards }}</b></p>
+                    <p v-if="lastEnemyCard.stapel" class="card-stat"><span>🃏</span><b>{{ lastEnemyCard.stapel }}</b></p>
+                </div>
 
-                <p v-if="lastEnemyCard.heal">
-                    ❤️ Heal: {{ lastEnemyCard.heal }}
-                </p>
-
-                <p v-if="lastEnemyCard.freeze">
-                    ❄️ Freeze
-                </p>
-
-                <p v-if="lastEnemyCard.burn">
-                    🔥 Burn: {{ lastEnemyCard.burn }}
-                    ({{ lastEnemyCard.burnTurns }} turns)
-                </p>
-
-                <p v-if="lastEnemyCard.healthbaradd">
-                    💚 Healthbar yours: {{ lastEnemyCard.healthbaradd }}
-                </p>
-
-                <p v-if="lastEnemyCard.healthbarremove">
-                    💔 Healthbar other: {{ lastEnemyCard.healthbarremove }}
-                </p>
-
-                <p v-if="lastEnemyCard.attackadd">
-                    ⚔️ Attack Add: {{ lastEnemyCard.attackadd }}
-                </p>
-
-                <p v-if="lastEnemyCard.healadd">
-                    ❤️ Heal Add: {{ lastEnemyCard.healadd }}
-                </p>
-                <p v-if="lastEnemyCard.removecardnummer">🗑️ Remove Card: {{ lastEnemyCard.removecardnummer }}</p>
-                <p v-if="lastEnemyCard.morecards">🃏 More Cards: {{ lastEnemyCard.morecards }}</p>
-                <p v-if="lastEnemyCard.stapel">🃏 Stapel: {{ lastEnemyCard.stapel }}</p>
-
-                <p v-if="lastEnemyCard.effect">
-                    ✨ Effect: {{ lastEnemyCard.effect }}
-                </p>
-
-                <p v-if="lastEnemyCard.effectturns">
-                    ⏳ Effect Time: {{ lastEnemyCard.effectturns }}
-                </p>
-
-                <p v-if="lastEnemyCard.effectvalue">
-                    💎 Effect Value: {{ lastEnemyCard.effectvalue }}
-                </p>
+                <div class="card-tooltip" role="tooltip">
+                    <strong>{{ lastEnemyCard.name }}</strong>
+                    <span>{{ cardTooltip(lastEnemyCard) }}</span>
+                </div>
 
             </div>
 
@@ -108,8 +99,10 @@ defineProps({
                 :class="[
                     'card',
                     card.type,
-                    card.effect ? 'effect-' + card.effect : ''
+                    card.effect ? 'effect-' + card.effect : '',
+                    'card-modern'
                 ]"
+                :data-tooltip="`${card.name}\n${cardTooltip(card)}`"
             >
 
                 <!-- SHOW CARDS -->
@@ -118,20 +111,24 @@ defineProps({
                     <h3>{{ card.name }}</h3>
                     <div class="line"></div>
                     <p v-if="card.type" class="type">Type: {{ card.type }}</p>
-                    <p v-if="card.attack">⚔️ Attack: {{ card.attack }}</p>
-                    <p v-if="card.heal">❤️ Heal: {{ card.heal }}</p>
-                    <p v-if="card.freeze">❄️ Freeze </p>
-                    <p v-if="card.burn">🔥 Burn: {{ card.burn }} (Burn Turns: {{ card.burnTurns }})</p>
-                    <p v-if="card.healthbaradd">💚 Healthbar yours: {{ card.healthbaradd }}</p>
-                    <p v-if="card.healthbarremove">💔 Healthbar other: {{ card.healthbarremove }}</p>
-                    <p v-if="card.attackadd">⚔️ Attack Add: {{ card.attackadd }}</p>
-                    <p v-if="card.healadd">❤️ Heal Add: {{ card.healadd }}</p>
-                    <p v-if="card.removecardnummer">🗑️ Remove Card: {{ card.removecardnummer }}</p>
-                    <p v-if="card.morecards">🃏 More Cards: {{ card.morecards }}</p>
-                    <p v-if="card.stapel">🃏 Stapel: {{ card.stapel }}</p>
-                    <p v-if="card.effect">✨ Effect: {{ card.effect }}</p>
-                    <p v-if="card.effectturns">⏳ Effect Time: {{ card.effectturns }}</p>
-                    <p v-if="card.effectvalue">💎 Effect Value: {{ card.effectvalue }}</p>
+                    <div class="card-stats">
+                        <p v-if="card.attack" class="card-stat"><span>⚔️</span><b>{{ card.attack }}</b></p>
+                        <p v-if="card.heal" class="card-stat"><span>❤️</span><b>{{ card.heal }}</b></p>
+                        <p v-if="card.freeze" class="card-stat"><span>❄️</span><b>Freeze</b></p>
+                        <p v-if="card.burn" class="card-stat"><span>🔥</span><b>{{ card.burn }} <small>⏳ {{ card.burnTurns }}</small></b></p>
+                        <p v-if="card.healthbaradd" class="card-stat"><span>💚</span><b>{{ card.healthbaradd }}</b></p>
+                        <p v-if="card.healthbarremove" class="card-stat"><span>💔</span><b>{{ card.healthbarremove }}</b></p>
+                        <p v-if="card.attackadd" class="card-stat"><span>⚔️</span><b>+{{ card.attackadd }}</b></p>
+                        <p v-if="card.healadd" class="card-stat"><span>❤️</span><b>+{{ card.healadd }}</b></p>
+                        <p v-if="card.removecardnummer" class="card-stat"><span>🗑️</span><b>{{ card.removecardnummer }}</b></p>
+                        <p v-if="card.morecards" class="card-stat"><span>🃏</span><b>{{ card.morecards }}</b></p>
+                        <p v-if="card.stapel" class="card-stat"><span>🃏</span><b>{{ card.stapel }}</b></p>
+                     </div>
+
+                    <div class="card-tooltip" role="tooltip">
+                        <strong>{{ card.name }}</strong>
+                        <span>{{ cardTooltip(card) }}</span>
+                    </div>
 
                 </div>
 

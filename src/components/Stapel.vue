@@ -23,10 +23,10 @@ defineProps({
                 :key="card.id"
                 class="deck-card"
             >
-                <div  :class="[
+                <div :class="[
                     'card',
+                    'deck-card-face',
                     card.type]">
-
                 </div>
             </div>
         </div>
@@ -39,9 +39,9 @@ defineProps({
 
 <style scoped>
 .deck-section {
-    margin: 25px auto;
-    padding: 20px;
-    max-width: 900px;
+    margin: 16px auto;
+    padding: 14px 16px 16px;
+    max-width: 700px;
     text-align: center;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 15px;
@@ -49,33 +49,65 @@ defineProps({
 
 .deck-section h2 {
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    font-size: 18px;
 }
 
 .deck {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    min-height: 86px;
+    gap: 0;
     flex-wrap: wrap;
 }
 
-.card {
+.deck-card {
     position: relative;
-    width: 30px;
-    min-height: 50px;
-    padding: 8px;
-    box-sizing: border-box;
-
+    width: 60px;
+    height: 84px;
+    margin-left: -20px;
+    transform: rotate(var(--deck-rotation, 0deg));
+    transition: transform 0.2s ease, z-index 0.2s ease;
 }
 
-.deck-number {
-    position: absolute;
-    top: 5px;
-    left: 7px;
-    font-size: 11px;
-    color: #aaa;
+.deck-card:first-child {
+    margin-left: 0;
 }
 
+.deck-card:hover {
+    z-index: 2;
+    transform: translateY(-8px) rotate(0deg);
+}
+
+.deck-card-face {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-width: 2px;
+    border-radius: 8px;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+.deck-symbol {
+    margin-bottom: 3px;
+    font-size: 18px;
+}
+
+.deck-card-face strong {
+    max-width: 48px;
+    overflow: hidden;
+    font-size: 9px;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
 
 
 .deck-card p {

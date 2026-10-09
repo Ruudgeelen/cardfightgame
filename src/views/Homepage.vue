@@ -156,14 +156,25 @@ function aiAttack() {
         <!-- Enemy -->
         <section class="battle-section enemy-section">
             <h2>🤖 AI</h2>
-            <EnemyCards :cards="enemyCards" :last-enemy-card="lastEnemyCard" :settings="zieEnemyCards" />
+            <EnemyCards :cards="enemyCards" :last-enemy-card="{}" :settings="zieEnemyCards" />
             <Health :health="enemyHealth" :max-health="enemyMaxHealth" />
 
         </section>
 
         <!-- Game over -->
         <div class="game-result">
-            <Stapel v-if="zieStapel" :cards="cardstapel" :settings="zieStapelCards" />
+            <div class="played-cards-row">
+                <div class="played-card-slot enemy-played-card">
+                    <EnemyCards :cards="[]" :last-enemy-card="lastEnemyCard" :settings="true" />
+                </div>
+
+                <Stapel v-if="zieStapel" :cards="cardstapel" :settings="zieStapelCards" />
+
+                <div class="played-card-slot player-played-card">
+                    <PlayerCards :cards="[]" :ai-turn="false" :last-player-card="lastPlayerCard" />
+                </div>
+            </div>
+
             <h2 v-if="enemyHealth <= 0">
                 🏆 You Win! <button @click="resetGame()">Play Again</button>
             </h2>
@@ -180,11 +191,11 @@ function aiAttack() {
 
             <h2>🧑 Player</h2>
             <Health :health="playerHealth" :max-health="playerMaxHealth" />
-            <PlayerCards :cards="playerCards" :ai-turn="aiTurn" :last-player-card="lastPlayerCard"
+            <PlayerCards :cards="playerCards" :ai-turn="aiTurn" :last-player-card="{}"
                 @use-card="useCard" />
 
         </section>
-        <section class="battle-section player-section">
+        <section class="battle-section player-section game-controls">
             <button @click="resetGame()">Reset Game</button>
         </section>
 
@@ -194,9 +205,9 @@ function aiAttack() {
 
 <style scoped>
 .game {
-    max-width: 2500px;
+    width: min(100%, 1480px);
     margin: 0 auto;
-    padding: 25px;
+    padding: 22px clamp(12px, 3vw, 30px) 34px;
     text-align: center;
 }
 button {
@@ -213,19 +224,45 @@ button {
 }
 
 .battle-section {
-    margin: 25px 0;
-    padding: 20px;
-    border-radius: 15px;
+    width: min(100%, 1320px);
+    margin: 18px auto;
+    padding: 18px clamp(12px, 2vw, 24px) 24px;
+    border-radius: 18px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.2);
 }
 
 .enemy-section {
-    background: rgba(255, 70, 70, 0.08);
-    border: 1px solid rgba(255, 70, 70, 0.2);
+    background: linear-gradient(145deg, rgba(94, 35, 58, 0.28), rgba(12, 20, 42, 0.68));
+    border: 1px solid rgba(255, 122, 145, 0.24);
 }
 
 .player-section {
-    background: rgba(70, 120, 255, 0.08);
-    border: 1px solid rgba(70, 120, 255, 0.2);
+    background: linear-gradient(145deg, rgba(24, 79, 91, 0.34), rgba(12, 20, 42, 0.68));
+    border: 1px solid rgba(99, 230, 193, 0.24);
+}
+
+.battle-section > h2 {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0 8px;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 999px;
+    background: rgba(5, 12, 28, 0.34);
+    color: #f4f7ff;
+    font-size: 19px;
+}
+
+.game-controls {
+    width: fit-content;
+    min-width: 180px;
+    padding: 10px 14px;
+    background: rgba(8, 16, 34, 0.64);
+    border-color: rgba(143, 210, 235, 0.13);
+}
+
+.game-controls button {
+    padding: 8px 16px;
 }
 
 hr {
@@ -236,11 +273,130 @@ hr {
 }
 
 .game-result {
-    margin-top: 30px;
+    width: min(100%, 980px);
+    margin: 18px auto;
+}
+
+.played-cards-row {
+    display: grid;
+    grid-template-columns: 145px minmax(220px, 1fr) 145px;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.played-card-slot {
+    min-width: 0;
+}
+
+.played-card-slot .card-area,
+.played-card-slot .player-card-area {
+    width: 100%;
+    gap: 0;
+}
+
+.played-card-slot .last-enemy-wrapper,
+.played-card-slot .last-player-wrapper {
+    width: 100%;
+}
+
+.played-card-slot :deep(.last-enemy-wrapper h2),
+.played-card-slot :deep(.last-player-wrapper h2) {
+    margin-bottom: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.played-cards-row :deep(.deck-section) {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.played-card-slot :deep(.card) {
+    width: 60px;
+    min-height: 84px;
+    padding: 5px;
+    border-width: 2px;
+    margin: 0 auto;
+}
+
+.played-card-slot :deep(.card h3) {
+    max-width: 48px;
+    overflow: hidden;
+    font-size: 9px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.played-card-slot :deep(.card .line) {
+    margin: 3px 0;
+}
+
+.played-card-slot :deep(.card .type) {
+    margin-bottom: 3px;
+    padding: 2px;
+    overflow: hidden;
+    font-size: 7px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.played-card-slot :deep(.card-stats) {
+    gap: 2px;
+    margin-top: 2px;
+}
+
+.played-card-slot :deep(.card-stat) {
+    min-height: 21px;
+    padding: 1px;
+    font-size: 7px;
+}
+
+.played-card-slot :deep(.card-stat > span) {
+    font-size: 10px;
+}
+
+.played-card-slot :deep(.card-stat small) {
+    font-size: 6px;
 }
 
 .game-result h2 {
-    font-size: 30px;
+    margin: 14px 0;
+    font-size: 26px;
+}
+
+@media (max-width: 950px) {
+    .played-cards-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .played-cards-row :deep(.deck-section) {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .enemy-played-card {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .player-played-card {
+        grid-column: 2;
+        grid-row: 2;
+    }
+}
+
+@media (max-width: 560px) {
+    .played-cards-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .played-card-slot,
+    .played-cards-row :deep(.deck-section) {
+        width: 100%;
+    }
 }
 
 </style>

@@ -13,6 +13,24 @@ onMounted(() => {
         }
 })
 const allCards = GetCards()
+
+function cardTooltip(card) {
+    return [
+        card.type && `Type: ${card.type}`,
+        card.attack && `Attack on the enemy: ${card.attack}`,
+        card.heal && `Heal your health: ${card.heal}`,
+        card.freeze && 'Freeze your own cards',
+        card.burn && `Burn the opponent cards: ${card.burn} (for ${card.burnTurns} turns)`,
+        card.attackadd && `Attack add to all your cards: ${card.attackadd}`,
+        card.healadd && `Heal add to all your cards: ${card.healadd}`,
+        card.removecardnummer && `Remove cards of the opponent: ${card.removecardnummer}`,
+        card.morecards && `Give more cards to yourself: ${card.morecards}`,
+        card.stapel && `Stapel: ${card.stapel}`,
+        card.effect && `Effect: ${card.effect}`,
+        card.effectturns && `Effect duration: ${card.effectturns} turns`,
+        card.effectvalue && `EffectPower: ${card.effectvalue}`
+    ].filter(Boolean).join('\n')
+}
 </script>
 
 <template>
@@ -33,26 +51,34 @@ const allCards = GetCards()
                 <div
                     v-for="card in allCards"
                     :key="card.id"
-                    :class="['card', card.type]"
+                    :class="['card', card.type, 'card-modern']"
+                    :data-tooltip="`${card.name}\n${cardTooltip(card)}`"
                 >
 
                     <h3>{{ card.name }}</h3>
                     <div class="line"></div>
                     <p v-if="card.type" class="type">Type: {{ card.type }}</p>
-                    <p v-if="card.attack">⚔️ Attack: {{ card.attack }}</p>
-                    <p v-if="card.heal">❤️ Heal: {{ card.heal }}</p>
-                    <p v-if="card.freeze">❄️ Freeze </p>
-                    <p v-if="card.burn">🔥 Burn: {{ card.burn }} (Burn Turns: {{ card.burnTurns }})</p>
-                    <p v-if="card.healthbaradd">💚 Healthbar yours: {{ card.healthbaradd }}</p>
-                    <p v-if="card.healthbarremove">💔 Healthbar other: {{ card.healthbarremove }}</p>
-                    <p v-if="card.attackadd">⚔️ Attack Add: {{ card.attackadd }}</p>
-                    <p v-if="card.healadd">❤️ Heal Add: {{ card.healadd }}</p>
-                    <p v-if="card.removecardnummer">🗑️ Remove Card: {{ card.removecardnummer }}</p>
-                    <p v-if="card.morecards">🃏 More Cards: {{ card.morecards }}</p>
-                    <p v-if="card.stapel">🃏 Stapel: {{ card.stapel }}</p>
-                    <p v-if="card.effect">✨ Effect: {{ card.effect }}</p>
-                    <p v-if="card.effectturns">⏳ Effect Time: {{ card.effectturns }}</p>
-                    <p v-if="card.effectvalue">💎 Effect Value: {{ card.effectvalue }}</p>
+                    <div class="card-stats">
+                        <p v-if="card.attack" class="card-stat"><span>⚔️</span><b>{{ card.attack }}</b></p>
+                        <p v-if="card.heal" class="card-stat"><span>❤️</span><b>{{ card.heal }}</b></p>
+                        <p v-if="card.freeze" class="card-stat"><span>❄️</span><b>Freeze</b></p>
+                        <p v-if="card.burn" class="card-stat"><span>🔥</span><b>{{ card.burn }} <small>⏳ {{ card.burnTurns }}</small></b></p>
+                        <p v-if="card.healthbaradd" class="card-stat"><span>💚</span><b>{{ card.healthbaradd }}</b></p>
+                        <p v-if="card.healthbarremove" class="card-stat"><span>💔</span><b>{{ card.healthbarremove }}</b></p>
+                        <p v-if="card.attackadd" class="card-stat"><span>⚔️</span><b>+{{ card.attackadd }}</b></p>
+                        <p v-if="card.healadd" class="card-stat"><span>❤️</span><b>+{{ card.healadd }}</b></p>
+                        <p v-if="card.removecardnummer" class="card-stat"><span>🗑️</span><b>{{ card.removecardnummer }}</b></p>
+                        <p v-if="card.morecards" class="card-stat"><span>🃏</span><b>{{ card.morecards }}</b></p>
+                        <p v-if="card.stapel" class="card-stat"><span>🃏</span><b>{{ card.stapel }}</b></p>
+                        <p v-if="card.effect" class="card-stat"><span>✨</span><b>{{ card.effect }}</b></p>
+                        <p v-if="card.effectturns" class="card-stat"><span>⏳</span><b>{{ card.effectturns }} beurten</b></p>
+                        <p v-if="card.effectvalue" class="card-stat"><span>💎</span><b>{{ card.effectvalue }}</b></p>
+                    </div>
+
+                    <div class="card-tooltip" role="tooltip">
+                        <strong>{{ card.name }}</strong>
+                        <span>{{ cardTooltip(card) }}</span>
+                    </div>
 
                 </div>
 
