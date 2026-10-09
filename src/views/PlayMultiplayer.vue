@@ -115,11 +115,6 @@ function useCard(card, index) {
         return
     }
 
-    console.log(
-        '⚔️ Kaart spelen:',
-        card.name
-    )
-
     socket.emit(
         'playCard',
         {
