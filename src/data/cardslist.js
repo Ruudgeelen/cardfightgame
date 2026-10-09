@@ -190,24 +190,23 @@ export const cards = [
     // UNDEAD
     {
         name: 'Skeleton',
-        attack: 16,
-        heal: -3,
+        attack: 21,
+        heal: -5,
         attackadd: 1,
-        healthremove: 1,        
         type: 'undead'
     },
     {
         name: 'Zombie',
-        attack: 15,
-        heal: -2,
-        healthremove: 2,
+        attack: 20,
+        heal: -5,
+        attackadd: 2,
         type: 'undead'
     },
     {
         name: 'Creeper',
-        attack: 17,
+        attack: 22,
         heal: -5,
-        healthremove: 3,
+        attackadd: 3,
         type: 'undead'
     },
 
@@ -331,6 +330,26 @@ export const cards = [
         healthbaradd: 7,
         type: 'heal'
     },
+    // LUCKY
+    {
+        name: 'Lucky Charm',
+        attack: 5,
+        heal: 5,
+        healadd: 2,
+        attackadd: 2,
+        healthbaradd: 5,
+        type: 'lucky'
+    },
+    {
+        name: 'Lucky Chicken',
+        attack: 10,
+        heal: 10,
+        attackadd: 2,
+        morecards: 1,
+        removecardnummer: 5,
+        healthbaradd: 2,
+        type: 'lucky'
+    },
 
     
     // RARE
@@ -399,6 +418,20 @@ export const cards = [
         attack: 0,
         heal: 0,
         stapel: 'shake',
+        type: 'special'
+    },
+    {
+        name: 'New Deck',
+        attack: 0,
+        heal: 0,
+        stapel: 'newdeck',
+        type: 'special'
+    },
+    {
+        name: 'New Deck Other',
+        attack: 0,
+        heal: 0,
+        stapel: 'newdeckother',
         type: 'special'
     },
 

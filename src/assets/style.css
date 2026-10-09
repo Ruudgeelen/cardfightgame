@@ -305,6 +305,11 @@ body {
     background: linear-gradient(145deg, #b6ffe2, #58d592);
 }
 
+.card.lucky {
+    border-color: #ffd700;
+    background: linear-gradient(145deg, #fffacd, #ffd700);
+}
+
 .card.rainbow {
     border-color: #878686;
     background: linear-gradient(

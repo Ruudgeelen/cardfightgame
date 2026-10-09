@@ -124,15 +124,36 @@ export function game(
             )
     }
 
-    if (
-        cardstapel.value.length === 0 ||
-        card.stapel === 'shake'
-    ) {
+    if ( cardstapel.value.length === 0 || card.stapel === 'shake') {
         cardstapel.value =
             GetNewStapel(
                 userCards.value,
                 otheruserCards.value
             )
+    }
+    if (card.stapel === 'newdeck') {
+        for (let i = 0; i < userCards.value.length; i++) {
+            if (cardstapel.value.length === 0) {
+                cardstapel.value =
+                    GetNewStapel(
+                    userCards.value,
+                    otheruserCards.value
+                )
+            }
+            userCards.value[i] = GetNewCard(cardstapel.value)
+        }
+    }
+    if (card.stapel === 'newdeckother') {
+        for (let i = 0; i < otheruserCards.value.length; i++) {
+            if (cardstapel.value.length === 0) {
+                cardstapel.value =
+                    GetNewStapel(
+                    userCards.value,
+                    otheruserCards.value
+                )
+            }
+            otheruserCards.value[i] = GetNewCard(cardstapel.value)
+        }
     }
     if (card.removecardnummer) {
         for (let i = 0; i < card.removecardnummer; i++) {
@@ -154,8 +175,6 @@ export function game(
             userCards.value.push(GetNewCard(cardstapel.value))
         }
     }
-            
-
     userCards.value[index] =
         GetNewCard(
             cardstapel.value
@@ -373,6 +392,30 @@ export function gameMultiplayer(
                 userCards,
                 otheruserCards
             )
+    }
+    if (card.stapel === 'newdeck') {
+        for (let i = 0; i < userCards.length; i++) {
+            if (cardstapel.length === 0) {
+                cardstapel =
+                    GetNewStapelMultiplayer(
+                    userCards,
+                    otheruserCards
+                )
+            }
+            userCards[i] = GetNewCard(cardstapel)
+        }
+    }
+    if (card.stapel === 'newdeckother') {
+        for (let i = 0; i < otheruserCards.length; i++) {
+            if (cardstapel.length === 0) {
+                cardstapel =
+                    GetNewStapelMultiplayer(
+                    userCards,
+                    otheruserCards
+                )
+            }
+            otheruserCards[i] = GetNewCard(cardstapel)
+        }
     }
 
     if (card.removecardnummer) {
