@@ -33,6 +33,14 @@ export const cards = [
         burnTurns: 1,
         type: 'lava'
     },
+    {
+        name: 'Lava Beast',
+        attack: 15,
+        heal: 0,
+        burn: 2,
+        burnTurns: 2,
+        type: 'lava'
+    },
 
 
     // WATER
@@ -214,14 +222,25 @@ export const cards = [
     {
         name: 'Light Spirit',
         attack: 3,
-        heal: 8,
+        heal: 12,
+        healadd: 1,
+        healthbaradd: 3,
         type: 'light'
     },
     {
         name: 'Holy Knight',
         attack: 6,
-        heal: 8,
+        heal: 10,
         healadd: 2,
+        healthbaradd: 2,
+        type: 'light'
+    },
+    {
+        name: 'Divine Healer',
+        attack: 4,
+        heal: 15,   
+        healadd: 3,
+        healthbaradd: 1,
         type: 'light'
     },
 
@@ -275,6 +294,13 @@ export const cards = [
         name: 'Ice Golem',
         attack: 7,
         heal: 6,
+        freeze: true,
+        type: 'ice'
+    },
+    {
+        name: 'Frost Mage',
+        attack: 9,
+        heal: 5,
         freeze: true,
         type: 'ice'
     },
@@ -374,6 +400,13 @@ export const cards = [
         attackadd: 3,
         type: 'rare'
     },
+    {
+        name: 'Rare Mage',
+        attack: 7,
+        heal: 8,
+        attackadd: 1,
+        type: 'rare'
+    },
 
     // UNIQUE
     {
@@ -440,10 +473,13 @@ export const cards = [
         name: 'Rainbow',
         attack: 15,
         heal: 25,
-        healthbaradd: 5,
+        healthbaradd: 3,
         healthbarremove: 3,
-        healadd: 5,
+        healadd: 3,
         attackadd: 3,
+        morecards: 3,
+        removecardnummer: 3,
+        freeze: true,
         type: 'rainbow'
     },
 ]
