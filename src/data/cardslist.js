@@ -48,6 +48,7 @@ export const cards = [
         name: 'Water Card',
         attack: 5,
         heal: 8,
+        healthbaradd: 1,
         type: 'water'
     },
     {
@@ -55,6 +56,13 @@ export const cards = [
         attack: 9,
         heal: 6,
         freeze: true,
+        type: 'water'
+    },
+    {
+        name: 'Water Elemental',
+        attack: 7,
+        heal: 7,
+        healthbaradd: 2,
         type: 'water'
     },
 
@@ -199,7 +207,7 @@ export const cards = [
     {
         name: 'Skeleton',
         attack: 21,
-        heal: -5,
+        heal: -6,
         attackadd: 1,
         type: 'undead'
     },
@@ -212,9 +220,16 @@ export const cards = [
     },
     {
         name: 'Creeper',
-        attack: 22,
-        heal: -5,
+        attack: 25,
+        heal: -10,
         attackadd: 3,
+        type: 'undead'
+    },
+    {
+        name: 'Ghost',
+        attack: 23,
+        heal: -7,
+        attackadd: 2,
         type: 'undead'
     },
 
@@ -336,14 +351,14 @@ export const cards = [
         name: 'Healing Potion',
         attack: 0,
         heal: 27,
-        healadd: 5,
+        healadd: 3,
         healthbaradd: 5,
         type: 'heal'
     },
     {
         name: 'Greater Heal',
         attack: 0,
-        heal: 24,
+        heal: 26,
         healadd: 3,
         healthbaradd: 3,
         type: 'heal'
@@ -356,14 +371,24 @@ export const cards = [
         healthbaradd: 7,
         type: 'heal'
     },
+    {
+        name: 'Healing Wave',
+        attack: 0,
+        heal: 30,
+        healadd: 4,
+        healthbaradd: 4,
+        type: 'heal'
+    },
+
     // LUCKY
     {
         name: 'Lucky Charm',
-        attack: 5,
-        heal: 5,
+        attack: 7,
+        heal: 7,
         healadd: 2,
-        attackadd: 2,
-        healthbaradd: 5,
+        attackadd: 1,
+        morecards: 1,
+        removecardnummer: 1,
         type: 'lucky'
     },
     {
@@ -371,12 +396,10 @@ export const cards = [
         attack: 10,
         heal: 10,
         attackadd: 2,
-        morecards: 1,
-        removecardnummer: 5,
+        removecardnummer: 3,
         healthbaradd: 2,
         type: 'lucky'
     },
-
     
     // RARE
     {
@@ -390,21 +413,21 @@ export const cards = [
         name: 'Rare Flower',
         attack: 9,
         heal: 5,
-        attackadd: 2,
+        healadd: 1,
         type: 'rare'
     },
     {
         name: 'Rare Warrior',
         attack: 10,
         heal: 0,
-        attackadd: 3,
+        attackadd: 1,
         type: 'rare'
     },
     {
         name: 'Rare Mage',
         attack: 7,
         heal: 8,
-        attackadd: 1,
+        healadd: 1,
         type: 'rare'
     },
 
@@ -478,7 +501,7 @@ export const cards = [
         healadd: 3,
         attackadd: 3,
         morecards: 3,
-        removecardnummer: 3,
+        removecardnummer: 1,
         freeze: true,
         type: 'rainbow'
     },
