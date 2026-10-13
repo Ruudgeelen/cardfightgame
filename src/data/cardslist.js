@@ -171,6 +171,12 @@ export const cards = [
         heal: 4,
         type: 'normal'
     },
+    {
+        name: 'Healer',
+        attack: 3,
+        heal: 12,
+        type: 'normal'
+    },
 
     // DRAGON
     {
@@ -396,7 +402,7 @@ export const cards = [
         attack: 10,
         heal: 10,
         attackadd: 2,
-        removecardnummer: 3,
+        removecardnummer: 1,
         healthbaradd: 2,
         type: 'lucky'
     },
@@ -453,6 +459,15 @@ export const cards = [
         attackadd: 3,
         type: 'unique'
     },
+    {
+        name: 'Unique Mage',
+        attack: 8,
+        heal: 11,
+        healthbarremove: 3,
+        removecardnummer: 1,
+        type: 'unique'
+    },
+
     // TROLL
     {
         name: 'Clown',
@@ -497,9 +512,9 @@ export const cards = [
         attack: 15,
         heal: 25,
         healthbaradd: 3,
-        healthbarremove: 3,
-        healadd: 3,
-        attackadd: 3,
+        healthbarremove: 1,
+        healadd: 2,
+        attackadd: 2,
         morecards: 3,
         removecardnummer: 1,
         freeze: true,

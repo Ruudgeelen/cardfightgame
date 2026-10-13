@@ -25,6 +25,8 @@ function cardTooltip(card) {
         card.healadd && `Heal add to all your cards: ${card.healadd}`,
         card.removecardnummer && `Remove cards of the opponent: ${card.removecardnummer}`,
         card.morecards && `Give more cards to yourself: ${card.morecards}`,
+        card.healthbaradd && `Add health to your healthbar: ${card.healthbaradd}`,
+        card.healthbarremove && `Remove health from the opponent healthbar: ${card.healthbarremove}`,
         card.stapel && `Stapel: ${card.stapel}`,
         card.effect && `Effect: ${card.effect}`,
         card.effectturns && `Effect duration: ${card.effectturns} turns`,
