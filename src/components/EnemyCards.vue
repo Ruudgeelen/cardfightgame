@@ -1,5 +1,6 @@
 <script setup>
 import '../assets/style.css'
+import Cardlayout from './Cardlayout.vue'
 import { getCardType } from '../data/cardTypes.js'
 import { cardTooltip, cardTooltiphide } from '../data/tooltips.js'
 
@@ -44,34 +45,7 @@ defineProps({
                 :data-tooltip="`${lastEnemyCard.name}\n${cardTooltip(lastEnemyCard)}`"
             >
 
-                <h3>{{ lastEnemyCard.name }}</h3>
-
-                <div class="line"></div>
-
-                <p v-if="lastEnemyCard.type" class="type">
-                    {{ getCardType(lastEnemyCard.type).icon }}
-                    Type: {{ getCardType(lastEnemyCard.type).name }}
-                    {{ getCardType(lastEnemyCard.type).icon }}
-                </p>
-
-                <div class="card-stats">
-                    <p v-if="lastEnemyCard.attack" class="card-stat"><span>⚔️</span><b>{{ lastEnemyCard.attack }}</b></p>
-                    <p v-if="lastEnemyCard.heal" class="card-stat"><span>❤️</span><b>{{ lastEnemyCard.heal }}</b></p>
-                    <p v-if="lastEnemyCard.freeze" class="card-stat"><span>❄️</span><b>Freeze</b></p>
-                    <p v-if="lastEnemyCard.burn" class="card-stat"><span>🔥</span><b>{{ lastEnemyCard.burn }} <small>⏳ {{ lastEnemyCard.burnTurns }}</small></b></p>
-                    <p v-if="lastEnemyCard.healthbaradd" class="card-stat"><span>💚</span><b>{{ lastEnemyCard.healthbaradd }}</b></p>
-                    <p v-if="lastEnemyCard.healthbarremove" class="card-stat"><span>💔</span><b>{{ lastEnemyCard.healthbarremove }}</b></p>
-                    <p v-if="lastEnemyCard.attackadd" class="card-stat"><span>⚔️</span><b>+{{ lastEnemyCard.attackadd }}</b></p>
-                    <p v-if="lastEnemyCard.healadd" class="card-stat"><span>❤️</span><b>+{{ lastEnemyCard.healadd }}</b></p>
-                    <p v-if="lastEnemyCard.removecardnummer" class="card-stat"><span>🗑️</span><b>{{ lastEnemyCard.removecardnummer }}</b></p>
-                    <p v-if="lastEnemyCard.morecards" class="card-stat"><span>🃏</span><b>{{ lastEnemyCard.morecards }}</b></p>
-                    <p v-if="lastEnemyCard.stapel" class="card-stat"><span>🃏</span><b>{{ lastEnemyCard.stapel }}</b></p>
-                </div>
-
-                <div class="card-tooltip" role="tooltip">
-                    <strong>{{ lastEnemyCard.name }}</strong>
-                    <span>{{ cardTooltip(lastEnemyCard) }}</span>
-                </div>
+                <Cardlayout :card="lastEnemyCard" />
 
             </div>
 
@@ -82,7 +56,7 @@ defineProps({
         <div class="cards">
 
             <div
-                v-for="card in cards"
+                v-for="card, index in cards"
                 :key="card.id"
                 :class="[
                     'card',
@@ -96,31 +70,7 @@ defineProps({
                 <!-- SHOW CARDS -->
                 <div v-if="settings">
 
-                    <h3>{{ card.name }}</h3>
-                    <div class="line"></div>
-                    <p v-if="card.type" class="type">
-                        {{ getCardType(card.type).icon }}
-                        Type: {{ getCardType(card.type).name }}
-                        {{ getCardType(card.type).icon }}
-                    </p>
-                    <div class="card-stats">
-                        <p v-if="card.attack" class="card-stat"><span>⚔️</span><b>{{ card.attack }}</b></p>
-                        <p v-if="card.heal" class="card-stat"><span>❤️</span><b>{{ card.heal }}</b></p>
-                        <p v-if="card.freeze" class="card-stat"><span>❄️</span><b>Freeze</b></p>
-                        <p v-if="card.burn" class="card-stat"><span>🔥</span><b>{{ card.burn }} <small>⏳ {{ card.burnTurns }}</small></b></p>
-                        <p v-if="card.healthbaradd" class="card-stat"><span>💚</span><b>{{ card.healthbaradd }}</b></p>
-                        <p v-if="card.healthbarremove" class="card-stat"><span>💔</span><b>{{ card.healthbarremove }}</b></p>
-                        <p v-if="card.attackadd" class="card-stat"><span>⚔️</span><b>+{{ card.attackadd }}</b></p>
-                        <p v-if="card.healadd" class="card-stat"><span>❤️</span><b>+{{ card.healadd }}</b></p>
-                        <p v-if="card.removecardnummer" class="card-stat"><span>🗑️</span><b>{{ card.removecardnummer }}</b></p>
-                        <p v-if="card.morecards" class="card-stat"><span>🃏</span><b>{{ card.morecards }}</b></p>
-                        <p v-if="card.stapel" class="card-stat"><span>🃏</span><b>{{ card.stapel }}</b></p>
-                     </div>
-
-                    <div class="card-tooltip" role="tooltip">
-                        <strong>{{ card.name }}</strong>
-                        <span>{{ cardTooltip(card) }}</span>
-                    </div>
+                    <Cardlayout :card="card" />
 
                 </div>
 
