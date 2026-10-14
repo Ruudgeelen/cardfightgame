@@ -1,4 +1,24 @@
+function effectNames(card) {
+    if (Array.isArray(card.effect)) {
+        return card.effect.join(', ')
+    }
+
+    return card.effect
+}
+
+function effectDetails(card, property) {
+    if (card[property] && typeof card[property] === 'object') {
+        return Object.entries(card[property])
+            .map(([effect, value]) => `${effect}: ${value}`)
+            .join(', ')
+    }
+
+    return card[property]
+}
+
 export function cardTooltip(card) {
+    const effects = effectNames(card)
+
     return [
         card.type && `Type: ${card.type}`,
         card.attack && `Attack on the enemy: ${card.attack}`,
@@ -12,17 +32,20 @@ export function cardTooltip(card) {
         card.healthbaradd && `Add health to your healthbar: ${card.healthbaradd}`,
         card.healthbarremove && `Remove health from the opponent healthbar: ${card.healthbarremove}`,
         card.stapel && `Stapel: ${card.stapel}`,
-        card.effect && `Effect: ${card.effect}`,
-        card.effectturns && `Effect duration: ${card.effectturns} turns`,
-        card.effectvalue && `EffectPower: ${card.effectvalue}`
+        card.gamble && `Maakt ${card.gambleCards || 3} kaarten gamble`,
+        effects && `Effects: ${effects}`,
+        effectDetails(card, 'effectturnsmap') && `Effect durations: ${effectDetails(card, 'effectturnsmap')}`,
+        effectDetails(card, 'effectvalues') && `Effect powers: ${effectDetails(card, 'effectvalues')}`
     ].filter(Boolean).join('\n')
 }
 
 export function cardTooltiphide(card) {
+    const effects = effectNames(card)
+
     return [
         card.type && `Type: ${card.type}`,
-        card.effect && `Effect: ${card.effect}`,
-        card.effectturns && `Effect duration: ${card.effectturns} turns`,
-        card.effectvalue && `EffectPower: ${card.effectvalue}`
+        effects && `Effects: ${effects}`,
+        effectDetails(card, 'effectturnsmap') && `Effect durations: ${effectDetails(card, 'effectturnsmap')}`,
+        effectDetails(card, 'effectvalues') && `Effect powers: ${effectDetails(card, 'effectvalues')}`
     ].filter(Boolean).join('\n')
 }

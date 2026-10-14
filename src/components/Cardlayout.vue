@@ -34,6 +34,8 @@ defineProps({
             <p v-if="card.removecardnummer" class="card-stat"><span>🗑️</span><b>{{ card.removecardnummer }}</b></p>
             <p v-if="card.morecards" class="card-stat"><span>🃏</span><b>{{ card.morecards }}</b></p>
             <p v-if="card.stapel" class="card-stat"><span>🃏</span><b>{{ card.stapel }}</b></p>
+            <p v-if="card.gamble" class="card-stat"><span>🎲</span><b>Gamble</b></p>
+            <p v-if="card.gambleCards" class="card-stat"><span>🎲</span><b>{{ card.gambleCards }}</b></p>
      </div>
 
         <div class="card-tooltip" role="tooltip">

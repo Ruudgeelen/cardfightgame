@@ -3,6 +3,7 @@ import { GetCards } from '../data/card.js'
 import { ref, onMounted } from 'vue'
 import { getCardType } from '../data/cardTypes.js'
 import { cardTooltip } from '../data/tooltips.js'
+import Cardlayout from '../components/Cardlayout.vue'
 
 onMounted(() => {
         if (localStorage.getItem('Reload') === 'true') {
@@ -32,41 +33,22 @@ const allCards = GetCards()
 
             <div class="cardgrid">
 
-                <div
-                    v-for="card in allCards"
-                    :key="card.id"
-                    :class="['card', card.type, 'card-modern']"
-                    :data-tooltip="`${card.name}\n${cardTooltip(card)}`"
-                >
+               <div
+                v-for="card, index in allCards"
+                :key="card.id"
+                :class="[
+                    'card',
+                    card.type,
+                    card.effect ? 'effect-' + card.effect : '',
+                    'card-modern'
+                ]"
+                :data-tooltip="`${card.name}\n${cardTooltip(card)}`"
+            >
 
-                    <h3>{{ card.name }}</h3>
-                    <div class="line"></div>
-                    <p v-if="card.type" class="type">
-                        {{ getCardType(card.type).icon }}
-                        Type: {{ getCardType(card.type).name }}
-                        {{ getCardType(card.type).icon }}
-                    </p>
-                    <div class="card-stats">
-                        <p v-if="card.attack" class="card-stat"><span>⚔️</span><b>{{ card.attack }}</b></p>
-                        <p v-if="card.heal" class="card-stat"><span>❤️</span><b>{{ card.heal }}</b></p>
-                        <p v-if="card.freeze" class="card-stat"><span>❄️</span><b>Freeze</b></p>
-                        <p v-if="card.burn" class="card-stat"><span>🔥</span><b>{{ card.burn }} <small>⏳ {{ card.burnTurns }}</small></b></p>
-                        <p v-if="card.healthbaradd" class="card-stat"><span>💚</span><b>{{ card.healthbaradd }}</b></p>
-                        <p v-if="card.healthbarremove" class="card-stat"><span>💔</span><b>{{ card.healthbarremove }}</b></p>
-                        <p v-if="card.attackadd" class="card-stat"><span>⚔️</span><b>+{{ card.attackadd }}</b></p>
-                        <p v-if="card.healadd" class="card-stat"><span>❤️</span><b>+{{ card.healadd }}</b></p>
-                        <p v-if="card.removecardnummer" class="card-stat"><span>🗑️</span><b>{{ card.removecardnummer }}</b></p>
-                        <p v-if="card.morecards" class="card-stat"><span>🃏</span><b>{{ card.morecards }}</b></p>
-                        <p v-if="card.stapel" class="card-stat"><span>🃏</span><b>{{ card.stapel }}</b></p>
-                        <p v-if="card.effect" class="card-stat"><span>✨</span><b>{{ card.effect }}</b></p>
-                        <p v-if="card.effectturns" class="card-stat"><span>⏳</span><b>{{ card.effectturns }} beurten</b></p>
-                        <p v-if="card.effectvalue" class="card-stat"><span>💎</span><b>{{ card.effectvalue }}</b></p>
-                    </div>
-
-                    <div class="card-tooltip" role="tooltip">
-                        <strong>{{ card.name }}</strong>
-                        <span>{{ cardTooltip(card) }}</span>
-                    </div>
+                <!-- SHOW CARDS -->
+                <div>
+                    <Cardlayout :card="card" />
+                </div>
 
                 </div>
 

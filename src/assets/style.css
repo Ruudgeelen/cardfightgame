@@ -447,24 +447,15 @@ body {
     color: white;
 }
 
-.card.legendary {
-    border-color: gold;
-    background: linear-gradient(145deg, #fff3a3, #d4a017);
-}
-
-.card.epic {
-    border-color: orange;
-    background: linear-gradient(145deg, #ffcc80, #ff7b00);
-}
-
 .card.rare {
     border-color: #bbff00;
     background: linear-gradient(145deg, #c8ff9e, #63c600);
 }
 
-.card.common {
-    border-color: #8b4513;
-    background: linear-gradient(145deg, #d2a679, #8b4513);
+.card.gamble {
+    border-color: #da0000;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(227, 0, 0) 75%, rgb(11, 0, 0) 100%);
 }
 
 .card.unique {
@@ -548,6 +539,13 @@ body {
         0 0 25px rgba(0, 255, 255, 0.5);
 }
 
+.card.effect-gamble {
+    box-shadow:
+        0 0 5px rgb(0, 0, 0),
+        0 0 10px rgba(255, 4, 0, 0.9),
+        0 0 15px rgba(0, 11, 11, 0.7),
+        0 0 25px rgb(255, 0, 0);
+}
 /* =========================
    RESPONSIVE
    ========================= */

@@ -11,7 +11,9 @@ import {
     FreezeEffect,
     BurnEffectMultiplayer,
     BurnDamageMultiplayer,
-    FreezeEffectMultiplayer
+    FreezeEffectMultiplayer,
+    GambleEffect,
+    GambleEffectMultiplayer
 } from '../data/effect.js'
 
 import {
@@ -124,6 +126,17 @@ export function game(
             )
     }
 
+    if (card.gambleCards) {
+        const targetCards =
+            Math.random() < 0.5
+                ? otheruserCards
+                : userCards
+
+        GambleEffect(card, targetCards)
+
+    }
+
+
     if ( cardstapel.value.length === 0 || card.stapel === 'shake') {
         cardstapel.value =
             GetNewStapel(
@@ -172,6 +185,7 @@ export function game(
                     otheruserCards.value
                 )
             }
+
             userCards.value.push(GetNewCard(cardstapel.value))
         }
     }
@@ -376,6 +390,15 @@ export function gameMultiplayer(
                 otheruserMaxHealth,
                 otheruserHealth
             )
+    }
+
+    if (card.gambleCards) {
+        const targetCards =
+            Math.random() < 0.5
+                ? otheruserCards
+                : userCards
+
+        GambleEffectMultiplayer(card, targetCards)
     }
 
 

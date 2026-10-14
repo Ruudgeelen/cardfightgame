@@ -18,6 +18,7 @@ export const cardTypes = {
     unique: { name: 'Unique', icon: '⭐' },
     troll: { name: 'Troll', icon: '👹' },
     special: { name: 'Special', icon: '🎯' },
+    gamble: { name: 'Gamble', icon: '🎲' },
     lucky: { name: 'Lucky', icon: '🍀' },
     rainbow: { name: 'Rainbow', icon: '🌈' }
 }

@@ -1,140 +1,192 @@
+function effectList(card) {
+    if (Array.isArray(card.effect)) {
+        return card.effect.filter(Boolean)
+    }
+
+    return card.effect ? [card.effect] : []
+}
+
+function setEffects(card, effects) {
+    const uniqueEffects = [...new Set(effects.filter(Boolean))]
+    card.effect = uniqueEffects.length > 1
+        ? uniqueEffects
+        : uniqueEffects[0] || ""
+}
+
+function addEffect(card, effect, value = "", turns = "") {
+    const effects = effectList(card)
+    if (!effects.includes(effect)) {
+        effects.push(effect)
+    }
+
+    setEffects(card, effects)
+    card.effectvalues = {
+        ...(card.effectvalues || {}),
+        [effect]: value
+    }
+    card.effectturnsmap = {
+        ...(card.effectturnsmap || {}),
+        [effect]: turns
+    }
+
+    // Keep the old fields available for existing cards and UI.
+    card.effectvalue = value
+    card.effectturns = turns
+}
+
+function removeEffect(card, effect) {
+    const effects = effectList(card).filter((currentEffect) => currentEffect !== effect)
+    setEffects(card, effects)
+
+    if (card.effectvalues) {
+        delete card.effectvalues[effect]
+    }
+    if (card.effectturnsmap) {
+        delete card.effectturnsmap[effect]
+    }
+
+    const remainingEffect = effectList(card)[0]
+    card.effectvalue = remainingEffect
+        ? card.effectvalues?.[remainingEffect] || ""
+        : ""
+    card.effectturns = remainingEffect
+        ? card.effectturnsmap?.[remainingEffect] || ""
+        : ""
+}
+
+function hasEffect(card, effect) {
+    return effectList(card).includes(effect)
+}
+
+function effectTurns(card, effect) {
+    return card.effectturnsmap?.[effect] ?? card.effectturns
+}
+
+function effectValue(card, effect) {
+    return card.effectvalues?.[effect] ?? card.effectvalue
+}
+
+function applyBurn(card, burnValue, burnTurns) {
+    addEffect(card, "burn", burnValue, burnTurns)
+}
+
+function applyFreeze(card) {
+    addEffect(card, "freeze", "", "Forever")
+}
+
+function applyGamble(card) {
+    addEffect(card, "gamble", "", "Forever")
+}
+
+function applyGambleToCards(card, cards) {
+    const amount = Math.min(
+        Number(card.gambleCards) || 3,
+        cards.length
+    )
+    const availableIndexes = cards.map((_, index) => index)
+
+    for (let i = availableIndexes.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1))
+        const index = availableIndexes[i]
+        availableIndexes[i] = availableIndexes[randomIndex]
+        availableIndexes[randomIndex] = index
+    }
+
+    for (let i = 0; i < amount; i++) {
+        applyGamble(cards[availableIndexes[i]])
+    }
+}
+
+function updateBurnDamage(card) {
+    if (!hasEffect(card, "burn")) {
+        return
+    }
+
+    const turns = Number(effectTurns(card, "burn")) - 1
+    const value = Number(effectValue(card, "burn")) || 0
+
+    card.heal = (Number(card.heal) || 0) - value
+    card.attack = (Number(card.attack) || 0) - value
+
+    if (turns <= 0) {
+        removeEffect(card, "burn")
+    } else {
+        card.effectturnsmap = {
+            ...(card.effectturnsmap || {}),
+            burn: turns
+        }
+        if (effectList(card).length === 1) {
+            card.effectturns = turns
+        }
+    }
+}
+
 // ================================
 // SINGLEPLAYER
 // ================================
 
 export function BurnEffect(Card, UserCards) {
-    for (let i = 0; i < UserCards.value.length; i++) {
-
-        if (UserCards.value[i].effect === "freeze") {
-            UserCards.value[i].effect = ""
-            UserCards.value[i].effectvalue = ""
-            UserCards.value[i].effectturns = ""
-        }
-        else {
-            UserCards.value[i].effect = "burn"
-            UserCards.value[i].effectvalue = Card.burn
-            UserCards.value[i].effectturns = Card.burnTurns
-        }
+    for (const userCard of UserCards.value) {
+        applyBurn(userCard, Card.burn, Card.burnTurns)
     }
 
     return UserCards
 }
 
 export function BurnDamage(UserCards) {
-    for (let i = 0; i < UserCards.value.length; i++) {
-
-        if (UserCards.value[i].effect === "burn") {
-
-            UserCards.value[i].effectturns -= 1
-
-            UserCards.value[i].heal -=
-                UserCards.value[i].effectvalue
-
-            UserCards.value[i].attack -=
-                UserCards.value[i].effectvalue
-
-            if (UserCards.value[i].effectturns <= 0) {
-                UserCards.value[i].effect = ""
-                UserCards.value[i].effectvalue = ""
-                UserCards.value[i].effectturns = ""
-            }
-        }
+    for (const userCard of UserCards.value) {
+        updateBurnDamage(userCard)
     }
 
     return UserCards
 }
 
 export function FreezeEffect(UserCards) {
-    for (let i = 0; i < UserCards.value.length; i++) {
-
-        if (UserCards.value[i].effect === "burn") {
-            UserCards.value[i].effect = ""
-            UserCards.value[i].effectvalue = ""
-            UserCards.value[i].effectturns = ""
-        }
-        else {
-            UserCards.value[i].effect = "freeze"
-            UserCards.value[i].effectvalue = ""
-            UserCards.value[i].effectturns = "Forever"
-        }
+    for (const userCard of UserCards.value) {
+        applyFreeze(userCard)
     }
 
     return UserCards
 }
 
+export function GambleEffect(Card, UserCards) {
+    applyGambleToCards(Card, UserCards.value)
+    return UserCards
+}
 
 // ================================
 // MULTIPLAYER
 // ================================
 
-export function BurnEffectMultiplayer(
-    Card,
-    UserCards
-) {
-    for (let i = 0; i < UserCards.length; i++) {
-
-        if (UserCards[i].effect === "freeze") {
-            UserCards[i].effect = ""
-            UserCards[i].effectvalue = ""
-            UserCards[i].effectturns = ""
-        }
-        else {
-            UserCards[i].effect = "burn"
-            UserCards[i].effectvalue =
-                Number(Card.burn) || 0
-
-            UserCards[i].effectturns =
-                Number(Card.burnTurns) || 0
-        }
+export function BurnEffectMultiplayer(Card, UserCards) {
+    for (const userCard of UserCards) {
+        applyBurn(
+            userCard,
+            Number(Card.burn) || 0,
+            Number(Card.burnTurns) || 0
+        )
     }
 
     return UserCards
 }
 
-export function BurnDamageMultiplayer(
-    UserCards
-) {
-    for (let i = 0; i < UserCards.length; i++) {
-
-        if (UserCards[i].effect === "burn") {
-
-            UserCards[i].effectturns -= 1
-
-            UserCards[i].heal =
-                (Number(UserCards[i].heal) || 0) -
-                (Number(UserCards[i].effectvalue) || 0)
-
-            UserCards[i].attack =
-                (Number(UserCards[i].attack) || 0) -
-                (Number(UserCards[i].effectvalue) || 0)
-
-            if (UserCards[i].effectturns <= 0) {
-                UserCards[i].effect = ""
-                UserCards[i].effectvalue = ""
-                UserCards[i].effectturns = ""
-            }
-        }
+export function BurnDamageMultiplayer(UserCards) {
+    for (const userCard of UserCards) {
+        updateBurnDamage(userCard)
     }
 
     return UserCards
 }
 
-export function FreezeEffectMultiplayer(
-    UserCards
-) {
-    for (let i = 0; i < UserCards.length; i++) {
-
-        if (UserCards[i].effect === "burn") {
-            UserCards[i].effect = ""
-            UserCards[i].effectvalue = ""
-            UserCards[i].effectturns = ""
-        }
-        else {
-            UserCards[i].effect = "freeze"
-            UserCards[i].effectvalue = ""
-            UserCards[i].effectturns = "Forever"
-        }
+export function FreezeEffectMultiplayer(UserCards) {
+    for (const userCard of UserCards) {
+        applyFreeze(userCard)
     }
 
+    return UserCards
+}
+
+export function GambleEffectMultiplayer(Card, UserCards) {
+    applyGambleToCards(Card, UserCards)
     return UserCards
 }
