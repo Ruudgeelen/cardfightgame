@@ -423,14 +423,21 @@ export const cards = [
         type: 'heal'
     },
     {
-        name: 'Healing Wave',
+        name: 'Healing Light',
         attack: 0,
-        heal: 30,
-        healadd: 4,
-        healthbaradd: 4,
+        heal: 28,
+        healthbaradd: 3,
         type: 'heal'
     },
-    
+    {
+        name: 'Healing Rain',
+        attack: 0,
+        heal: 20,
+        healadd: 1,
+        healthbaradd: 5,
+        type: 'heal'
+    },
+
     // RARE
     {
         name: 'Rare Beast',

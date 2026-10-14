@@ -1,6 +1,9 @@
-```vue
 <script setup>
 import '../assets/style.css'
+import { getCardType } from '../data/cardTypes.js'
+import { cardTooltip, cardTooltiphide } from '../data/tooltips.js'
+
+
 
 defineProps({
     cards: {
@@ -18,25 +21,6 @@ defineProps({
     }
 })
 
-function cardTooltip(card) {
-    return [
-        card.type && `Type: ${card.type}`,
-        card.attack && `Attack on the enemy: ${card.attack}`,
-        card.heal && `Heal your health: ${card.heal}`,
-        card.freeze && 'Freeze your own cards',
-        card.burn && `Burn the opponent cards: ${card.burn} (for ${card.burnTurns} turns)`,
-        card.attackadd && `Attack add to all your cards: ${card.attackadd}`,
-        card.healadd && `Heal add to all your cards: ${card.healadd}`,
-        card.removecardnummer && `Remove cards of the opponent: ${card.removecardnummer}`,
-        card.morecards && `Give more cards to yourself: ${card.morecards}`,
-        card.healthbaradd && `Add health to your healthbar: ${card.healthbaradd}`,
-        card.healthbarremove && `Remove health from the opponent healthbar: ${card.healthbarremove}`,
-        card.stapel && `Stapel: ${card.stapel}`,
-        card.effect && `Effect: ${card.effect}`,
-        card.effectturns && `Effect duration: ${card.effectturns} turns`,
-        card.effectvalue && `EffectPower: ${card.effectvalue}`
-    ].filter(Boolean).join('\n')
-}
 </script>
 
 <template>
@@ -65,7 +49,9 @@ function cardTooltip(card) {
                 <div class="line"></div>
 
                 <p v-if="lastEnemyCard.type" class="type">
-                    Type: {{ lastEnemyCard.type }}
+                    {{ getCardType(lastEnemyCard.type).icon }}
+                    Type: {{ getCardType(lastEnemyCard.type).name }}
+                    {{ getCardType(lastEnemyCard.type).icon }}
                 </p>
 
                 <div class="card-stats">
@@ -112,7 +98,11 @@ function cardTooltip(card) {
 
                     <h3>{{ card.name }}</h3>
                     <div class="line"></div>
-                    <p v-if="card.type" class="type">Type: {{ card.type }}</p>
+                    <p v-if="card.type" class="type">
+                        {{ getCardType(card.type).icon }}
+                        Type: {{ getCardType(card.type).name }}
+                        {{ getCardType(card.type).icon }}
+                    </p>
                     <div class="card-stats">
                         <p v-if="card.attack" class="card-stat"><span>⚔️</span><b>{{ card.attack }}</b></p>
                         <p v-if="card.heal" class="card-stat"><span>❤️</span><b>{{ card.heal }}</b></p>
@@ -139,9 +129,11 @@ function cardTooltip(card) {
                 <div v-else class="hidden-card">
 
                     <div class="hidden-icon">
-                         ❓
+                         {{ getCardType(card.type).icon }}
                     </div>
-
+                    <div class="card-tooltip" role="tooltip">
+                        <span>{{ cardTooltiphide(card) }}</span>
+                    </div>
                     <h3>Enemy Card</h3>
 
                 </div>

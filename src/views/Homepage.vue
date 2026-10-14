@@ -149,13 +149,41 @@ function aiAttack() {
 
 <template>
     <div class="game">
+        <div class="top-info-box">
+            <div class="game-header">
+                <h1>⚔️ Card Fight</h1>
+                <div class="room-info">
+                    <span>Modus</span>
+                    <strong>Solo</strong>
+                </div>
+            </div>
+
+            <div class="players-header">
+                <div class="player-title">
+                    <h2>🤖 Speler 2</h2>
+                    <span class="player-status">AI</span>
+                </div>
+
+                <div class="player-title">
+                    <h2>🧑 Speler 1</h2>
+                    <span class="player-number">Jij</span>
+                </div>
+
+                <div v-if="enemyHealth > 0 && playerHealth > 0" class="turn-info"
+                    :class="{ 'your-turn': !aiTurn }">
+                    <span class="turn-dot">●</span>
+                    <strong v-if="!aiTurn">Jouw beurt</strong>
+                    <strong v-else>Beurt van AI</strong>
+                </div>
+            </div>
+        </div>
+
         <!-- AI turn -->
         <Ai v-if="aiTurn" :enemy-cards="enemyCards" @ai-attack="aiAttack" />
 
 
         <!-- Enemy -->
         <section class="battle-section enemy-section">
-            <h2>🤖 AI</h2>
             <EnemyCards :cards="enemyCards" :last-enemy-card="{}" :settings="zieEnemyCards" />
             <Health :health="enemyHealth" :max-health="enemyMaxHealth" />
 
@@ -189,7 +217,6 @@ function aiAttack() {
         <!-- Player -->
         <section class="battle-section player-section">
 
-            <h2>🧑 Player</h2>
             <Health :health="playerHealth" :max-health="playerMaxHealth" />
             <PlayerCards :cards="playerCards" :ai-turn="aiTurn" :last-player-card="{}"
                 @use-card="useCard" />
@@ -210,6 +237,117 @@ function aiAttack() {
     padding: 22px clamp(12px, 3vw, 30px) 34px;
     text-align: center;
 }
+
+.top-info-box {
+    width: min(100%, 980px);
+    margin: 0 auto 18px;
+    padding: 14px 18px;
+    border: 1px solid rgba(143, 210, 235, 0.2);
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(19, 37, 66, 0.72), rgba(9, 17, 37, 0.68));
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.game-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 46px;
+}
+
+.game-header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.room-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid rgba(143, 210, 235, 0.18);
+    border-radius: 999px;
+    background: rgba(8, 16, 34, 0.58);
+}
+
+.room-info span {
+    opacity: 0.7;
+}
+
+.players-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin: 12px auto 0;
+    padding: 12px 0 2px;
+    border-top: 1px solid rgba(143, 210, 235, 0.16);
+}
+
+.player-title {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    min-width: 188px;
+    min-height: 46px;
+    padding: 7px 14px;
+    box-sizing: border-box;
+    border: 1px solid rgba(143, 210, 235, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.player-title h2 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.player-status,
+.player-number {
+    padding: 3px 7px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+}
+
+.player-status {
+    color: #4ade80;
+}
+
+.turn-info {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 138px;
+    min-height: 46px;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    border: 1px solid rgba(248, 113, 113, 0.45);
+    border-radius: 8px;
+    background: rgba(220, 38, 38, 0.25);
+    color: #fecaca;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.turn-info.your-turn {
+    border-color: rgba(74, 222, 128, 0.45);
+    background: rgba(22, 163, 74, 0.25);
+    color: #86efac;
+}
+
+.turn-dot {
+    font-size: 11px;
+}
+
 button {
     background: rgba(255, 255, 255, 0.07);
     border: 1px solid rgb(4, 4, 4);

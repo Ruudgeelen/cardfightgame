@@ -194,36 +194,43 @@ onUnmounted(() => {
 
         <!-- HEADER -->
 
-        <div class="game-header">
+        <div class="top-info-box">
+            <div class="game-header">
 
-            <h1>
-                ⚔️ Card Fight
-            </h1>
+                <h1>
+                    ⚔️ Card Fight
+                </h1>
 
-            <div class="room-info">
+                <div class="room-info">
+                    <span>Room</span>
+                    <strong>{{ roomCode }}</strong>
+                </div>
 
-                <span>
-                    Room
-                </span>
-
-                <strong>
-                    {{ roomCode }}
-                </strong>
-
-            </div>
-
-            <div class="room-info">
-
-                <span>
-                    Speler
-                </span>
-
-                <strong>
-                    {{ playerNumber }}
-                </strong>
+                <div class="room-info">
+                    <span>Speler</span>
+                    <strong>{{ playerNumber }}</strong>
+                </div>
 
             </div>
 
+            <div v-if="gameStarted" class="players-header">
+                <div class="player-title">
+                    <h2>🧑 Speler {{ playerNumber === 1 ? 2 : 1 }}</h2>
+                    <span class="player-status">Online</span>
+                </div>
+
+                <div class="player-title">
+                    <h2>🧑 Speler {{ playerNumber }}</h2>
+                    <span class="player-number">Jij</span>
+                </div>
+
+                <div v-if="!gameOver" class="turn-info"
+                    :class="{ 'your-turn': playerTurn }">
+                    <span class="turn-dot">●</span>
+                    <strong v-if="playerTurn">Jouw beurt</strong>
+                    <strong v-else>Wachten op tegenstander</strong>
+                </div>
+            </div>
         </div>
 
 
@@ -246,36 +253,19 @@ onUnmounted(() => {
 
             <section class="battle-section enemy-section">
 
-                <div class="player-title">
-
-                    <h2>
-                        🧑 Speler
-                        {{
-                            playerNumber === 1
-                                ? 2
-                                : 1
-                        }}
-                    </h2>
-
-                    <span class="player-status">
-                        ● Online
-                    </span>
-
-                </div>
+                <EnemyCards :cards="enemyCards" :last-enemy-card="{}" :settings="false" />
 
                 <Health :health="enemyHealth" :max-health="enemyMaxHealth" />
-
-                <EnemyCards :cards="enemyCards" :last-enemy-card="{}" :settings="false" />
 
             </section>
 
 
             <!-- MIDDEN -->
 
-            <div class="battle-middle">
+            <div class="game-result">
                 <div class="played-cards-row">
                     <div class="played-card-slot enemy-played-card">
-                        <EnemyCards :cards="[]" :last-enemy-card="lastEnemyCard" :settings="false" />
+                        <EnemyCards :cards="[]" :last-enemy-card="lastEnemyCard" :settings="true" />
                     </div>
 
                     <Stapel :cards="cardstapel" :settings="5" />
@@ -300,37 +290,12 @@ onUnmounted(() => {
                 </div>
 
 
-                <div v-else class="turn-indicator">
-
-                    <span v-if="playerTurn">
-                        🟢 Jouw beurt
-                    </span>
-
-                    <span v-else>
-                        🔴 Wachten op tegenstander
-                    </span>
-
-                </div>
-
-
             </div>
 
 
             <!-- PLAYER -->
 
             <section class="battle-section player-section">
-
-                <div class="player-title">
-
-                    <h2>
-                        🧑 Jij
-                    </h2>
-
-                    <span class="player-number">
-                        Speler {{ playerNumber }}
-                    </span>
-
-                </div>
 
                 <Health :health="playerHealth" :max-health="playerMaxHealth" />
 
@@ -374,13 +339,23 @@ onUnmounted(() => {
     text-align: center;
 }
 
+.top-info-box {
+    width: min(100%, 980px);
+    margin: 0 auto 18px;
+    padding: 14px 18px;
+    border: 1px solid rgba(143, 210, 235, 0.2);
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(19, 37, 66, 0.72), rgba(9, 17, 37, 0.68));
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
 .game-header {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin: 0;
 }
 
 .game h1 {
@@ -428,25 +403,79 @@ onUnmounted(() => {
     align-items: center;
     gap: 15px;
     flex-wrap: wrap;
+    margin-bottom: 8px;
 }
 
-.player-title h2 {
+.players-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 12px auto 0;
+    padding: 12px 0 2px;
+    border-top: 1px solid rgba(143, 210, 235, 0.16);
+}
+
+.players-header .player-title {
+    flex: 0 0 auto;
+    gap: 8px;
     margin: 0;
+    padding: 7px 14px;
+    border: 1px solid rgba(143, 210, 235, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
 }
 
-.player-status,
-.player-number {
-    padding: 5px 10px;
+.players-header .player-title h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 16px;
+}
+
+.players-header .player-status,
+.players-header .player-number {
+    padding: 3px 7px;
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+}
+
+.turn-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 1 auto;
+    margin-top: 0;
+    padding: 6px 12px;
+    border: 1px solid rgba(248, 113, 113, 0.45);
+    border-radius: 8px;
+    background: rgba(220, 38, 38, 0.25);
+    color: #fecaca;
     font-size: 13px;
+    white-space: nowrap;
+}
+
+.turn-info.your-turn {
+    border-color: rgba(74, 222, 128, 0.45);
+    background: rgba(22, 163, 74, 0.25);
+    color: #86efac;
+}
+
+.turn-dot {
+    font-size: 11px;
 }
 
 .player-status {
     color: #4ade80;
 }
 
-.battle-middle {
+.game-result {
     width: min(100%, 980px);
     margin: 18px auto;
 }
@@ -461,6 +490,19 @@ onUnmounted(() => {
 
 .played-card-slot {
     min-width: 0;
+}
+
+.played-card-slot :deep(.card-area),
+.played-card-slot :deep(.player-card-area) {
+    width: 100%;
+    gap: 0;
+}
+
+.played-card-slot :deep(.last-enemy-wrapper),
+.played-card-slot :deep(.last-player-wrapper) {
+    display: block;
+    width: 100%;
+    text-align: center;
 }
 
 .played-card-slot :deep(.last-enemy-wrapper h2),
@@ -522,12 +564,6 @@ onUnmounted(() => {
     width: 100%;
     max-width: 300px;
     margin: 0 auto;
-}
-
-.turn-indicator {
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: bold;
 }
 
 .room-display {
