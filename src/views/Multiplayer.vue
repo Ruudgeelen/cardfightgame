@@ -130,7 +130,6 @@ onUnmounted(() => {
 
             <div v-if="isGameReady">
                 <h2>⚔️ Game Ready!</h2>
-                <p>Beide spelers zijn verbonden.</p>
             <RouterLink
                 class="start-button"
                 :to="{

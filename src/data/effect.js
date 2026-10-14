@@ -70,11 +70,26 @@ function effectValue(card, effect) {
     return card.effectvalues?.[effect] ?? card.effectvalue
 }
 
+function clearBurnAndFreeze(card) {
+    removeEffect(card, "burn")
+    removeEffect(card, "freeze")
+}
+
 function applyBurn(card, burnValue, burnTurns) {
+    if (hasEffect(card, "freeze")) {
+        clearBurnAndFreeze(card)
+        return
+    }
+
     addEffect(card, "burn", burnValue, burnTurns)
 }
 
 function applyFreeze(card) {
+    if (hasEffect(card, "burn")) {
+        clearBurnAndFreeze(card)
+        return
+    }
+
     addEffect(card, "freeze", "", "Forever")
 }
 
