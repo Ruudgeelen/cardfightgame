@@ -338,7 +338,7 @@ body {
     z-index: 5;
     left: 50%;
     bottom: calc(100% + 14px);
-    width: 235px;
+    width: max-content;
     padding: 14px 16px;
     border: 1px solid rgba(255, 214, 102, 0.55);
     border-radius: 12px;
@@ -487,6 +487,11 @@ body {
     background: linear-gradient(145deg, #b8ff9c, #32cd32);
 }
 
+.card.space {
+    border-color: #4b0082;
+    background: linear-gradient(145deg, #754bff, #4b0082);
+}
+
 .card.lifesteal {
     border-color: #ff0000;
     background: linear-gradient(145deg, #ff9e9e, #c60000);
@@ -503,8 +508,9 @@ body {
 }
 
 .card.lucky {
-    border-color: #ffd700;
-    background: linear-gradient(145deg, #fffacd, #ffd700);
+    border-color: #6600da;
+    color: #fff;
+    background: linear-gradient(145deg, rgba(37, 7, 126, 1) 0%, rgba(151, 0, 227, 1) 25%, rgba(37, 7, 126, 1) 50%, rgba(151, 0, 227, 1) 75%, rgba(37, 7, 126, 1) 100%);
 }
 
 .card.rainbow {

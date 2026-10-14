@@ -238,4 +238,16 @@ onUnmounted(() => {
     margin-top: 20px;
     font-size: 50px;
 }
+
+.start-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
 </style>

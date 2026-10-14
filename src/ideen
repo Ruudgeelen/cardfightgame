@@ -3,11 +3,12 @@ Gamble kaart
 game over zie je andere mensen zijn kaarten 
 beurt overslaan kaart
 Naam bij multiplayer
+icoontje type
 
 Types: 
-- Posion
-- Lock
-
+- Posion (attack over meer turns)
+- Lock (locks je kaart)
+- Healer (heal je over meer turns)
 
 gamemodes:
 - kaart kiezen als je net jou kaart hebt gebruikt

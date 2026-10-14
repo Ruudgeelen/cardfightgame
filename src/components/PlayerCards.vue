@@ -192,7 +192,7 @@ function cardTooltip(card) {
     z-index: 5;
     left: 50%;
     bottom: calc(100% + 14px);
-    width: 235px;
+    width: max-content;
     padding: 14px 16px;
     border: 1px solid rgba(255, 214, 102, 0.55);
     border-radius: 12px;

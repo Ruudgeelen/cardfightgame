@@ -9,7 +9,7 @@ export const cards = [
         burnTurns: 1
     },
     {
-        name: 'Flame Warrior',
+        name: 'Fireball',
         attack: 10,
         heal: 4,
         type: 'fire',
@@ -24,6 +24,7 @@ export const cards = [
         burn: 1,
         burnTurns: 3
     },
+
     // LAVA 
     {
         name: 'Lava Golem',
@@ -249,8 +250,8 @@ export const cards = [
         type: 'light'
     },
     {
-        name: 'Holy Knight',
-        attack: 6,
+        name: 'Hollow Knight',
+        attack: 7,
         heal: 10,
         healadd: 2,
         healthbaradd: 2,
@@ -263,6 +264,49 @@ export const cards = [
         healadd: 3,
         healthbaradd: 1,
         type: 'light'
+    },
+
+    // SPACE
+    {
+        name: 'Sun',
+        attack: 10,
+        heal: 10,
+        burn: 1,
+        burnTurns: 1,
+        healthbarremove: -1,
+        type: 'space'
+    },
+    {
+        name: 'Earth',
+        attack: 12,
+        heal: 0,
+        healthbaradd: 5,   
+        healthbarremove: -1,
+        type: 'space' 
+    },
+    {
+        name: 'Moon',
+        attack: 8,
+        heal: 12,
+        healthbaradd: -1,
+        healthbarremove: -1,
+        type: 'space'
+    },
+    {
+        name: 'Mars',
+        attack: 20,
+        heal: 0,
+        healthbaradd: 1,
+        healthbarremove: -1,
+        type: 'space'
+    },
+    {
+        name: 'Jupiter',
+        attack: 15,
+        heal: 5,
+        removecardnummer: 1,
+        healthbarremove: -1,
+        type: 'space'
     },
 
     // DARK
@@ -310,6 +354,7 @@ export const cards = [
         freeze: true,
         type: 'freeze'
     },
+
     // ICE
     {
         name: 'Ice Golem',
@@ -384,27 +429,6 @@ export const cards = [
         healadd: 4,
         healthbaradd: 4,
         type: 'heal'
-    },
-
-    // LUCKY
-    {
-        name: 'Lucky Charm',
-        attack: 7,
-        heal: 7,
-        healadd: 2,
-        attackadd: 1,
-        morecards: 1,
-        removecardnummer: 1,
-        type: 'lucky'
-    },
-    {
-        name: 'Lucky Chicken',
-        attack: 10,
-        heal: 10,
-        attackadd: 2,
-        removecardnummer: 1,
-        healthbaradd: 2,
-        type: 'lucky'
     },
     
     // RARE
@@ -483,6 +507,7 @@ export const cards = [
         heal: 0,
         type: 'troll'
     },
+
     // SPECIAL
     {
         name: 'Shake',
@@ -504,6 +529,27 @@ export const cards = [
         heal: 0,
         stapel: 'newdeckother',
         type: 'special'
+    },
+
+    // LUCKY
+    {
+        name: 'Lucky Charm',
+        attack: 7,
+        heal: 7,
+        healadd: 2,
+        attackadd: 1,
+        morecards: 1,
+        removecardnummer: 1,
+        type: 'lucky'
+    },
+    {
+        name: 'Lucky Chicken',
+        attack: 10,
+        heal: 10,
+        attackadd: 2,
+        removecardnummer: 1,
+        healthbaradd: 2,
+        type: 'lucky'
     },
 
     // RAINBOW
