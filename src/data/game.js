@@ -1,7 +1,9 @@
 import {
     PlayerAttack,
+    EnemyAttack,
     AttackAdd,
     PlayerAttackMultiplayer,
+    EnemyAttackMultiplayer,
     AttackAddMultiplayer
 } from '../data/attack.js'
 
@@ -13,7 +15,8 @@ import {
     BurnDamageMultiplayer,
     FreezeEffectMultiplayer,
     GambleEffect,
-    GambleEffectMultiplayer
+    GambleEffectMultiplayer,
+    hasCardEffect
 } from '../data/effect.js'
 
 import {
@@ -68,62 +71,66 @@ export function game(
 
     lastuserCard.value = card
 
-    const result = PlayerAttack(
-        card,
-        otheruserHealth.value,
-        userHealth.value,
-        userMaxHealth.value
-    )
+    const gambleReversed =
+        hasCardEffect(card, 'gamble') &&
+        Math.random() < 0.5
 
-    otheruserHealth.value = result.enemyHealth
-    userHealth.value = result.playerHealth
+    const attackResult = gambleReversed
+        ? EnemyAttack(
+            card,
+            otheruserHealth.value,
+            userHealth.value,
+            otheruserMaxHealth.value
+        )
+        : PlayerAttack(
+            card,
+            otheruserHealth.value,
+            userHealth.value,
+            userMaxHealth.value
+        )
+
+    otheruserHealth.value = attackResult.enemyHealth
+    userHealth.value = attackResult.playerHealth
 
     if (card.attackadd) {
-        userCards.value =
-            AttackAdd(
-                card,
-                userCards
-            ).value
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        targetCards.value = AttackAdd(card, targetCards).value
     }
 
     if (card.healadd) {
-        userCards.value =
-            HealAdd(
-                card,
-                userCards
-            ).value
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        targetCards.value = HealAdd(card, targetCards).value
     }
 
     if (card.freeze) {
-        userCards.value =
-            FreezeEffect(
-                userCards
-            ).value
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        targetCards.value = FreezeEffect(targetCards).value
     }
 
     if (card.burn > 0) {
-        otheruserCards.value =
-            BurnEffect(
-                card,
-                otheruserCards
-            ).value
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        targetCards.value = BurnEffect(card, targetCards).value
     }
 
     if (card.healthbaradd) {
-        userMaxHealth.value =
-            AddMaxHealth(
-                card,
-                userMaxHealth.value
-            )
+        let targetMaxHealth = gambleReversed
+            ? otheruserMaxHealth
+            : userMaxHealth
+        targetMaxHealth.value = AddMaxHealth(card, targetMaxHealth.value)
     }
 
     if (card.healthbarremove) {
-        otheruserMaxHealth.value =
-            RemoveMaxHealth(
-                card,
-                otheruserMaxHealth.value,
-                otheruserHealth.value
-            )
+        let targetMaxHealth = gambleReversed
+            ? userMaxHealth
+            : otheruserMaxHealth
+        const targetHealth = gambleReversed
+            ? userHealth
+            : otheruserHealth
+        targetMaxHealth.value = RemoveMaxHealth(
+            card,
+            targetMaxHealth.value,
+            targetHealth.value
+        )
     }
 
     if (card.gambleCards) {
@@ -169,14 +176,16 @@ export function game(
         }
     }
     if (card.removecardnummer) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
         for (let i = 0; i < card.removecardnummer; i++) {
-            otheruserCards.value = RemoveCard(otheruserCards.value)
-            if (otheruserCards.value.length === 1) {
+            targetCards.value = RemoveCard(targetCards.value)
+            if (targetCards.value.length === 1) {
                 break;
             }
         }
     }
     if (card.morecards) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
         for (let i = 0; i < card.morecards; i++) {
             if (cardstapel.value.length === 0) {
             cardstapel.value =
@@ -186,7 +195,7 @@ export function game(
                 )
             }
 
-            userCards.value.push(GetNewCard(cardstapel.value))
+            targetCards.value.push(GetNewCard(cardstapel.value))
         }
     }
     userCards.value[index] =
@@ -299,17 +308,28 @@ export function gameMultiplayer(
         ...card
     }
 
+    const gambleReversed =
+        hasCardEffect(card, 'gamble') &&
+        Math.random() < 0.5
+
 
     // =================================
     // ATTACK / HEAL
     // =================================
 
-    const result = PlayerAttackMultiplayer(
-        card,
-        otheruserHealth,
-        userHealth,
-        userMaxHealth
-    )
+    const result = gambleReversed
+        ? EnemyAttackMultiplayer(
+            card,
+            otheruserHealth,
+            userHealth,
+            otheruserMaxHealth
+        )
+        : PlayerAttackMultiplayer(
+            card,
+            otheruserHealth,
+            userHealth,
+            userMaxHealth
+        )
 
     otheruserHealth = result.enemyHealth
     userHealth = result.playerHealth
@@ -320,11 +340,8 @@ export function gameMultiplayer(
     // =================================
 
     if (card.attackadd) {
-        userCards =
-            AttackAddMultiplayer(
-                card,
-                userCards
-            )
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        AttackAddMultiplayer(card, targetCards)
     }
 
 
@@ -333,11 +350,8 @@ export function gameMultiplayer(
     // =================================
 
     if (card.healadd) {
-        userCards =
-            HealAddMultiplayer(
-                card,
-                userCards
-            )
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        HealAddMultiplayer(card, targetCards)
     }
 
 
@@ -346,10 +360,8 @@ export function gameMultiplayer(
     // =================================
 
     if (card.freeze) {
-        userCards =
-            FreezeEffectMultiplayer(
-                userCards
-            )
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        FreezeEffectMultiplayer(targetCards)
     }
 
 
@@ -358,11 +370,8 @@ export function gameMultiplayer(
     // =================================
 
     if (card.burn > 0) {
-        otheruserCards =
-            BurnEffectMultiplayer(
-                card,
-                otheruserCards
-            )
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        BurnEffectMultiplayer(card, targetCards)
     }
 
 
@@ -371,11 +380,10 @@ export function gameMultiplayer(
     // =================================
 
     if (card.healthbaradd) {
-        userMaxHealth =
-            AddMaxHealthMultiplayer(
-                card,
-                userMaxHealth
-            )
+        let targetMaxHealth = gambleReversed
+            ? otheruserMaxHealth
+            : userMaxHealth
+        targetMaxHealth = AddMaxHealthMultiplayer(card, targetMaxHealth)
     }
 
 
@@ -384,12 +392,17 @@ export function gameMultiplayer(
     // =================================
 
     if (card.healthbarremove) {
-        otheruserMaxHealth =
-            RemoveMaxHealthMultiplayer(
-                card,
-                otheruserMaxHealth,
-                otheruserHealth
-            )
+        let targetMaxHealth = gambleReversed
+            ? userMaxHealth
+            : otheruserMaxHealth
+        const targetHealth = gambleReversed
+            ? userHealth
+            : otheruserHealth
+        targetMaxHealth = RemoveMaxHealthMultiplayer(
+            card,
+            targetMaxHealth,
+            targetHealth
+        )
     }
 
     if (card.gambleCards) {
@@ -442,14 +455,21 @@ export function gameMultiplayer(
     }
 
     if (card.removecardnummer) {
+        let targetCards = gambleReversed ? userCards : otheruserCards
         for (let i = 0; i < card.removecardnummer; i++) {
-            otheruserCards = RemoveCardMultiplayer(otheruserCards)
-            if (otheruserCards.length === 1) {
+            targetCards = RemoveCardMultiplayer(targetCards)
+            if (targetCards.length === 1) {
                 break;
             }
         }
+        if (gambleReversed) {
+            userCards = targetCards
+        } else {
+            otheruserCards = targetCards
+        }
     }
     if (card.morecards) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
         for (let i = 0; i < card.morecards; i++) {
             if (cardstapel.length === 0) {
             cardstapel =
@@ -458,7 +478,7 @@ export function gameMultiplayer(
                     otheruserCards
                 )
             }
-            userCards.push(GetNewCard(cardstapel)
+            targetCards.push(GetNewCard(cardstapel)
         )}
     }
 

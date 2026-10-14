@@ -3,6 +3,7 @@
 import '../assets/style.css'
 import Cardlayout from './Cardlayout.vue'
 import { cardTooltip } from '../data/tooltips.js'
+import { effectClasses } from '../data/effectClasses.js'
 
 defineProps({
     cards: {
@@ -39,7 +40,7 @@ const emit = defineEmits(['useCard'])
                 :class="[
                     'card',
                     lastPlayerCard.type,
-                    lastPlayerCard.effect ? 'effect-' + lastPlayerCard.effect : '',
+                    effectClasses(lastPlayerCard.effect),
                     'card-modern'
                 ]"
                 :data-tooltip="`${lastPlayerCard.name}\n${cardTooltip(lastPlayerCard)}`"
@@ -60,7 +61,7 @@ const emit = defineEmits(['useCard'])
                 :class="[
                     'card',
                     card.type,
-                    card.effect ? 'effect-' + card.effect : '',
+                    effectClasses(card.effect),
                     'card-modern',
                     aiTurn ? 'card-disabled' : ''
                 ]"

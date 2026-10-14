@@ -4,6 +4,7 @@ import { ref, onMounted } from 'vue'
 import { getCardType } from '../data/cardTypes.js'
 import { cardTooltip } from '../data/tooltips.js'
 import Cardlayout from '../components/Cardlayout.vue'
+import { effectClasses } from '../data/effectClasses.js'
 
 onMounted(() => {
         if (localStorage.getItem('Reload') === 'true') {
@@ -39,7 +40,7 @@ const allCards = GetCards()
                 :class="[
                     'card',
                     card.type,
-                    card.effect ? 'effect-' + card.effect : '',
+                    effectClasses(card.effect),
                     'card-modern'
                 ]"
                 :data-tooltip="`${card.name}\n${cardTooltip(card)}`"

@@ -58,6 +58,10 @@ function hasEffect(card, effect) {
     return effectList(card).includes(effect)
 }
 
+export function hasCardEffect(card, effect) {
+    return hasEffect(card, effect)
+}
+
 function effectTurns(card, effect) {
     return card.effectturnsmap?.[effect] ?? card.effectturns
 }

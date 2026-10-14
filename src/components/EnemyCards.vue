@@ -3,6 +3,7 @@ import '../assets/style.css'
 import Cardlayout from './Cardlayout.vue'
 import { getCardType } from '../data/cardTypes.js'
 import { cardTooltip, cardTooltiphide } from '../data/tooltips.js'
+import { effectClasses } from '../data/effectClasses.js'
 
 
 
@@ -39,7 +40,7 @@ defineProps({
                 :class="[
                     'card',
                     lastEnemyCard.type,
-                    lastEnemyCard.effect ? 'effect-' + lastEnemyCard.effect : '',
+                    effectClasses(lastEnemyCard.effect),
                     'card-modern'
                 ]"
                 :data-tooltip="`${lastEnemyCard.name}\n${cardTooltip(lastEnemyCard)}`"
@@ -61,7 +62,7 @@ defineProps({
                 :class="[
                     'card',
                     card.type,
-                    card.effect ? 'effect-' + card.effect : '',
+                    effectClasses(card.effect),
                     'card-modern'
                 ]"
                 :data-tooltip="`${card.name}\n${cardTooltip(card)}`"

@@ -547,35 +547,6 @@ export const cards = [
         gambleCards: 3,
         type: 'gamble'
     },
-        {
-        name: 'Gamble',
-        attack: 0,
-        heal: 0,
-        gamble: true,
-        gambleCards: 3,
-        type: 'gamble'
-    },    {
-        name: 'Gamble',
-        attack: 0,
-        heal: 0,
-        gamble: true,
-        gambleCards: 3,
-        type: 'gamble'
-    },    {
-        name: 'Gamble',
-        attack: 0,
-        heal: 0,
-        gamble: true,
-        gambleCards: 3,
-        type: 'gamble'
-    },    {
-        name: 'Gamble',
-        attack: 0,
-        heal: 0,
-        gamble: true,
-        gambleCards: 3,
-        type: 'gamble'
-    },
 
     // LUCKY
     {
