@@ -16,8 +16,11 @@ export const cardTypes = {
     heal: { name: 'Heal', icon: '💚' },
     rare: { name: 'Rare', icon: '💎' },
     unique: { name: 'Unique', icon: '⭐' },
+    poison: { name: 'Poison', icon: '☠️' },
+    ghost: { name: 'Ghost', icon: '👻' },
+    soft: { name: 'Soft', icon: '🧸' },
     troll: { name: 'Troll', icon: '👹' },
-    special: { name: 'Special', icon: '🎯' },
+    kaart: { name: 'Kaart', icon: '🎴' },
     gamble: { name: 'Gamble', icon: '🎲' },
     lucky: { name: 'Lucky', icon: '🍀' },
     rainbow: { name: 'Rainbow', icon: '🌈' }

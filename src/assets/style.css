@@ -422,11 +422,11 @@ body {
 }
 
 .card.normal {
-    border-color: #888888;
-    background: linear-gradient(145deg, #eeeeee, #bdbdbd);
+    border-color: #4f350a;
+    background: linear-gradient(145deg, #ea990f, #735d04);
 }
 
-.card.dragon {
+.card.poison {
     border-color: #7200a8;
     background: linear-gradient(145deg, #c77dff, #7200a8);
 }
@@ -452,12 +452,6 @@ body {
     background: linear-gradient(145deg, #c8ff9e, #63c600);
 }
 
-.card.gamble {
-    border-color: #da0000;
-    color: #fff;
-    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(227, 0, 0) 75%, rgb(11, 0, 0) 100%);
-}
-
 .card.unique {
     border-color: #008080;
     background: linear-gradient(145deg, #6fffe9, #008080);
@@ -479,8 +473,14 @@ body {
 }
 
 .card.space {
-    border-color: #4b0082;
-    background: linear-gradient(145deg, #754bff, #4b0082);
+    border-color: #070082;
+    color: #fff;
+    background: linear-gradient(145deg, #25019a, #3d0069);
+}
+
+.card.dragon {
+    border-color: #69ffb9;
+    background: linear-gradient(145deg, #b6ffe2, #58d592);
 }
 
 .card.lifesteal {
@@ -488,14 +488,32 @@ body {
     background: linear-gradient(145deg, #ff9e9e, #c60000);
 }
 
-.card.troll {
+.card.soft {
     border-color: #ff69b4;
     background: linear-gradient(145deg, #ffb6c1, #ff69b4);
 }
 
-.card.special {
-    border-color: #69ffb9;
-    background: linear-gradient(145deg, #b6ffe2, #58d592);
+.card.ghost {
+    border-color: #888888;
+    background: linear-gradient(145deg, #eeeeee, #bdbdbd);
+}
+
+.card.troll {
+    border-color: #ff00ff;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 0, 247) 25%, rgb(0, 0, 0) 50%, rgb(219, 0, 227) 75%, rgb(11, 0, 0) 100%);
+}
+
+.card.kaart {
+    border-color: #00ff1a;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(77, 255, 0) 25%, rgb(0, 0, 0) 50%, rgb(53, 227, 0) 75%, rgb(11, 0, 0) 100%);
+}
+
+.card.gamble {
+    border-color: #da0000;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(227, 0, 0) 75%, rgb(11, 0, 0) 100%);
 }
 
 .card.lucky {

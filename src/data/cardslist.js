@@ -233,7 +233,7 @@ export const cards = [
         type: 'undead'
     },
     {
-        name: 'Ghost',
+        name: 'Flesh Eater',
         attack: 23,
         heal: -7,
         attackadd: 2,
@@ -499,6 +499,33 @@ export const cards = [
         type: 'unique'
     },
 
+    // GHOST
+    {
+        name: 'Ghostly Apparition',
+        attack: 12,
+        heal: 0,
+        healthbarremove: 2,
+        removecardnummer: 1,
+        type: 'ghost'
+    },
+
+    // POISON
+    {
+        name: 'Poison Card',
+        attack: 5,
+        heal: 5,
+        healthbarremove: 2,
+        type: 'poison'
+    },
+
+    // SOFT
+    {
+        name: 'Soft Card',
+        attack: 1,
+        heal: 1,
+        type: 'soft'
+    },
+
     // TROLL
     {
         name: 'Clown',
@@ -515,27 +542,27 @@ export const cards = [
         type: 'troll'
     },
 
-    // SPECIAL
+    // KAART
     {
         name: 'Shake',
         attack: 0,
         heal: 0,
         stapel: 'shake',
-        type: 'special'
+        type: 'kaart'
     },
     {
         name: 'New Deck',
         attack: 0,
         heal: 0,
         stapel: 'newdeck',
-        type: 'special'
+        type: 'kaart'
     },
     {
         name: 'New Deck Other',
         attack: 0,
         heal: 0,
         stapel: 'newdeckother',
-        type: 'special'
+        type: 'kaart'
     },
 
     // GAMBLE
