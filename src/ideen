@@ -5,6 +5,11 @@ Naam bij multiplayer
 minic
 
 Types: 
+- Lock
+- Plants
+- Animals
+
+Effects: 
 - Posion (attack over meer turns)
 - Lock (locks je kaart)
 - Healer (heal je over meer turns)
