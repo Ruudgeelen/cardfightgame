@@ -544,7 +544,7 @@ export const cards = [
     },
     {
         name: 'Dynamite',
-        attack: 30,
+        attack: 20,
         heal: 0,
         healthbarremove: 7,
         type: 'tnt'
