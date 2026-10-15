@@ -40,6 +40,7 @@ const enemyCards = ref([])
 const playerCards = ref([])
 
 const aiTurn = ref(false)
+const turnsPlayed = ref(0)
 
 const lastPlayerCard = ref([])
 const lastEnemyCard = ref([])
@@ -60,6 +61,7 @@ function resetGame() {
     playerCards.value = []
 
     aiTurn.value = false
+    turnsPlayed.value = 0
 
     lastPlayerCard.value = []
     lastEnemyCard.value = []
@@ -81,6 +83,7 @@ function startGame() {
     lastEnemyCard.value = []
 
     aiTurn.value = false
+    turnsPlayed.value = 0
 }
 
 function useCard(card, index) {
@@ -141,6 +144,8 @@ function aiAttack() {
         aantalcards
     )
 
+    turnsPlayed.value += 1
+
     aiTurn.value = false
 }
 
@@ -155,6 +160,11 @@ function aiAttack() {
                 <div class="room-info">
                     <span>Modus</span>
                     <strong>Solo</strong>
+                </div>
+
+                <div class="room-info">
+                    <span>Turns</span>
+                    <strong>{{ turnsPlayed }}</strong>
                 </div>
             </div>
 

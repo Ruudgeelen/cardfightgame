@@ -128,6 +128,7 @@ function createGame() {
         },
 
         turn: 1,
+        turnsPlayed: 0,
 
         gameOver: false,
 
@@ -226,6 +227,9 @@ function sendGameState(roomCode) {
                 playerTurn:
                     room.game.turn ===
                     playerNumber,
+
+                turnsPlayed:
+                    room.game.turnsPlayed,
 
                 gameOver:
                     room.game.gameOver,
@@ -420,6 +424,9 @@ room.game.cardstapel = result.cardstapel
     ============================== */
 
     else {
+        if (playerNumber === 2) {
+            room.game.turnsPlayed += 1
+        }
         room.game.turn =
             enemyNumber
     }

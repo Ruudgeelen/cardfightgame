@@ -541,6 +541,13 @@ export const cards = [
         heal: 0,
         type: 'troll'
     },
+    {
+        name: 'Nerf',
+        attack: 0,
+        heal: 0,
+        attackadd: -5,
+        type: 'troll'
+    },
 
     // KAART
     {

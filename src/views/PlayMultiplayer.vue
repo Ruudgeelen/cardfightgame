@@ -34,6 +34,7 @@ const lastPlayerCard = ref({})
 const lastEnemyCard = ref({})
 
 const playerTurn = ref(false)
+const turnsPlayed = ref(0)
 
 const opponentConnected = ref(true)
 
@@ -95,6 +96,9 @@ function updateGameState(state) {
 
     playerTurn.value =
         Boolean(state.playerTurn)
+
+    turnsPlayed.value =
+        Number(state.turnsPlayed) || 0
 
     gameOver.value =
         Boolean(state.gameOver)
@@ -209,6 +213,11 @@ onUnmounted(() => {
                 <div class="room-info">
                     <span>Speler</span>
                     <strong>{{ playerNumber }}</strong>
+                </div>
+
+                <div class="room-info">
+                    <span>Turns</span>
+                    <strong>{{ turnsPlayed }}</strong>
                 </div>
 
             </div>
