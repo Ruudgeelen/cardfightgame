@@ -509,16 +509,28 @@ body {
     background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 119, 0) 25%, rgb(0, 0, 0) 50%, rgb(227, 98, 0) 75%, rgb(11, 0, 0) 100%);
 }
 
+.card.heaven {
+    border-color: #ffea00;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 234, 0) 25%, rgb(0, 0, 0) 50%, rgb(227, 216, 0) 75%, rgb(11, 0, 0) 100%);
+}
+
 .card.troll {
     border-color: #ff00ff;
     color: #fff;
     background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 0, 247) 25%, rgb(0, 0, 0) 50%, rgb(219, 0, 227) 75%, rgb(11, 0, 0) 100%);
 }
 
-.card.kaart {
+.card.megaheal {
     border-color: #00ff1a;
     color: #fff;
     background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(77, 255, 0) 25%, rgb(0, 0, 0) 50%, rgb(53, 227, 0) 75%, rgb(11, 0, 0) 100%);
+}
+
+.card.kaart {
+    border-color: #00f7ff;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(0, 242, 255) 25%, rgb(0, 0, 0) 50%, rgb(0, 216, 227) 75%, rgb(11, 0, 0) 100%);
 }
 
 .card.gamble {

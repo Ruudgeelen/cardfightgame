@@ -22,6 +22,8 @@ export const cardTypes = {
     soft: { name: 'Soft', icon: '🧸' },
     troll: { name: 'Troll', icon: '👹' },
     hell: { name: 'Hell', icon: '🔥' },
+    megaheal: { name: 'Megaheal', icon: '💖' },
+    heaven: { name: 'Heaven', icon: '👼' },
     kaart: { name: 'Kaart', icon: '🎴' },
     gamble: { name: 'Gamble', icon: '🎲' },
     lucky: { name: 'Lucky', icon: '🍀' },

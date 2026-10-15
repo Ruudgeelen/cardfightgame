@@ -542,6 +542,13 @@ export const cards = [
         healthbarremove: 5,
         type: 'tnt'
     },
+    {
+        name: 'Dynamite',
+        attack: 30,
+        heal: 0,
+        healthbarremove: 7,
+        type: 'tnt'
+    },
 
     // SOFT
     {
@@ -606,6 +613,26 @@ export const cards = [
         heal: 0,
         attackadd: -5,
         type: 'troll'
+    },
+
+    // MEGAHEAL
+    {
+        name: 'Megaheal',
+        attack: 0,
+        heal: 50,
+        healadd: 5,
+        healthbaradd: 10,
+        type: 'megaheal'
+    },
+
+    // HEAVEN
+    {
+        name: 'Heavenly Blessing',
+        attack: 5,
+        heal: 5,
+        attackadd: 5,
+        healadd: 5,
+        type: 'heaven'
     },
 
     // KAART
