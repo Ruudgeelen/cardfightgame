@@ -392,6 +392,7 @@ export const cards = [
         name: 'Bloodthirsty',
         attack: 10,
         heal: 15,
+        healadd: -1,
         healthbaradd: -2,
         healthbarremove: 5,
         type: 'lifesteal'
@@ -504,7 +505,22 @@ export const cards = [
         name: 'Ghostly Apparition',
         attack: 12,
         heal: 0,
-        healthbarremove: 2,
+        removecardnummer: 1,
+        type: 'ghost'
+    },
+    {
+        name: 'Phantom',
+        attack: 10,
+        heal: 0,
+        healthbarremove: -1,
+        removecardnummer: 2,
+        type: 'ghost'
+    },
+    {
+        name: 'Specter',
+        attack: 15,
+        heal: 0,
+        healthbarremove: -2,
         removecardnummer: 1,
         type: 'ghost'
     },
@@ -518,12 +534,55 @@ export const cards = [
         type: 'poison'
     },
 
+    // TNT
+    {
+        name: 'TNT',
+        attack: 25,
+        heal: 0,
+        healthbarremove: 5,
+        type: 'tnt'
+    },
+
     // SOFT
     {
-        name: 'Soft Card',
+        name: 'Teddy',
         attack: 1,
         heal: 1,
         type: 'soft'
+    },
+    {
+        name: 'Pet',
+        attack: -1,
+        heal: -1,
+        healadd: 1,
+        attackadd: 1,
+        type: 'soft'
+    },
+    {
+        name: 'Cuddly',
+        attack: 0,
+        heal: 0,
+        healthbaradd: 1,
+        healthbarremove: 1,
+        type: 'soft'
+    },
+    {
+        name: 'Fluffy',
+        attack: -1,
+        heal: -1,
+        removecardnummer: 1,
+        morecards: 1,
+        type: 'soft'
+    },
+
+    // HELL
+    {
+        name: 'Hellfire',
+        attack: 20,
+        heal: -10,
+        burn: 5,
+        burnTurns: 1,
+        type: 'hell'
     },
 
     // TROLL

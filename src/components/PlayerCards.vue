@@ -34,7 +34,7 @@ const emit = defineEmits(['useCard'])
             v-if="lastPlayerCard.name"
             class="last-player-wrapper"
         >
-            <h2>Last Enemy Card</h2>
+            <h2>Last Player Card</h2>
 
             <div
                 :class="[

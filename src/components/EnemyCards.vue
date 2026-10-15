@@ -78,14 +78,12 @@ defineProps({
 
                 <!-- HIDE CARDS -->
                 <div v-else class="hidden-card">
-
-                    <div class="hidden-icon">
-                         {{ getCardType(card.type).icon }}
-                    </div>
                     <div class="card-tooltip" role="tooltip">
                         <span>{{ cardTooltiphide(card) }}</span>
                     </div>
-                    <h3>Enemy Card</h3>
+                    <div class="hidden-icon">
+                         {{ getCardType(card.type).icon }}
+                    </div>
 
                 </div>
 
