@@ -113,24 +113,15 @@ export function game(
     }
 
     if (card.healthbaradd) {
-        let targetMaxHealth = gambleReversed
-            ? otheruserMaxHealth
-            : userMaxHealth
-        targetMaxHealth.value = AddMaxHealth(card, targetMaxHealth.value)
+        gambleReversed
+            ? otheruserMaxHealth.value = AddMaxHealth(card, otheruserMaxHealth.value)
+            : userMaxHealth.value = AddMaxHealth(card, userMaxHealth.value)
     }
 
     if (card.healthbarremove) {
-        let targetMaxHealth = gambleReversed
-            ? userMaxHealth
-            : otheruserMaxHealth
-        const targetHealth = gambleReversed
-            ? userHealth
-            : otheruserHealth
-        targetMaxHealth.value = RemoveMaxHealth(
-            card,
-            targetMaxHealth.value,
-            targetHealth.value
-        )
+        gambleReversed
+            ? userMaxHealth.value = RemoveMaxHealth(card, userMaxHealth.value, userHealth.value)
+            : otheruserMaxHealth.value = RemoveMaxHealth(card, otheruserMaxHealth.value, otheruserHealth.value)
     }
 
     if (card.gambleCards) {
@@ -198,6 +189,13 @@ export function game(
             targetCards.value.push(GetNewCard(cardstapel.value))
         }
     }
+                if (cardstapel.value.length === 0) {
+            cardstapel.value =
+                GetNewStapel(
+                    userCards.value,
+                    otheruserCards.value
+                )
+            }
     userCards.value[index] =
         GetNewCard(
             cardstapel.value
@@ -380,10 +378,9 @@ export function gameMultiplayer(
     // =================================
 
     if (card.healthbaradd) {
-        let targetMaxHealth = gambleReversed
-            ? otheruserMaxHealth
-            : userMaxHealth
-        targetMaxHealth = AddMaxHealthMultiplayer(card, targetMaxHealth)
+        gambleReversed
+            ? otheruserMaxHealth = AddMaxHealthMultiplayer(card, otheruserMaxHealth)
+            : userMaxHealth = AddMaxHealthMultiplayer(card, userMaxHealth)
     }
 
 
@@ -392,17 +389,9 @@ export function gameMultiplayer(
     // =================================
 
     if (card.healthbarremove) {
-        let targetMaxHealth = gambleReversed
-            ? userMaxHealth
-            : otheruserMaxHealth
-        const targetHealth = gambleReversed
-            ? userHealth
-            : otheruserHealth
-        targetMaxHealth = RemoveMaxHealthMultiplayer(
-            card,
-            targetMaxHealth,
-            targetHealth
-        )
+        gambleReversed
+            ? userMaxHealth = RemoveMaxHealthMultiplayer(card, userMaxHealth, userHealth)
+            : otheruserMaxHealth = RemoveMaxHealthMultiplayer(card, otheruserMaxHealth, otheruserHealth)
     }
 
     if (card.gambleCards) {
@@ -488,6 +477,13 @@ export function gameMultiplayer(
     // NIEUWE KAART
     // =================================
 
+    if (cardstapel.length === 0) {
+        cardstapel =
+            GetNewStapelMultiplayer(
+                userCards,
+                otheruserCards
+            )
+    }
     userCards[index] =
         GetNewCardMultiplayer(
             cardstapel
