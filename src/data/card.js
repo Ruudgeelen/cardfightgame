@@ -177,7 +177,7 @@ export function GetNewStapelMultiplayer(
     enemyCards
 ) {
     const allCards =
-        GetCardsMultiplayer()
+        GetCardsMultiplayer(gameMode)
 
     const cardlist = [...allCards]
 
