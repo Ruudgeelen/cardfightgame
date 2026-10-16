@@ -28,9 +28,6 @@ function reloadpage() {
         <RouterLink class="nav-button-start-game" @click="reloadpage()" to="/play">
             <span>▶</span> Start Game
         </RouterLink>
-        <RouterLink class="nav-button-start-game multiplayer-link" @click="reloadpage()" to="/multiplayer">
-            <span>🌐</span> Multiplayer
-        </RouterLink>
     </div>
 </nav>
 

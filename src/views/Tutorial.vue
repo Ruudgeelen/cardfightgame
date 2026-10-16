@@ -1,6 +1,9 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { cardTypes } from '../data/cardTypes.js'
 import '../assets/style.css'
+
+const cardTypeList = Object.values(cardTypes)
 </script>
 
 <template>
@@ -22,8 +25,31 @@ import '../assets/style.css'
                         <h2>Your Cards</h2>
                         <p>
                             You start with a hand of cards.
-                            Every card has its own attack, heal and effects.
+                            Every card has its own attack, healing power and
+                            possible effects. The card type is shown with an
+                            icon.
                         </p>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <span>🎴</span>
+                    <div>
+                        <h2>Card Types</h2>
+                        <p>
+                            Card types identify the theme of a card. They do
+                            not automatically determine its strength; check
+                            the attack, heal and effect values on each card.
+                        </p>
+                        <div class="card-type-list">
+                            <span
+                                v-for="cardType in cardTypeList"
+                                :key="cardType.name"
+                                class="card-type"
+                            >
+                                {{ cardType.icon }} {{ cardType.name }}
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -33,6 +59,7 @@ import '../assets/style.css'
                         <h2>Attack</h2>
                         <p>
                             When you use a card, its Attack damages the enemy.
+                            Its Heal value restores your HP at the same time.
                         </p>
                     </div>
                 </div>
@@ -52,8 +79,9 @@ import '../assets/style.css'
                     <div>
                         <h2>Burn</h2>
                         <p>
-                            Burn makes the enemy's cards weaker by reducing
-                            their Attack and Heal.
+                            Burn makes the affected player's cards weaker.
+                            Their Attack and Heal are reduced for a limited
+                            number of turns.
                         </p>
                     </div>
                 </div>
@@ -63,7 +91,23 @@ import '../assets/style.css'
                     <div>
                         <h2>Freeze</h2>
                         <p>
-                            Freeze removes Burn from the affected cards.
+                            Freeze removes Burn when a card is already
+                            burning. Otherwise, the affected cards stay
+                            frozen and cannot be burned until the effect is
+                            cleared.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <span>🎲</span>
+                    <div>
+                        <h2>Game Modes</h2>
+                        <p>
+                            Normal uses the cards as they are. Gamble gives
+                            cards the Gamble effect, which can affect random
+                            cards. Mimic gives cards a random displayed type
+                            while keeping their original values.
                         </p>
                     </div>
                 </div>
@@ -75,6 +119,20 @@ import '../assets/style.css'
                         <p>
                             After you play a card, the AI gets its turn
                             and plays one of its cards.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <span>🌐</span>
+                    <div>
+                        <h2>Multiplayer</h2>
+                        <p>
+                            Choose a game mode, create a room and share the
+                            room code. The game starts when a second player
+                            joins. On your turn, choose one of your cards;
+                            the first player to reduce the opponent's HP to
+                            0 wins.
                         </p>
                     </div>
                 </div>
@@ -197,6 +255,21 @@ import '../assets/style.css'
     color: #ccccdd;
 
     line-height: 1.5;
+}
+
+.card-type-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.card-type {
+    padding: 5px 9px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    color: #eeeeff;
+    font-size: 13px;
 }
 
 .start-button {
