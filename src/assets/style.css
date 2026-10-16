@@ -548,7 +548,7 @@ body {
 .card.lucky {
     border-color: #6600da;
     color: #fff;
-    background: linear-gradient(145deg, rgba(37, 7, 126, 1) 0%, rgba(151, 0, 227, 1) 25%, rgba(37, 7, 126, 1) 50%, rgba(151, 0, 227, 1) 75%, rgba(37, 7, 126, 1) 100%);
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgba(151, 0, 227, 1) 25%, rgb(0, 0, 0) 50%, rgba(151, 0, 227, 1) 75%, rgb(0, 0, 0) 100%);
 }
 
 .card.rainbow {
