@@ -124,7 +124,7 @@ export function GetCardsMultiplayer(gameMode) {
             id: i + 1
         })
     }
-    console.log('GameMode: ', GameMode)
+    console.log('GameMode: ', gameMode)
     multiplayerCards = GetGameModeCardsMultplayer(gameMode, multiplayerCards)
     console.log('GetCards: ', cardslist)
 
