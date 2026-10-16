@@ -566,7 +566,9 @@ io.on('connection', (socket) => {
                     '🎮 Beide spelers aanwezig:',
                     code
                 )
-
+                console.log(rooms[code].players)
+                console.log(rooms[code].game.gameMode)
+                
                 rooms[code].game =
                     createGame(rooms[code].game.gameMode)
                 console.log(
