@@ -43,8 +43,16 @@ const distPath = path.resolve(__dirname, '../dist')
 
 app.use(express.static(distPath))
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(distPath, 'App.vue'))
+app.use((req, res, next) => {
+    if (
+        req.method === 'GET' &&
+        req.accepts('html')
+    ) {
+        res.sendFile(path.join(distPath, 'index.html'))
+        return
+    }
+
+    next()
 })
 
 const server = http.createServer(app)
