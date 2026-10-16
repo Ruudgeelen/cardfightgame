@@ -17,6 +17,7 @@ const playerNumber = ref(0)
 const connected = ref(false)
 const isGameReady = ref(false)
 const message = ref('')
+const roomGameMode = ref('')
 
 function createGame() {
     message.value = 'Game wordt aangemaakt...'
@@ -36,6 +37,7 @@ function joinGame() {
 
 function gameCreated(code) {
     roomCode.value = code
+    roomGameMode.value = GameMode.value
     playerNumber.value = 1
     connected.value = true
     message.value = 'Wacht op speler 2...'
@@ -45,6 +47,7 @@ function gameCreated(code) {
 
 function gameJoined(data) {
     roomCode.value = data.roomCode
+    roomGameMode.value = data.gameMode
     playerNumber.value = 2
     connected.value = true
     message.value = 'Je bent verbonden met de game!'
@@ -147,7 +150,7 @@ onUnmounted(() => {
                     },
                     query: {
                         player: playerNumber,
-                        gamemode: GameMode
+                        gamemode: roomGameMode
                     }
                 }"
             >
