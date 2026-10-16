@@ -25,6 +25,10 @@ const gameMode = ref(
     String(route.query.gamemode || 'normal')
 )
 
+console.log('🏠 Room:', roomCode.value)
+console.log('👤 Player:', playerNumber.value)
+console.log('🎮 Game Mode:', gameMode.value)
+
 const playerHealth = ref(100)
 const enemyHealth = ref(100)
 
