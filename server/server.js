@@ -168,7 +168,7 @@ function getPlayerNumber(room, socketId) {
    GAME STATE NAAR SPELERS
 ========================================= */
 
-function sendGameState(roomCode) {
+function sendGameState(roomCode, gameMode) {
     const room = rooms[roomCode]
 
     if (!room) {
@@ -208,7 +208,6 @@ function sendGameState(roomCode) {
             room.game.cardstapel
         )
 
-        console.log("Game state:", room.game)
         io.to(socketId).emit(
             'gameState',
             {
@@ -251,7 +250,7 @@ function sendGameState(roomCode) {
 
                 cardstapel: room.game.cardstapel,
 
-                gameMode: room.game.gameMode
+                gameMode: gameMode
 
             }
         )
@@ -452,7 +451,7 @@ room.game.gameMode = result.gameMode
        STATE VERSTUREN
     ============================== */
 
-    sendGameState(roomCode)
+    sendGameState(roomCode, room.game.gameMode)
 }
 
 
@@ -591,7 +590,7 @@ io.on('connection', (socket) => {
                     'gameReady'
                 )
 
-                sendGameState(code)
+                sendGameState(code, rooms[code].gameMode)
             }
         }
     )
