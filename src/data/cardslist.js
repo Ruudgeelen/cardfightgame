@@ -584,27 +584,31 @@ export const cards = [
         type: 'soft'
     },
 
-    // MINIC
+    // MIMIC
     {
-        name: 'Minic',
+        name: 'Mimic',
         attack: 20,
         heal: 20,
         faketype: getRandomCardType(),
-        type: 'minic'
+        type: 'mimic'
     },
     {
-        name: 'Minic',
-        attack: 20,
-        heal: 20,
+        name: 'Mimic',
+        attack: 10,
+        heal: 10,
+        attackadd: 1,
+        healadd: 1,
         faketype: getRandomCardType(),
-        type: 'minic'
+        type: 'mimic'
     },
     {
-        name: 'Minic',
-        attack: 20,
-        heal: 20,
+        name: 'Mimic',
+        attack: 15,
+        heal: 15,
+        removecardnummer: 1,
+        morecards: 1,
         faketype: getRandomCardType(),
-        type: 'minic'
+        type: 'mimic'
     },
 
     // HELL

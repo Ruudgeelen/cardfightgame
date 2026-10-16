@@ -24,7 +24,7 @@ export const cardTypes = {
     hell: { name: 'Hell', icon: '🔥' },
     megaheal: { name: 'Megaheal', icon: '💖' },
     heaven: { name: 'Heaven', icon: '👼' },
-    minic: { name: 'Minic', icon: '🟣' },
+    mimic: { name: 'Mimic', icon: '🎭' },
     kaart: { name: 'Kaart', icon: '🎴' },
     gamble: { name: 'Gamble', icon: '🎲' },
     lucky: { name: 'Lucky', icon: '🍀' },
