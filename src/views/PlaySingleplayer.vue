@@ -1,5 +1,6 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 import '../assets/style.css'
 
 import { BurnEffect, BurnDamage, FreezeEffect } from '../data/effect.js'
@@ -14,6 +15,12 @@ import PlayerCards from '../components/PlayerCards.vue'
 import EnemyCards from '../components/EnemyCards.vue'
 import Ai from '../components/Ai.vue'
 import Stapel from '@/components/Stapel.vue'
+
+const route = useRoute()
+
+const GameMode = ref(
+    String(route.params.gamemode || '')
+)
 
 // Settings
 const aantalcards = Number(localStorage.getItem('aantalcards')) || 5
@@ -32,8 +39,7 @@ const enemyHealth = ref(enemyHealthSettings)
 const playerMaxHealth = ref(playerMaxHealthSettings)
 const enemyMaxHealth = ref(enemyMaxHealthSettings)
 
-const allCards = ref(GetCards())
-console.log('AllCards: ', allCards.value)
+const allCards = ref(GetCards(GameMode))
 const cardstapel = ref(GetStapel(allCards.value))
 
 const enemyCards = ref([])
@@ -103,7 +109,8 @@ function useCard(card, index) {
         enemyMaxHealth,
         lastPlayerCard,
         lastEnemyCard,
-        aantalcards
+        aantalcards,
+        GameMode.value
     )
 
     if (enemyHealth.value > 0) {
@@ -141,7 +148,8 @@ function aiAttack() {
         playerMaxHealth,
         lastEnemyCard,
         lastPlayerCard,
-        aantalcards
+        aantalcards,
+        GameMode.value
     )
 
     turnsPlayed.value += 1
@@ -158,8 +166,8 @@ function aiAttack() {
             <div class="game-header">
                 <h1>⚔️ Card Fight</h1>
                 <div class="room-info">
-                    <span>Modus</span>
-                    <strong>Solo</strong>
+                    <span>Game Mode</span>
+                    <strong>{{ GameMode }}</strong>
                 </div>
 
                 <div class="room-info">

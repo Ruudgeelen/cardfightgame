@@ -91,7 +91,7 @@ function generateRoomCode() {
 
 function createGame() {
     const allCards =
-        GetCardsMultiplayer()
+        GetCardsMultiplayer(GameMode)
 
     const cardstapel =
         GetStapelMultiplayer(allCards)
@@ -237,7 +237,9 @@ function sendGameState(roomCode) {
                 winner:
                     room.game.winner,
 
-                cardstapel: room.game.cardstapel
+                cardstapel: room.game.cardstapel,
+
+                gameMode: room.game.gameMode
 
             }
         )
@@ -368,7 +370,8 @@ const result = gameMultiplayer(
 
     player.lastCard,
     enemy.lastCard,
-    5
+    5,
+    room.game.gameMode
 )
 
 player.cards = result.userCards
@@ -384,6 +387,7 @@ player.lastCard = result.lastuserCard
 enemy.lastCard = result.lastotheruserCard
 
 room.game.cardstapel = result.cardstapel
+room.game.gameMode = result.gameMode
     
     /* ==============================
        WINST
@@ -556,7 +560,7 @@ io.on('connection', (socket) => {
                 )
 
                 rooms[code].game =
-                    createGame()
+                    createGame(rooms[code].game.gameMode)
 
                 console.log(
                     '🃏 Multiplayer game gestart:',

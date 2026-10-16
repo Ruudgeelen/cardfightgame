@@ -15,7 +15,7 @@ onMounted(() => {
             // location.reload()
         }
 })
-const allCards = GetCards()
+const allCards = GetCards('Normal')
 const searchQuery = ref('')
 const selectedType = ref('')
 const selectedEffect = ref('')

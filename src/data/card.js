@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { cards } from '../data/cardslist.js'
-
+import { GetGameModeCards, GetGameModeCardsMultplayer } from '../data/gamemodes.js'
 const cardslist = ref(cards)
 const deck = ref([])
 const selectedCards = ref([])
@@ -11,11 +11,13 @@ const selectedCards = ref([])
 // SINGLEPLAYER
 // ================================
 
-export function GetCards() {
+export function GetCards(GameMode) {
     for (let i = 0; i < cardslist.value.length; i++) {
         cardslist.value[i].id = i + 1
     }
-
+    console.log('GameMode: ', GameMode.value)
+    cardslist.value = GetGameModeCards(GameMode, cardslist)
+    console.log('GetCards: ', cardslist.value)
     localStorage.setItem(
         'AllCards',
         JSON.stringify(cardslist.value)
@@ -113,7 +115,7 @@ export function RemoveCard(cardlist) {
 // MULTIPLAYER
 // ================================
 
-export function GetCardsMultiplayer() {
+export function GetCardsMultiplayer(gameMode) {
     const multiplayerCards = []
 
     for (let i = 0; i < cardslist.value.length; i++) {
@@ -122,6 +124,10 @@ export function GetCardsMultiplayer() {
             id: i + 1
         })
     }
+    console.log('GameMode: ', GameMode)
+    multiplayerCards = GetGameModeCardsMultplayer(gameMode, multiplayerCards)
+    console.log('GetCards: ', cardslist)
+
 
     return multiplayerCards
 }

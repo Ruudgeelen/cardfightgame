@@ -1,8 +1,15 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 import '../assets/style.css'
 
 import { socket } from '../data/socket.js'
+
+const route = useRoute()
+
+const GameMode = ref(
+    String(route.params.gamemode || '')
+)
 
 const roomCode = ref('')
 const enteredCode = ref('')
@@ -80,6 +87,7 @@ onUnmounted(() => {
     <div class="multiplayer">
 
         <h1>🌐 Multiplayer</h1>
+        <h2>Game Mode: {{ GameMode }}</h2>
 
         <div v-if="!connected" class="multiplayer-box">
 
@@ -138,7 +146,8 @@ onUnmounted(() => {
                         roomCode: roomCode
                     },
                     query: {
-                        player: playerNumber
+                        player: playerNumber,
+                        gamemode: GameMode
                     }
                 }"
             >

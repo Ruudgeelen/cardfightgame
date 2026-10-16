@@ -58,7 +58,8 @@ export function game(
     otheruserMaxHealth,
     lastuserCard,
     lastotheruserCard,
-    aantalcards
+    aantalcards,
+    gameMode
 ) {
 
     if (Playerdeath(userHealth.value)) {
@@ -257,7 +258,8 @@ export function gameMultiplayer(
     otheruserMaxHealth,
     lastuserCard,
     lastotheruserCard,
-    aantalcards
+    aantalcards,
+    gameMode
 ) {
      aantalcards = 5
 

@@ -19,7 +19,7 @@ import '../assets/style.css'
                 defeat the AI in an epic card battle.
             </p>
 
-            <RouterLink class="start-button" to="/homepage">
+            <RouterLink class="start-button" to="/play">
                 ▶ Start Game
             </RouterLink>
 

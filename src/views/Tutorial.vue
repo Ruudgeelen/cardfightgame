@@ -104,7 +104,7 @@ import '../assets/style.css'
 
             <RouterLink
                 class="start-button"
-                to="/homepage"
+                to="/play"
             >
                 ⚔️ Start Game
             </RouterLink>

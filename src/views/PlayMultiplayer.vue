@@ -21,6 +21,10 @@ const playerNumber = ref(
     Number(route.query.player) || 1
 )
 
+const gameMode = ref(
+    String(route.query.gamemode || 'normal')
+)
+
 const playerHealth = ref(100)
 const enemyHealth = ref(100)
 
@@ -37,13 +41,9 @@ const playerTurn = ref(false)
 const turnsPlayed = ref(0)
 
 const opponentConnected = ref(true)
-
 const gameStarted = ref(false)
-
 const gameOver = ref(false)
-
 const winner = ref(null)
-
 const cardstapel = ref([])
 
 function opponentLeft() {
@@ -108,6 +108,9 @@ function updateGameState(state) {
 
     cardstapel.value =
         state.cardstapel || []
+
+    gameMode.value =
+        state.gameMode || 'normal'
 }
 
 function useCard(card, index) {
@@ -211,8 +214,8 @@ onUnmounted(() => {
                 </div>
 
                 <div class="room-info">
-                    <span>Speler</span>
-                    <strong>{{ playerNumber }}</strong>
+                    <span>Game Mode</span>
+                    <strong>{{ gameMode }}</strong>
                 </div>
 
                 <div class="room-info">

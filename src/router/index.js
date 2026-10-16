@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Homepage from '../views/Homepage.vue'
+import PlaySingleplayer from '../views/PlaySingleplayer.vue'
+import Play from '../views/Play.vue'
 import Cards from '../views/Cards.vue'
 import Settings from '../views/Settings.vue'
 import Tutorial from '../views/Tutorial.vue'
@@ -14,11 +15,11 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            redirect: '/homepage'
+            redirect: '/welcome'
         },
         {
-            path: '/homepage',
-            component: Homepage
+            path: '/play',
+            component: Play
         },
         {
             path: '/cards',
@@ -37,7 +38,17 @@ const router = createRouter({
             component: Welcome
         },
         {
-            path: '/multiplayer',
+            path: '/playsingleplayer',
+            component: PlaySingleplayer
+        },
+        {
+            path: '/playsingleplayer/:gamemode',
+            name: 'PlaySingleplayer',
+            component: PlaySingleplayer
+        },
+        {
+            path: '/multiplayer/:gamemode',
+            name: 'Multiplayer',
             component: Multiplayer
         },
         {
