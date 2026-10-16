@@ -207,6 +207,8 @@ function sendGameState(roomCode) {
             'Stapel:',
             room.game.cardstapel
         )
+
+        console.log("Game state:", room.game)
         io.to(socketId).emit(
             'gameState',
             {
@@ -578,9 +580,6 @@ io.on('connection', (socket) => {
                     '🎮 Beide spelers aanwezig:',
                     code
                 )
-                console.log(rooms[code].players)
-                console.log(rooms[code].gameMode)
-                
                 rooms[code].game =
                     createGame(rooms[code].gameMode)
                 console.log(
