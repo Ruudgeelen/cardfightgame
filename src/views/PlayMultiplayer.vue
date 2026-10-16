@@ -21,13 +21,13 @@ const playerNumber = ref(
     Number(route.query.player) || 1
 )
 
-const gameMode = ref(
+const gameModeLink = ref(
     String(route.query.gamemode || 'normal')
 )
 
 console.log('🏠 Room:', roomCode.value)
 console.log('👤 Player:', playerNumber.value)
-console.log('🎮 Game Mode:', gameMode.value)
+console.log('🎮 Game Mode:', gameModeLink.value)
 
 const playerHealth = ref(100)
 const enemyHealth = ref(100)
@@ -114,7 +114,7 @@ function updateGameState(state) {
         state.cardstapel || []
 
     gameMode.value =
-        state.gameMode || 'normal'
+        state.gameMode || gameModeLink
 }
 
 function useCard(card, index) {
@@ -219,7 +219,7 @@ onUnmounted(() => {
 
                 <div class="room-info">
                     <span>Game Mode</span>
-                    <strong>{{ gameMode }}</strong>
+                    <strong>{{ gameModeLink }}</strong>
                 </div>
 
                 <div class="room-info">
