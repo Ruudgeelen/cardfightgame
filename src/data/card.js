@@ -5,7 +5,7 @@ import { GetGameModeCards, GetGameModeCardsMultplayer } from '../data/gamemodes.
 const cardslist = ref(cards)
 const deck = ref([])
 const selectedCards = ref([])
-
+const multiplayerCards = []
 
 // ================================
 // SINGLEPLAYER
@@ -116,8 +116,6 @@ export function RemoveCard(cardlist) {
 // ================================
 
 export function GetCardsMultiplayer(gameMode) {
-    const multiplayerCards = []
-
     for (let i = 0; i < cardslist.value.length; i++) {
         multiplayerCards.push({
             ...cardslist.value[i],
