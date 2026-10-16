@@ -112,9 +112,6 @@ function updateGameState(state) {
 
     cardstapel.value =
         state.cardstapel || []
-
-    gameMode.value =
-        state.gameMode || gameModeLink
 }
 
 function useCard(card, index) {

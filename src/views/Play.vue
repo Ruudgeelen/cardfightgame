@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 import '../assets/style.css'
 
 function getRandomGameMode() {
-    const gameModes = ['normal', 'gamble', 'mimic']
+    const gameModes = ['normal', 'gamble', 'mimic', 'burn']
     const randomIndex = Math.floor(Math.random() * gameModes.length)
     return gameModes[randomIndex]
 }
@@ -48,6 +48,10 @@ onMounted(() => {
                 🃏 Mimic Game
             </RouterLink>
 
+            <RouterLink class="burn-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: 'burn'}, }">
+                🃏 Burn Game
+            </RouterLink>
+
             <RouterLink class="random-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: getRandomGameMode()}, }">
                 🃏 Random Game
             </RouterLink>
@@ -65,6 +69,10 @@ onMounted(() => {
 
             <RouterLink class="mimic-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'mimic'}, }">
                 🃏 Mimic Game
+            </RouterLink>
+
+            <RouterLink class="burn-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'burn'}, }">
+                🃏 Burn Game
             </RouterLink>
 
             <RouterLink class="random-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: getRandomGameMode()}, }">

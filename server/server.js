@@ -245,9 +245,6 @@ function sendGameState(roomCode) {
                     room.game.winner,
 
                 cardstapel: room.game.cardstapel,
-
-                gameMode: room.game.gameMode
-
             }
         )
     }
@@ -473,7 +470,7 @@ io.on('connection', (socket) => {
                 generateRoomCode()
 
             const selectedGameMode =
-                ['normal', 'gamble', 'mimic'].includes(
+                ['normal', 'gamble', 'mimic', 'burn'].includes(
                     gameMode
                 )
                     ? gameMode

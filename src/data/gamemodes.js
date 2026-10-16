@@ -14,6 +14,13 @@ export function GetGameModeCards(GameMode, cardslist) {
             cardslist.value[i].faketype = getRandomCardType()
         }
     }
+    else if (GameMode.value === "burn") {
+        for (let i = 0; i < cardslist.value.length; i++) {
+            cardslist.value[i].effect = "burn"
+            cardslist.value[i].effectvalue = 1
+            cardslist.value[i].effectturns = "Forever"
+        }
+    }
     return cardslist.value
 }
 export function GetGameModeCardsMultplayer(GameMode, cardslist) {
@@ -28,6 +35,13 @@ export function GetGameModeCardsMultplayer(GameMode, cardslist) {
     else if (GameMode === "mimic") {
         for (let i = 0; i < cardslist.length; i++) {
             cardslist[i].faketype = getRandomCardType()
+        }
+    }
+    else if (GameMode === "burn") {
+        for (let i = 0; i < cardslist.length; i++) {
+            cardslist[i].effect = "burn"
+            cardslist[i].effectvalue = 1
+            cardslist[i].effectturns = "Forever"
         }
     }
     return cardslist
