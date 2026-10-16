@@ -97,9 +97,9 @@ function generateRoomCode() {
    GAME STARTEN
 ========================================= */
 
-function createGame() {
+function createGame(gameMode) {
     const allCards =
-        GetCardsMultiplayer(GameMode)
+        GetCardsMultiplayer(gameMode)
 
     const cardstapel =
         GetStapelMultiplayer(allCards)
@@ -140,7 +140,9 @@ function createGame() {
 
         gameOver: false,
 
-        winner: null
+        winner: null,
+
+        gameMode: gameMode
     }
 }
 
@@ -469,16 +471,25 @@ io.on('connection', (socket) => {
 
     socket.on(
         'createGame',
-        () => {
+        (gameMode) => {
             const roomCode =
                 generateRoomCode()
+
+            const selectedGameMode =
+                ['normal', 'gamble', 'mimic'].includes(
+                    gameMode
+                )
+                    ? gameMode
+                    : 'normal'
 
             rooms[roomCode] = {
                 players: [
                     socket.id
                 ],
 
-                game: null
+                game: null,
+
+                gameMode: selectedGameMode
             }
 
             socket.join(roomCode)
@@ -546,7 +557,8 @@ io.on('connection', (socket) => {
             socket.emit(
                 'gameJoined',
                 {
-                    roomCode: code
+                    roomCode: code,
+                    gameMode: rooms[code].gameMode
                 }
             )
 
@@ -567,10 +579,10 @@ io.on('connection', (socket) => {
                     code
                 )
                 console.log(rooms[code].players)
-                console.log(rooms[code].game.gameMode)
+                console.log(rooms[code].gameMode)
                 
                 rooms[code].game =
-                    createGame(rooms[code].game.gameMode)
+                    createGame(rooms[code].gameMode)
                 console.log(
                     '🃏 Multiplayer game gestart:',
                     code

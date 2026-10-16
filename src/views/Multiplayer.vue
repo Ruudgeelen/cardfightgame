@@ -21,7 +21,7 @@ const roomGameMode = ref('')
 
 function createGame() {
     message.value = 'Game wordt aangemaakt...'
-    socket.emit('createGame')
+    socket.emit('createGame', GameMode.value)
 }
 
 function joinGame() {
