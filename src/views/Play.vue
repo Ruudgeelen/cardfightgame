@@ -156,6 +156,7 @@ onMounted(() => {
 .normal-button,
 .gamble-button,
 .mimic-button,
+.burn-button,
 .random-button {
     display: block;
     width: 220px;
@@ -190,6 +191,11 @@ onMounted(() => {
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
 }
 
+.burn-button {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+}
+
 .random-button {
     background: linear-gradient(135deg, #ec4899, #db2777);
     box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
@@ -198,6 +204,7 @@ onMounted(() => {
 .normal-button:hover,
 .gamble-button:hover,
 .mimic-button:hover,
+.burn-button:hover,
 .random-button:hover {
     transform: translateY(-3px);
 }
@@ -205,6 +212,7 @@ onMounted(() => {
 .normal-button:active,
 .gamble-button:active,
 .mimic-button:active,
+.burn-button:active,
 .random-button:active {
     transform: translateY(0);
 }

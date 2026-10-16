@@ -68,6 +68,20 @@ export const cards = [
         healthbaradd: 2,
         type: 'water'
     },
+    {
+        name: 'Water Spirit',
+        attack: 6,
+        heal: 9,
+        healthbaradd: 1,
+        type: 'water'
+    },
+    {
+        name: 'Ocean Guardian',
+        attack: 8,
+        heal: 8,
+        healthbaradd: 3,
+        type: 'water'
+    },
 
     // EARTH
     {
@@ -180,6 +194,12 @@ export const cards = [
         heal: 12,
         type: 'normal'
     },
+    {
+        name: 'Assassin',
+        attack: 10,
+        heal: 2,
+        type: 'normal'
+    },
 
     // DRAGON
     {
@@ -265,6 +285,14 @@ export const cards = [
         heal: 15,   
         healadd: 3,
         healthbaradd: 1,
+        type: 'light'
+    },
+    {
+        name: 'Radiant Guardian',
+        attack: 5,
+        heal: 13,
+        healadd: 2,
+        healthbaradd: 2,
         type: 'light'
     },
 
@@ -470,6 +498,13 @@ export const cards = [
         healadd: 1,
         type: 'rare'
     },
+    {
+        name: 'Rare Healer',
+        attack: 5,
+        heal: 10,
+        healadd: 2,
+        type: 'rare'
+    },
 
     // UNIQUE
     {
@@ -500,6 +535,16 @@ export const cards = [
         healthbarremove: 3,
         removecardnummer: 1,
         type: 'unique'
+    },
+
+    // LEGENDARY
+    {
+        name: 'Legendary Beast',
+        attack: 15,
+        heal: 15,
+        attackadd: 3,
+        healadd: 1,
+        type: 'legendary'
     },
 
     // GHOST
@@ -582,6 +627,39 @@ export const cards = [
         removecardnummer: 1,
         morecards: 1,
         type: 'soft'
+    },
+
+    // HOLE
+    {
+        name: 'Black Hole',
+        attack: 0,
+        heal: 0,
+        removecardnummer: 5,
+        type: 'hole'
+    },
+    {
+        name: 'White Hole',
+        attack: 0,
+        heal: 0,
+        morecards: 5,
+        type: 'hole'
+    },
+    {
+        name: 'Wormhole',
+        attack: 0,
+        heal: 0,
+        removecardnummer: 3,
+        morecards: 3,
+        type: 'hole'
+    },
+
+    // STORM
+    {
+        name: 'Storm',
+        attack: 0,
+        heal: 0,
+        removecardnummer: 10,
+        type: 'storm'
     },
 
     // MIMIC
@@ -723,12 +801,12 @@ export const cards = [
         name: 'Rainbow',
         attack: 15,
         heal: 25,
-        healthbaradd: 3,
-        healthbarremove: 3,
+        healthbaradd: 10,
+        healthbarremove: 5,
         healadd: 3,
         attackadd: 3,
-        morecards: 3,
-        removecardnummer: 3,
+        morecards: 5,
+        removecardnummer: 5,
         freeze: true,
         type: 'rainbow'
     },
