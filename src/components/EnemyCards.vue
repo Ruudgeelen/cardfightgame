@@ -61,7 +61,7 @@ defineProps({
                 :key="card.id"
                 :class="[
                     'card',
-                    card.type,
+                    card.faketype ? card.faketype : card.type, 
                     effectClasses(card.effect),
                     'card-modern'
                 ]"
@@ -81,8 +81,11 @@ defineProps({
                     <div class="card-tooltip" role="tooltip">
                         <span>{{ cardTooltiphide(card) }}</span>
                     </div>
-                    <div class="hidden-icon">
-                         {{ getCardType(card.type).icon }}
+                    <div v-if="card.faketype" class="hidden-icon">
+                         {{ getCardType(card.faketype).icon }}
+                    </div>
+                    <div v-else class="hidden-icon">
+                        {{ getCardType(card.type).icon }}
                     </div>
 
                 </div>

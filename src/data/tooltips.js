@@ -21,6 +21,7 @@ export function cardTooltip(card) {
 
     return [
         card.type && `Type: ${card.type}`,
+        card.faketype && `Fake Type: ${card.faketype}`,
         card.attack && `Attack on the enemy: ${card.attack}`,
         card.heal && `Heal your health: ${card.heal}`,
         card.freeze && 'Freeze your own cards',
@@ -43,7 +44,7 @@ export function cardTooltiphide(card) {
     const effects = effectNames(card)
 
     return [
-        card.type && `Type: ${card.type}`,
+        card.faketype ? `Type: ${card.faketype}` : `Type: ${card.type}`,
         effects && `Effects: ${effects}`,
         effectDetails(card, 'effectturnsmap') && `Effect durations: ${effectDetails(card, 'effectturnsmap')}`,
         effectDetails(card, 'effectvalues') && `Effect powers: ${effectDetails(card, 'effectvalues')}`

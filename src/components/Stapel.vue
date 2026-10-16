@@ -26,7 +26,7 @@ defineProps({
                 <div :class="[
                     'card',
                     'deck-card-face',
-                    card.type]">
+                    card.faketype ? card.faketype : card.type]">
                 </div>
             </div>
         </div>

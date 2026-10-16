@@ -24,6 +24,7 @@ export const cardTypes = {
     hell: { name: 'Hell', icon: '🔥' },
     megaheal: { name: 'Megaheal', icon: '💖' },
     heaven: { name: 'Heaven', icon: '👼' },
+    minic: { name: 'Minic', icon: '🟣' },
     kaart: { name: 'Kaart', icon: '🎴' },
     gamble: { name: 'Gamble', icon: '🎲' },
     lucky: { name: 'Lucky', icon: '🍀' },
@@ -32,4 +33,10 @@ export const cardTypes = {
 
 export function getCardType(type) {
     return cardTypes[type] || { name: type || 'Unknown', icon: '🃏' }
+}
+
+export function getRandomCardType() {
+    const types = Object.keys(cardTypes)
+    const randomIndex = Math.floor(Math.random() * types.length)
+    return types[randomIndex]
 }

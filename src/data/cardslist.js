@@ -1,3 +1,5 @@
+import { getRandomCardType } from './cardTypes.js'
+
 export const cards = [
     // FIRE
     {
@@ -580,6 +582,29 @@ export const cards = [
         removecardnummer: 1,
         morecards: 1,
         type: 'soft'
+    },
+
+    // MINIC
+    {
+        name: 'Minic',
+        attack: 20,
+        heal: 20,
+        faketype: getRandomCardType(),
+        type: 'minic'
+    },
+    {
+        name: 'Minic',
+        attack: 20,
+        heal: 20,
+        faketype: getRandomCardType(),
+        type: 'minic'
+    },
+    {
+        name: 'Minic',
+        attack: 20,
+        heal: 20,
+        faketype: getRandomCardType(),
+        type: 'minic'
     },
 
     // HELL

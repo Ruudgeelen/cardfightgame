@@ -509,6 +509,12 @@ body {
     background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 119, 0) 25%, rgb(0, 0, 0) 50%, rgb(227, 98, 0) 75%, rgb(11, 0, 0) 100%);
 }
 
+.card.minic {
+    border-color: #ff0051;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 0, 85) 25%, rgb(0, 0, 0) 50%, rgb(227, 0, 83) 75%, rgb(11, 0, 0) 100%);
+}
+
 .card.heaven {
     border-color: #ffea00;
     color: #fff;

@@ -21,6 +21,11 @@ defineProps({
             Type: {{ getCardType(card.type).name }}
             {{ getCardType(card.type).icon }}
         </p>
+        <p v-if="card.faketype" class="type">
+            {{ getCardType(card.faketype).icon }}
+            Fake Type: {{ getCardType(card.faketype).name }}
+            {{ getCardType(card.faketype).icon }}
+        </p>
 
         <div class="card-stats">
             <p v-if="card.attack" class="card-stat"><span>⚔️</span><b>{{ card.attack }}</b></p>
