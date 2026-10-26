@@ -323,6 +323,9 @@ onUnmounted(() => {
 
                 <Health :health="playerHealth" :max-health="playerMaxHealth" />
 
+                <PlayerCards :cards="playerCards" :ai-turn="!playerTurn" :last-player-card="{}"
+                    @use-card="useCard" />
+
                 <button
                     class="skip-turn-button"
                     :disabled="!playerTurn || gameOver"
@@ -330,9 +333,6 @@ onUnmounted(() => {
                 >
                     Beurt overslaan (+1 kaart)
                 </button>
-
-                <PlayerCards :cards="playerCards" :ai-turn="!playerTurn" :last-player-card="{}"
-                    @use-card="useCard" />
 
             </section>
 

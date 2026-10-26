@@ -1,6 +1,156 @@
 import { getRandomCardType } from './cardTypes.js'
 
 export const cards = [
+    // NORMAL
+    {
+        name: 'Warrior',
+        attack: 7,
+        heal: 7,
+        type: 'normal'
+    },
+    {
+        name: 'Knight',
+        attack: 5,
+        heal: 10,
+        type: 'normal'
+    },
+    {
+        name: 'Battle Medic',
+        attack: 4,
+        heal: 6,
+        type: 'normal'
+    },
+    {
+        name: 'Archer',
+        attack: 6,
+        heal: 5,
+        type: 'normal'
+    },
+    {
+        name: 'Mage',
+        attack: 8,
+        heal: 4,
+        type: 'normal'
+    },
+    {
+        name: 'Healer',
+        attack: 3,
+        heal: 12,
+        type: 'normal'
+    },
+    {
+        name: 'Assassin',
+        attack: 10,
+        heal: 2,
+        type: 'normal'
+    },
+
+    // RARE
+    {
+        name: 'Rare Beast',
+        attack: 8,
+        heal: 5,
+        attackadd: 1,
+        type: 'rare'
+    },
+    {
+        name: 'Rare Flower',
+        attack: 9,
+        heal: 5,
+        healadd: 1,
+        type: 'rare'
+    },
+    {
+        name: 'Rare Warrior',
+        attack: 10,
+        heal: 0,
+        attackadd: 1,
+        type: 'rare'
+    },
+    {
+        name: 'Rare Mage',
+        attack: 7,
+        heal: 8,
+        healadd: 1,
+        type: 'rare'
+    },
+    {
+        name: 'Rare Healer',
+        attack: 5,
+        heal: 10,
+        healadd: 2,
+        type: 'rare'
+    },
+    {
+        name: 'Rare Archer',
+        attack: 9,
+        heal: 4,
+        attackadd: 1,
+        type: 'rare'
+    },
+
+    // UNIQUE
+    {
+        name: 'Unique Beast',
+        attack: 10,
+        heal: 10,
+        healadd: 3,
+        type: 'unique'
+    },
+    {
+        name: 'Unique Flower',
+        attack: 9,
+        heal: 9,
+        healthbaradd: 3,
+        type: 'unique'
+    },
+    {
+        name: 'Unique Warrior',
+        attack: 11,
+        heal: 8,
+        attackadd: 3,
+        type: 'unique'
+    },
+    {
+        name: 'Unique Mage',
+        attack: 8,
+        heal: 11,
+        healthbarremove: 3,
+        removecardnummer: 1,
+        type: 'unique'
+    },
+    {
+        name: 'Unique Healer',
+        attack: 7,
+        heal: 12,
+        healadd: 3,
+        type: 'unique'
+    },
+
+    // LEGENDARY
+    {
+        name: 'Legendary Beast',
+        attack: 15,
+        heal: 15,
+        attackadd: 3,
+        healadd: 1,
+        type: 'legendary'
+    },
+    {
+        name: 'Legendary Flower',
+        attack: 12,
+        heal: 18,
+        healthbaradd: 5,
+        type: 'legendary'
+    },
+    {
+        name: 'Legendary Warrior',
+        attack: 18,
+        heal: 12,
+        attackadd: 1,
+        type: 'legendary'
+    },
+
     // FIRE
     {
         name: 'Fire Card',
@@ -155,50 +305,6 @@ export const cards = [
         heal: 1,
         removecardnummer: 3,
         type: 'wind'
-    },
-
-    // NORMAL
-    {
-        name: 'Warrior',
-        attack: 7,
-        heal: 7,
-        type: 'normal'
-    },
-    {
-        name: 'Knight',
-        attack: 5,
-        heal: 10,
-        type: 'normal'
-    },
-    {
-        name: 'Battle Medic',
-        attack: 4,
-        heal: 6,
-        type: 'normal'
-    },
-    {
-        name: 'Archer',
-        attack: 6,
-        heal: 5,
-        type: 'normal'
-    },
-    {
-        name: 'Mage',
-        attack: 8,
-        heal: 4,
-        type: 'normal'
-    },
-    {
-        name: 'Healer',
-        attack: 3,
-        heal: 12,
-        type: 'normal'
-    },
-    {
-        name: 'Assassin',
-        attack: 10,
-        heal: 2,
-        type: 'normal'
     },
 
     // DRAGON
@@ -361,6 +467,13 @@ export const cards = [
         attackadd: 1,
         type: 'dark'
     },
+    {
+        name: 'Dark Knight',
+        attack: 15,
+        heal: 0,
+        attackadd: 2,
+        type: 'dark'
+    },
     
     // FREEZE
     {
@@ -467,84 +580,6 @@ export const cards = [
         healadd: 1,
         healthbaradd: 5,
         type: 'heal'
-    },
-
-    // RARE
-    {
-        name: 'Rare Beast',
-        attack: 8,
-        heal: 5,
-        attackadd: 1,
-        type: 'rare'
-    },
-    {
-        name: 'Rare Flower',
-        attack: 9,
-        heal: 5,
-        healadd: 1,
-        type: 'rare'
-    },
-    {
-        name: 'Rare Warrior',
-        attack: 10,
-        heal: 0,
-        attackadd: 1,
-        type: 'rare'
-    },
-    {
-        name: 'Rare Mage',
-        attack: 7,
-        heal: 8,
-        healadd: 1,
-        type: 'rare'
-    },
-    {
-        name: 'Rare Healer',
-        attack: 5,
-        heal: 10,
-        healadd: 2,
-        type: 'rare'
-    },
-
-    // UNIQUE
-    {
-        name: 'Unique Beast',
-        attack: 10,
-        heal: 10,
-        healadd: 3,
-        type: 'unique'
-    },
-    {
-        name: 'Unique Flower',
-        attack: 9,
-        heal: 9,
-        healthbaradd: 3,
-        type: 'unique'
-    },
-    {
-        name: 'Unique Warrior',
-        attack: 11,
-        heal: 8,
-        attackadd: 3,
-        type: 'unique'
-    },
-    {
-        name: 'Unique Mage',
-        attack: 8,
-        heal: 11,
-        healthbarremove: 3,
-        removecardnummer: 1,
-        type: 'unique'
-    },
-
-    // LEGENDARY
-    {
-        name: 'Legendary Beast',
-        attack: 15,
-        heal: 15,
-        attackadd: 3,
-        healadd: 1,
-        type: 'legendary'
     },
 
     // GHOST
