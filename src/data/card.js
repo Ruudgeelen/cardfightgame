@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import { cards } from '../data/cardslist.js'
 import { GetGameModeCards, GetGameModeCardsMultplayer } from '../data/gamemodes.js'
 const cardslist = ref(cards)
-const multiplayercardslist = []
 const deck = ref([])
 const selectedCards = ref([])
 
@@ -115,7 +114,7 @@ export function RemoveCard(cardlist) {
 
 export function GetCardsMultiplayer(gameMode, beginningCards) {
     if (beginningCards) {
-        multiplayercardslist= cardslist.value.map(
+        const multiplayercardslist = cardslist.value.map(
             (card, index) => ({
                 ...card,
                 id: index + 1
