@@ -273,6 +273,73 @@ export const cards = [
         type: 'earth'
     },
 
+    // ANIMAL
+    {
+        name: 'Wolf',
+        attack: 8,
+        heal: 5,
+        healadd: 1,
+        type: 'animal'
+    },
+    {
+        name: 'Snake',
+        attack: 10,
+        heal: 8,
+        type: 'animal'
+    },
+    {
+        name: 'Lion',
+        attack: 12,
+        heal: 6,
+        attackadd: 1,
+        type: 'animal'
+    },
+    {
+        name: 'Tiger',
+        attack: 11,
+        heal: 7,
+        attackadd: 2,
+        type: 'animal'   
+    },
+    {
+        name: 'Ice Bear',
+        attack: 8,
+        heal: 5,
+        freeze: true,
+        type: 'animal'
+    },
+
+    // PLANT
+    {
+        name: 'Venus Flytrap',
+        attack: 7,
+        heal: 16,
+        healthbaradd: 1,
+        type: 'plant'
+    },
+    {
+        name: 'Cactus',
+        attack: -6,
+        heal: 20,
+        healthbaradd: 2,
+        type: 'plant'
+    },
+    {
+        name: 'Sunflower',
+        attack: 5,
+        heal: 15,
+        healthbaradd: 1,
+        type: 'plant'
+    },
+    {
+        name: 'Poison Ivy',
+        attack: 6,
+        heal: 14,
+        healthbaradd: 1,
+        healthbarremove: 1,
+        type: 'plant'
+    },
+
     // WIND
     {
         name: 'Wind Rider',
@@ -345,29 +412,36 @@ export const cards = [
     {
         name: 'Skeleton',
         attack: 21,
-        heal: -6,
-        attackadd: 1,
+        heal: 0,
+        attackadd: -1,
         type: 'undead'
     },
     {
         name: 'Zombie',
         attack: 20,
-        heal: -5,
-        attackadd: 2,
+        heal: 0,
+        attackadd: -1,
         type: 'undead'
     },
     {
         name: 'Creeper',
         attack: 25,
-        heal: -10,
-        attackadd: 3,
+        heal: 10,
+        attackadd: -2,
         type: 'undead'
     },
     {
         name: 'Flesh Eater',
         attack: 23,
         heal: -7,
-        attackadd: 2,
+        attackadd: -1,
+        type: 'undead'
+    },
+    {
+        name: 'Bone Collector',
+        attack: 22,
+        heal: 0,
+        attackadd: -1,
         type: 'undead'
     },
 
@@ -516,6 +590,7 @@ export const cards = [
         freeze: true,
         type: 'ice'
     },
+    
 
     // LIFESTEAL
     {
@@ -615,9 +690,19 @@ export const cards = [
         name: 'Poison Card',
         attack: 5,
         heal: 5,
-        healthbarremove: 2,
+        healadd: -1,
+        healthbarremove: 5,
         type: 'poison'
     },
+    {
+        name: 'Toxic Cloud',
+        attack: 7,
+        heal: 3,
+        healadd: -1,
+        healthbarremove: 5,
+        type: 'poison'
+    },
+    
 
     // TNT
     {
@@ -634,6 +719,13 @@ export const cards = [
         healthbarremove: 7,
         type: 'tnt'
     },
+    {
+        name: 'Explosive Charge',
+        attack: 15,
+        heal: 0,
+        healthbarremove: 3,
+        type: 'tnt'
+    },
 
     // SOFT
     {
@@ -644,8 +736,8 @@ export const cards = [
     },
     {
         name: 'Pet',
-        attack: -1,
-        heal: -1,
+        attack: 0,
+        heal: 0,
         healadd: 1,
         attackadd: 1,
         type: 'soft'
@@ -660,10 +752,16 @@ export const cards = [
     },
     {
         name: 'Fluffy',
-        attack: -1,
-        heal: -1,
+        attack: 0,
+        heal: 0,
         removecardnummer: 1,
         morecards: 1,
+        type: 'soft'
+    },
+    {
+        name: 'Plushie',
+        attack: -1,
+        heal: -1,
         type: 'soft'
     },
 
@@ -700,6 +798,17 @@ export const cards = [
         type: 'storm'
     },
 
+    // LIGHTNING
+    {
+        name: 'Lightning Strike',
+        attack: 25,
+        heal: 0,
+        healthbarremove: 10,
+        burn: 3,
+        burnTurns: 1,
+        type: 'lightning'
+    },
+
     // MIMIC
     {
         name: 'Mimic',
@@ -730,11 +839,29 @@ export const cards = [
     // HELL
     {
         name: 'Hellfire',
-        attack: 20,
-        heal: -10,
-        burn: 5,
+        attack: 0,
+        heal: 0,
+        burn: 10,
         burnTurns: 1,
         type: 'hell'
+    },
+    {
+        name: 'Demon',
+        attack: 0,
+        heal: 0,
+        burn: 7,
+        burnTurns: 1,
+        type: 'hell'
+    },
+
+    // MEGAICE
+    {
+        name: 'Mega Ice',
+        attack: 0,
+        heal: 0,
+        freeze: true,
+        freezeadd: true,
+        type: 'megaice'
     },
 
     // TROLL
@@ -756,7 +883,8 @@ export const cards = [
         name: 'Nerf',
         attack: 0,
         heal: 0,
-        attackadd: -5,
+        attackadd: -1,
+        healadd: -1,
         type: 'troll'
     },
 
@@ -813,6 +941,16 @@ export const cards = [
         type: 'gamble'
     },
 
+    // BOSS
+    {
+        name: 'Boss',
+        attack: 20,
+        heal: 20,
+        healthbaradd: 10,
+        healthbarremove: 10,
+        type: 'boss'
+    },
+
     // LUCKY
     {
         name: 'Lucky Charm',
@@ -834,6 +972,16 @@ export const cards = [
         type: 'lucky'
     },
 
+    // BONUS
+    {
+        name: 'Bonus Card',
+        attack: 10,
+        heal: 10,
+        healaddadd: 1,
+        attackaddadd: 1,
+        type: 'bonus'
+    },
+
     // RAINBOW
     {
         name: 'Rainbow',
@@ -841,11 +989,13 @@ export const cards = [
         heal: 25,
         healthbaradd: 10,
         healthbarremove: 5,
-        healadd: 3,
-        attackadd: 3,
+        healadd: 1,
+        attackadd: 1,
+        healaddadd: 1,
+        attackaddadd: 1,
         morecards: 5,
         removecardnummer: 5,
-        freeze: true,
+        freezeadd: true,
         type: 'rainbow'
     },
 ]

@@ -2,15 +2,19 @@ import {
     PlayerAttack,
     EnemyAttack,
     AttackAdd,
+    AttackAddAdd,
     PlayerAttackMultiplayer,
     EnemyAttackMultiplayer,
-    AttackAddMultiplayer
+    AttackAddMultiplayer,
+    AttackAddAddMultiplayer,
 } from '../data/attack.js'
 
 import {
     BurnEffect,
     BurnDamage,
     FreezeEffect,
+    applyFreezeAdd,
+    applyFreezeAddMultiplayer,
     BurnEffectMultiplayer,
     BurnDamageMultiplayer,
     FreezeEffectMultiplayer,
@@ -23,11 +27,13 @@ import {
     AddMaxHealth,
     RemoveMaxHealth,
     HealAdd,
+    HealAddAdd,
     Playerdeath,
     Enemydeath,
     AddMaxHealthMultiplayer,
     RemoveMaxHealthMultiplayer,
     HealAddMultiplayer,
+    HealAddAddMultiplayer,
     PlayerdeathMultiplayer,
     EnemydeathMultiplayer
 } from '../data/health.js'
@@ -101,6 +107,21 @@ export function game(
     if (card.healadd) {
         const targetCards = gambleReversed ? otheruserCards : userCards
         targetCards.value = HealAdd(card, targetCards).value
+    }
+
+    if (card.healaddadd) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        targetCards.value = HealAddAdd(card, targetCards).value
+    }
+
+    if (card.attackaddadd) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        targetCards.value = AttackAddAdd(card, targetCards).value
+    }
+
+    if (card.freezeadd) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        targetCards.value = applyFreezeAdd(targetCards).value
     }
 
     if (card.freeze) {
@@ -344,6 +365,11 @@ export function gameMultiplayer(
         AttackAddMultiplayer(card, targetCards)
     }
 
+    if (card.attackaddadd) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        AttackAddAddMultiplayer(card, targetCards)
+    }
+
 
     // =================================
     // HEAL ADD
@@ -354,10 +380,19 @@ export function gameMultiplayer(
         HealAddMultiplayer(card, targetCards)
     }
 
+    if (card.healaddadd) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        HealAddAddMultiplayer(card, targetCards)
+    }
 
     // =================================
     // FREEZE
     // =================================
+
+    if (card.freezeadd) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        applyFreezeAddMultiplayer(targetCards)
+    }
 
     if (card.freeze) {
         const targetCards = gambleReversed ? otheruserCards : userCards

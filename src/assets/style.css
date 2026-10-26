@@ -483,6 +483,16 @@ body {
     background: linear-gradient(145deg, #b6ffe2, #58d592);
 }
 
+.card.animal {
+    border-color: #ff9e00;
+    background: linear-gradient(145deg, #ffd699, #ff9e00);
+}
+
+.card.plant {
+    border-color: #00ff00;
+    background: linear-gradient(145deg, #9eff9e, #00c600);
+}
+
 .card.lifesteal {
     border-color: #ff0000;
     background: linear-gradient(145deg, #ff9e9e, #c60000);
@@ -526,6 +536,18 @@ body {
     background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(107, 107, 107) 25%, rgb(0, 0, 0) 50%, rgb(123, 124, 124) 75%, rgb(11, 0, 0) 100%);
 }
 
+.card.lightning {
+    border-color: #ffff00;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 255, 0) 25%, rgb(0, 0, 0) 50%, rgb(227, 227, 0) 75%, rgb(11, 0, 0) 100%);
+}
+
+.card.megaice {
+    border-color: #00ffff;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(0, 255, 255) 25%, rgb(0, 0, 0) 50%, rgb(0, 227, 227) 75%, rgb(11, 0, 0) 100%);
+}
+
 .card.mimic {
     border-color: #ff0051;
     color: #fff;
@@ -551,9 +573,9 @@ body {
 }
 
 .card.kaart {
-    border-color: #00f7ff;
+    border-color: #00ff7b;
     color: #fff;
-    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(0, 242, 255) 25%, rgb(0, 0, 0) 50%, rgb(0, 216, 227) 75%, rgb(11, 0, 0) 100%);
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(0, 255, 128) 25%, rgb(0, 0, 0) 50%, rgb(0, 227, 113) 75%, rgb(11, 0, 0) 100%);
 }
 
 .card.gamble {
@@ -566,6 +588,18 @@ body {
     border-color: #6600da;
     color: #fff;
     background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgba(151, 0, 227, 1) 25%, rgb(0, 0, 0) 50%, rgba(151, 0, 227, 1) 75%, rgb(0, 0, 0) 100%);
+}
+
+.card.bonus {
+    border-color: #da00b6;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(218, 0, 156) 25%, rgb(0, 0, 0) 50%, rgb(218, 0, 164) 75%, rgb(0, 0, 0) 100%);
+}
+
+.card.boss {
+    border-color: #780000;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(169, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(91, 1, 1) 75%, rgb(11, 0, 0) 100%);
 }
 
 .card.rainbow {

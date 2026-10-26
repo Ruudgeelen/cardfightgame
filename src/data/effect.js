@@ -168,6 +168,13 @@ export function FreezeEffect(UserCards) {
     return UserCards
 }
 
+export function applyFreezeAdd(userCards) {
+    for (let i = 0; i < userCards.value.length; i++) {
+        userCards.value[i].freeze = true
+    }
+    return userCards
+}
+
 export function GambleEffect(Card, UserCards) {
     applyGambleToCards(Card, UserCards.value)
     return UserCards
@@ -208,4 +215,11 @@ export function FreezeEffectMultiplayer(UserCards) {
 export function GambleEffectMultiplayer(Card, UserCards) {
     applyGambleToCards(Card, UserCards)
     return UserCards
+}
+
+export function applyFreezeAddMultiplayer(userCards) {
+    for (let i = 0; i < userCards.length; i++) {
+        userCards[i].freeze = true
+    }
+    return userCards
 }

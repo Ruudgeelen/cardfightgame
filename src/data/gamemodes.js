@@ -88,6 +88,9 @@ export function GetGameModeCardsMultplayer(GameMode, cardslist) {
     }
     return cardslist
 }
+
+// ================================
+
 function addStartingBurnEffect(card) {
     card.effect = 'burn'
     card.effectvalue = 1

@@ -41,6 +41,17 @@ export function HealAdd(Card, UserCards) {
 
     return UserCards
 }
+export function HealAddAdd(card, UserCards) {
+    for (let i = 0; i < UserCards.value.length; i++) {
+        if (UserCards.value[i].healadd) {
+            UserCards.value[i].healadd += card.healaddadd
+        }
+        else {
+            UserCards.value[i].healadd = card.healaddadd || 0
+        }
+    }
+    return UserCards
+}
 
 
 // ================================
@@ -92,5 +103,16 @@ export function HealAddMultiplayer(
             (Number(Card.healadd) || 0)
     }
 
+    return UserCards
+}
+export function HealAddAddMultiplayer(card, UserCards) {
+    for (let i = 0; i < UserCards.length; i++) {
+        if (UserCards[i].healadd) {
+            UserCards[i].healadd += card.healaddadd
+        }
+        else {
+            UserCards[i].healadd = card.healaddadd || 0
+        }
+    }
     return UserCards
 }

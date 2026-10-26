@@ -43,12 +43,32 @@ export function AttackAdd(Card, UserCards) {
 
     return UserCards
 }
-
+export function AttackAddAdd(Card, UserCards) {
+    for (let i = 0; i < UserCards.value.length; i++) {
+        if (UserCards.value[i].attackadd) {
+            UserCards.value[i].attackadd += Card.attackaddadd
+        }
+        else {
+            UserCards.value[i].attackadd = Card.attackaddadd || 0
+        }
+    }
+    return UserCards
+}
 
 // ================================
 // MULTIPLAYER
 // ================================
-
+export function AttackAddAddMultiplayer(Card, UserCards) {
+    for (let i = 0; i < UserCards.length; i++) {
+        if (UserCards[i].attackadd) {
+            UserCards[i].attackadd += Card.attackadd
+        }
+        else {
+            UserCards[i].attackadd = Card.attackadd || 0
+        }
+    }
+    return UserCards
+}
 export function PlayerAttackMultiplayer(
     Card,
     EnemyHealth,

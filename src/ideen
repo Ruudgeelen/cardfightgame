@@ -1,12 +1,12 @@
 Keybinds for cards
 game over zie je andere mensen zijn kaarten 
-beurt overslaan kaart
 Naam bij multiplayer
+
+++1 attack / heal
 
 Types: 
 - Lock
-- Plants
-- Animals
+- Boss (++1 attack / heal)
 
 Effects: 
 - Posion (attack over meer turns)
@@ -15,8 +15,8 @@ Effects:
 
 gamemodes:
 - kaart kiezen als je net jou kaart hebt gebruikt
-- All gamble cards
-- All minic cards
+- Alleen de icoontjes (dus niet de text) (attack icoontje maar je weet niet hoeveel attack)
+
 
 
 
