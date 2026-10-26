@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 import '../assets/style.css'
 
 function getRandomGameMode() {
-    const gameModes = ['normal', 'gamble', 'mimic', 'burn']
+    const gameModes = ['normal', 'gamble', 'mimic', 'burn', 'freeze', 'wind', 'earth']
     const randomIndex = Math.floor(Math.random() * gameModes.length)
     return gameModes[randomIndex]
 }
@@ -40,6 +40,12 @@ onMounted(() => {
                 🃏 Normal Game
             </RouterLink>
 
+            <RouterLink class="random-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: getRandomGameMode()}, }">
+                🃏 Random Game
+            </RouterLink>
+
+            <br />
+
             <RouterLink class="gamble-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: 'gamble'}, }">
                 🃏 Gamble Game
             </RouterLink>
@@ -52,9 +58,18 @@ onMounted(() => {
                 🃏 Burn Game
             </RouterLink>
 
-            <RouterLink class="random-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: getRandomGameMode()}, }">
-                🃏 Random Game
+            <RouterLink class="freeze-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: 'freeze'}, }">
+                🃏 Freeze Game
             </RouterLink>
+
+            <RouterLink class="wind-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: 'wind'}, }">
+                🃏 Wind Game
+            </RouterLink>
+
+            <RouterLink class="earth-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: 'earth'}, }">
+                🃏 Earth Game
+            </RouterLink> 
+
             </div>
 
             <div class="gamemodemultiplayer">
@@ -62,6 +77,12 @@ onMounted(() => {
             <RouterLink class="normal-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'normal'}, }">
                 🃏 Normal Game
             </RouterLink>
+
+            <RouterLink class="random-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: getRandomGameMode()}, }">
+                🃏 Random Game
+            </RouterLink>
+
+            <br />
 
             <RouterLink class="gamble-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'gamble'}, }">
                 🃏 Gamble Game
@@ -75,8 +96,16 @@ onMounted(() => {
                 🃏 Burn Game
             </RouterLink>
 
-            <RouterLink class="random-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: getRandomGameMode()}, }">
-                🃏 Random Game
+            <RouterLink class="freeze-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'freeze'}, }">
+                🃏 Freeze Game
+            </RouterLink>
+
+            <RouterLink class="wind-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'wind'}, }">
+                🃏 Wind Game
+            </RouterLink>
+
+            <RouterLink class="earth-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'earth'}, }">
+                🃏 Earth Game
             </RouterLink>
             </div>
         </div>
@@ -157,6 +186,9 @@ onMounted(() => {
 .gamble-button,
 .mimic-button,
 .burn-button,
+.freeze-button,
+.wind-button,
+.earth-button,
 .random-button {
     display: block;
     width: 220px;
@@ -201,10 +233,28 @@ onMounted(() => {
     box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
 }
 
+.freeze-button {
+    background: linear-gradient(135deg, #3bf6f0, #1eafa5);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.wind-button {
+    background: linear-gradient(135deg, #eefcff, #919191);
+    box-shadow: 0 5px 15px rgba(89, 89, 89, 0.3);
+}
+
+.earth-button {
+    background: linear-gradient(135deg, #a3e635, #4d7c0f);
+    box-shadow: 0 5px 15px rgba(163, 230, 53, 0.3);
+}
+
 .normal-button:hover,
 .gamble-button:hover,
 .mimic-button:hover,
 .burn-button:hover,
+.freeze-button:hover,
+.wind-button:hover,
+.earth-button:hover,
 .random-button:hover {
     transform: translateY(-3px);
 }
@@ -213,6 +263,9 @@ onMounted(() => {
 .gamble-button:active,
 .mimic-button:active,
 .burn-button:active,
+.freeze-button:active,
+.wind-button:active,
+.earth-button:active,
 .random-button:active {
     transform: translateY(0);
 }

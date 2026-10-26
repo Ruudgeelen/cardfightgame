@@ -140,6 +140,8 @@ export const cards = [
         name: 'Legendary Flower',
         attack: 12,
         heal: 18,
+        burn: 1,
+        burnTurns: 1,
         healthbaradd: 5,
         type: 'legendary'
     },
@@ -147,6 +149,7 @@ export const cards = [
         name: 'Legendary Warrior',
         attack: 18,
         heal: 12,
+        freeze: true,
         attackadd: 1,
         type: 'legendary'
     },
