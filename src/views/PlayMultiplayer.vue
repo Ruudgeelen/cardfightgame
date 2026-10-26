@@ -133,6 +133,17 @@ function useCard(card, index) {
     )
 }
 
+function skipTurn() {
+    if (!playerTurn.value || gameOver.value) {
+        return
+    }
+
+    socket.emit(
+        'skipTurn',
+        roomCode.value
+    )
+}
+
 onMounted(() => {
     console.log(
         '🎮 Multiplayer geladen'
@@ -312,6 +323,14 @@ onUnmounted(() => {
 
                 <Health :health="playerHealth" :max-health="playerMaxHealth" />
 
+                <button
+                    class="skip-turn-button"
+                    :disabled="!playerTurn || gameOver"
+                    @click="skipTurn"
+                >
+                    Beurt overslaan (+1 kaart)
+                </button>
+
                 <PlayerCards :cards="playerCards" :ai-turn="!playerTurn" :last-player-card="{}"
                     @use-card="useCard" />
 
@@ -408,6 +427,16 @@ onUnmounted(() => {
 .player-section {
     background: linear-gradient(145deg, rgba(24, 79, 91, 0.34), rgba(12, 20, 42, 0.68));
     border: 1px solid rgba(99, 230, 193, 0.24);
+}
+
+.skip-turn-button {
+    margin: 4px 0 16px;
+    padding: 9px 16px;
+}
+
+.skip-turn-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 .player-title {

@@ -163,6 +163,69 @@ function getPlayerNumber(room, socketId) {
     return 0
 }
 
+function skipPlayerTurn(roomCode, socket) {
+    const room =
+        rooms[roomCode]
+
+    if (!room || !room.game) {
+        return
+    }
+
+    const playerNumber =
+        getPlayerNumber(
+            room,
+            socket.id
+        )
+
+    if (
+        playerNumber === 0 ||
+        room.game.gameOver ||
+        room.game.turn !== playerNumber
+    ) {
+        return
+    }
+
+    const enemyNumber =
+        playerNumber === 1
+            ? 2
+            : 1
+
+    const player =
+        room.game.players[playerNumber]
+
+    const enemy =
+        room.game.players[enemyNumber]
+
+    if (room.game.cardstapel.length === 0) {
+        room.game.cardstapel =
+            GetNewStapelMultiplayer(
+                player.cards,
+                enemy.cards,
+                room.game.gameMode
+            )
+    }
+
+    const extraCard =
+        GetNewCardMultiplayer(
+            room.game.cardstapel
+        )
+
+    if (!extraCard) {
+        return
+    }
+
+    player.cards.push(extraCard)
+
+    if (playerNumber === 2) {
+        room.game.turnsPlayed += 1
+    }
+
+    room.game.turn =
+        enemyNumber
+
+    sendGameState(roomCode)
+}
+
 
 /* =========================================
    GAME STATE NAAR SPELERS
@@ -391,7 +454,6 @@ player.lastCard = result.lastuserCard
 enemy.lastCard = result.lastotheruserCard
 
 room.game.cardstapel = result.cardstapel
-room.game.gameMode = result.gameMode
     
     /* ==============================
        WINST
@@ -646,6 +708,25 @@ io.on('connection', (socket) => {
                 socket,
                 data.cardId,
                 data.cardIndex
+            )
+        }
+    )
+
+    /* =====================================
+       BEURT OVERSLAAN
+    ===================================== */
+
+    socket.on(
+        'skipTurn',
+        (roomCode) => {
+            const code =
+                String(roomCode || '')
+                    .toUpperCase()
+                    .trim()
+
+            skipPlayerTurn(
+                code,
+                socket
             )
         }
     )

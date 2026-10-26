@@ -118,6 +118,36 @@ function useCard(card, index) {
     }
 }
 
+function skipTurn() {
+    if (
+        aiTurn.value ||
+        Playerdeath(playerHealth.value) ||
+        Enemydeath(enemyHealth.value)
+    ) {
+        return
+    }
+
+    if (cardstapel.value.length === 0) {
+        cardstapel.value =
+            GetNewStapel(
+                playerCards.value,
+                enemyCards.value
+            )
+    }
+
+    const extraCard =
+        GetNewCard(
+            cardstapel.value
+        )
+
+    if (!extraCard) {
+        return
+    }
+
+    playerCards.value.push(extraCard)
+    aiTurn.value = true
+}
+
 
 // AI attacks
 function aiAttack() {
@@ -241,6 +271,13 @@ function aiAttack() {
 
         </section>
         <section class="battle-section player-section game-controls">
+            <button
+                class="skip-turn-button"
+                :disabled="aiTurn || playerHealth <= 0 || enemyHealth <= 0"
+                @click="skipTurn"
+            >
+                Beurt overslaan (+1 kaart)
+            </button>
             <button @click="resetGame()">Reset Game</button>
         </section>
 
@@ -419,6 +456,11 @@ button {
 
 .game-controls button {
     padding: 8px 16px;
+}
+
+.skip-turn-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 hr {
