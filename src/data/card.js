@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { cards } from '../data/cardslist.js'
 import { GetGameModeCards, GetGameModeCardsMultplayer } from '../data/gamemodes.js'
 const cardslist = ref(cards)
+const multiplayercardslist = []
 const deck = ref([])
 const selectedCards = ref([])
 
@@ -60,8 +61,6 @@ export function GetNewStapel(playerCards, enemyCards) {
         () => Math.random() - 0.5
     )
 
-    console.log('schudden')
-
     for (let i = 0; i < cardlist.length; i++) {
 
         let inGebruik = false
@@ -114,21 +113,19 @@ export function RemoveCard(cardlist) {
 // MULTIPLAYER
 // ================================
 
-export function GetCardsMultiplayer(gameMode) {
-    const multiplayerCards = cardslist.value.map(
-        (card, index) => ({
-            ...card,
-            id: index + 1
-        })
-    )
-
-    console.log('GameMode: ', gameMode)
+export function GetCardsMultiplayer(gameMode, beginningCards) {
+    if (beginningCards) {
+        multiplayercardslist= cardslist.value.map(
+            (card, index) => ({
+                ...card,
+                id: index + 1
+            })
+        )
+    }
     const gameModeCards = GetGameModeCardsMultplayer(
         gameMode,
-        multiplayerCards
+        multiplayercardslist
     )
-    console.log('GetCards: ', cardslist)
-
 
     return gameModeCards
 }
@@ -178,7 +175,7 @@ export function GetNewStapelMultiplayer(
     enemyCards
 ) {
     const allCards =
-        GetCardsMultiplayer(gameMode)
+        GetCardsMultiplayer(gameMode, false)
 
     const cardlist = [...allCards]
 

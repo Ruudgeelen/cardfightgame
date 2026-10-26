@@ -135,6 +135,12 @@ export function game(
 
     }
 
+        userCards.value =
+        BurnDamage(
+            userCards
+        ).value
+
+
 
     if ( cardstapel.value.length === 0 || card.stapel === 'shake') {
         cardstapel.value =
@@ -215,11 +221,6 @@ if (userCards.value.length < aantalcards) {
     )
 }
     
-
-    userCards.value =
-        BurnDamage(
-            userCards
-        ).value
 
     if (
         Playerdeath(userHealth.value) ||
@@ -405,6 +406,16 @@ export function gameMultiplayer(
         GambleEffectMultiplayer(card, targetCards)
     }
 
+    
+    // =================================
+    // BURN DAMAGE
+    // =================================
+
+    userCards =
+        BurnDamageMultiplayer(
+            userCards
+        )
+
 
     // =================================
     // NIEUWE STAPEL
@@ -502,16 +513,6 @@ export function gameMultiplayer(
             GetNewCard(cardstapel)
         )
     }
-
-    // =================================
-    // BURN DAMAGE
-    // =================================
-
-    userCards =
-        BurnDamageMultiplayer(
-            userCards
-        )
-
 
     // =================================
     // DOOD
