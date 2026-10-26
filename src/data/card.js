@@ -114,13 +114,19 @@ export function RemoveCard(cardlist) {
 
 export function GetCardsMultiplayer(gameMode, beginningCards) {
     if (beginningCards) {
-        const multiplayercardslist = cardslist.value.map(
-            (card, index) => ({
-                ...card,
-                id: index + 1
-            })
-        )
+        const gameModeCards = GetGameModeCardsMultplayer(
+        gameMode,
+        multiplayercardslist
+    )
+
+    return gameModeCards
     }
+    const multiplayercardslist = cardslist.value.map(
+        (card, index) => ({
+            ...card,
+            id: index + 1
+        })
+    )
     const gameModeCards = GetGameModeCardsMultplayer(
         gameMode,
         multiplayercardslist
