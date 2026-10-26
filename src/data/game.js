@@ -426,7 +426,8 @@ export function gameMultiplayer(
         cardstapel =
             GetNewStapelMultiplayer(
                 userCards,
-                otheruserCards
+                otheruserCards,
+                gameMode
             )
     }
     if (card.stapel === 'newdeck') {
@@ -435,7 +436,8 @@ export function gameMultiplayer(
                 cardstapel =
                     GetNewStapelMultiplayer(
                     userCards,
-                    otheruserCards
+                    otheruserCards,
+                    gameMode
                 )
             }
             userCards[i] = GetNewCard(cardstapel)
@@ -447,7 +449,8 @@ export function gameMultiplayer(
                 cardstapel =
                     GetNewStapelMultiplayer(
                     userCards,
-                    otheruserCards
+                    otheruserCards,
+                    gameMode
                 )
             }
             otheruserCards[i] = GetNewCard(cardstapel)
@@ -475,7 +478,8 @@ export function gameMultiplayer(
             cardstapel =
                 GetNewStapelMultiplayer(
                     userCards,
-                    otheruserCards
+                    otheruserCards,
+                    gameMode
                 )
             }
             targetCards.push(GetNewCard(cardstapel)
@@ -492,7 +496,8 @@ export function gameMultiplayer(
         cardstapel =
             GetNewStapelMultiplayer(
                 userCards,
-                otheruserCards
+                otheruserCards,
+                gameMode
             )
     }
     userCards[index] =
@@ -504,7 +509,8 @@ export function gameMultiplayer(
             cardstapel =
                 GetNewStapelMultiplayer(
                     userCards,
-                    otheruserCards
+                    otheruserCards,
+                    gameMode
                 )
         }
         userCards.push(
