@@ -504,7 +504,7 @@ body {
 }
 
 .card.ghost {
-    border-color: #888888;
+    border-color: #e0e0e0;
     background: linear-gradient(145deg, #eeeeee, #bdbdbd);
 }
 
@@ -537,9 +537,9 @@ body {
 }
 
 .card.lightning {
-    border-color: #ffff00;
+    border-color: #ffc800;
     color: #fff;
-    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 255, 0) 25%, rgb(0, 0, 0) 50%, rgb(227, 227, 0) 75%, rgb(11, 0, 0) 100%);
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(255, 179, 0) 25%, rgb(0, 0, 0) 50%, rgb(227, 159, 0) 75%, rgb(11, 0, 0) 100%);
 }
 
 .card.megaice {
