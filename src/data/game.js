@@ -140,8 +140,6 @@ export function game(
             userCards
         ).value
 
-
-
     if ( cardstapel.value.length === 0 || card.stapel === 'shake') {
         cardstapel.value =
             GetNewStapel(
@@ -221,6 +219,7 @@ if (userCards.value.length < aantalcards) {
     )
 }
     
+
 
     if (
         Playerdeath(userHealth.value) ||
@@ -406,7 +405,6 @@ export function gameMultiplayer(
         GambleEffectMultiplayer(card, targetCards)
     }
 
-    
     // =================================
     // BURN DAMAGE
     // =================================
@@ -513,6 +511,9 @@ export function gameMultiplayer(
             GetNewCard(cardstapel)
         )
     }
+
+
+
 
     // =================================
     // DOOD

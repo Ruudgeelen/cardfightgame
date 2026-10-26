@@ -60,6 +60,8 @@ export function GetNewStapel(playerCards, enemyCards) {
         () => Math.random() - 0.5
     )
 
+    console.log('schudden')
+
     for (let i = 0; i < cardlist.length; i++) {
 
         let inGebruik = false
@@ -112,25 +114,21 @@ export function RemoveCard(cardlist) {
 // MULTIPLAYER
 // ================================
 
-export function GetCardsMultiplayer(gameMode, beginningCards) {
-    if (beginningCards) {
-        const gameModeCards = GetGameModeCardsMultplayer(
-        gameMode,
-        multiplayercardslist
-    )
-
-    return gameModeCards
-    }
-    const multiplayercardslist = cardslist.value.map(
+export function GetCardsMultiplayer(gameMode) {
+    const multiplayerCards = cardslist.value.map(
         (card, index) => ({
             ...card,
             id: index + 1
         })
     )
+
+    console.log('GameMode: ', gameMode)
     const gameModeCards = GetGameModeCardsMultplayer(
         gameMode,
-        multiplayercardslist
+        multiplayerCards
     )
+    console.log('GetCards: ', cardslist)
+
 
     return gameModeCards
 }
@@ -180,7 +178,7 @@ export function GetNewStapelMultiplayer(
     enemyCards
 ) {
     const allCards =
-        GetCardsMultiplayer(gameMode, false)
+        GetCardsMultiplayer(gameMode)
 
     const cardlist = [...allCards]
 
