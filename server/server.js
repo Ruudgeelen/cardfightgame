@@ -99,7 +99,7 @@ function generateRoomCode() {
 
 function createGame(gameMode) {
     const allCards =
-        GetCardsMultiplayer(gameMode, true)
+        GetCardsMultiplayer(gameMode)
 
     const cardstapel =
         GetStapelMultiplayer(allCards)
