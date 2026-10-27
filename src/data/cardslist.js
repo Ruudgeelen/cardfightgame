@@ -798,6 +798,15 @@ export const cards = [
         type: 'storm'
     },
 
+    // WORLD 
+    {
+        name: 'World',
+        attack: 0,
+        heal: 0,
+        morecards: 10,
+        type: 'world'
+    },
+
     // LIGHTNING
     {
         name: 'Lightning Strike',
@@ -807,33 +816,6 @@ export const cards = [
         burn: 3,
         burnTurns: 1,
         type: 'lightning'
-    },
-
-    // MIMIC
-    {
-        name: 'Mimic',
-        attack: 20,
-        heal: 20,
-        faketype: getRandomCardType(),
-        type: 'mimic'
-    },
-    {
-        name: 'Mimic',
-        attack: 10,
-        heal: 10,
-        attackadd: 1,
-        healadd: 1,
-        faketype: getRandomCardType(),
-        type: 'mimic'
-    },
-    {
-        name: 'Mimic',
-        attack: 15,
-        heal: 15,
-        removecardnummer: 1,
-        morecards: 1,
-        faketype: getRandomCardType(),
-        type: 'mimic'
     },
 
     // HELL
@@ -864,6 +846,26 @@ export const cards = [
         type: 'megaice'
     },
 
+    // MEGAHEAL
+    {
+        name: 'Megaheal',
+        attack: 0,
+        heal: 50,
+        healadd: 3,
+        healthbaradd: 10,
+        type: 'megaheal'
+    },
+
+    // HEAVEN
+    {
+        name: 'Heavenly Blessing',
+        attack: 5,
+        heal: 5,
+        attackadd: 5,
+        healadd: 5,
+        type: 'heaven'
+    },
+
     // TROLL
     {
         name: 'Clown',
@@ -886,59 +888,6 @@ export const cards = [
         attackadd: -1,
         healadd: -1,
         type: 'troll'
-    },
-
-    // MEGAHEAL
-    {
-        name: 'Megaheal',
-        attack: 0,
-        heal: 50,
-        healadd: 3,
-        healthbaradd: 10,
-        type: 'megaheal'
-    },
-
-    // HEAVEN
-    {
-        name: 'Heavenly Blessing',
-        attack: 5,
-        heal: 5,
-        attackadd: 5,
-        healadd: 5,
-        type: 'heaven'
-    },
-
-    // KAART
-    {
-        name: 'Shake',
-        attack: 0,
-        heal: 0,
-        stapel: 'shake',
-        type: 'kaart'
-    },
-    {
-        name: 'New Deck',
-        attack: 0,
-        heal: 0,
-        stapel: 'newdeck',
-        type: 'kaart'
-    },
-    {
-        name: 'New Deck Other',
-        attack: 0,
-        heal: 0,
-        stapel: 'newdeckother',
-        type: 'kaart'
-    },
-
-    // GAMBLE
-    {
-        name: 'Gamble',
-        attack: 0,
-        heal: 0,
-        gamble: true,
-        gambleCards: 3,
-        type: 'gamble'
     },
 
     // BOSS
@@ -978,8 +927,74 @@ export const cards = [
         attack: 10,
         heal: 10,
         healaddadd: 1,
+        type: 'bonus'
+    },
+    {
+        name: 'Bonus Card',
+        attack: 10,
+        heal: 10,
         attackaddadd: 1,
         type: 'bonus'
+    },
+
+     // MIMIC
+    {
+        name: 'Mimic',
+        attack: 20,
+        heal: 20,
+        faketype: getRandomCardType(),
+        type: 'mimic'
+    },
+    {
+        name: 'Mimic',
+        attack: 10,
+        heal: 10,
+        attackadd: 1,
+        healadd: 1,
+        faketype: getRandomCardType(),
+        type: 'mimic'
+    },
+    {
+        name: 'Mimic',
+        attack: 15,
+        heal: 15,
+        removecardnummer: 1,
+        morecards: 1,
+        faketype: getRandomCardType(),
+        type: 'mimic'
+    },
+
+    // KAART
+    {
+        name: 'Shake',
+        attack: 0,
+        heal: 0,
+        stapel: 'shake',
+        type: 'kaart'
+    },
+    {
+        name: 'New Deck',
+        attack: 0,
+        heal: 0,
+        stapel: 'newdeck',
+        type: 'kaart'
+    },
+    {
+        name: 'New Deck Other',
+        attack: 0,
+        heal: 0,
+        stapel: 'newdeckother',
+        type: 'kaart'
+    },
+
+    // GAMBLE
+    {
+        name: 'Gamble',
+        attack: 0,
+        heal: 0,
+        gamble: true,
+        gambleCards: 3,
+        type: 'gamble'
     },
 
     // RAINBOW

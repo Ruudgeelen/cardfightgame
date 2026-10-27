@@ -7,13 +7,17 @@ Types:
 
 Effects: 
 - Posion (attack over meer turns)
+- Blind (kan je eigen kaart niet zien)
+- Light (kan je de ander kaart zien)
+- Flip (flip de kaart)
 - Lock (locks je kaart)
 - Healer (heal je over meer turns)
 
 gamemodes:
 - kaart kiezen als je net jou kaart hebt gebruikt
 - Alleen de icoontjes (dus niet de text) (attack icoontje maar je weet niet hoeveel attack)
-
+- attack add 
+- heal add 
 
 
 

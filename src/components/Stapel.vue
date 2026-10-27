@@ -1,6 +1,6 @@
 <script setup>
 import '../assets/style.css'
-
+import { getCardType } from '../data/cardTypes.js'
 defineProps({
     cards: {
         type: Array,
@@ -18,15 +18,14 @@ defineProps({
         <h2>🃏 Volgende kaarten: {{ cards.length }}</h2>
 
         <div class="deck">
-            <div
-                v-for="(card, index) in cards.slice(0, settings)"
-                :key="card.id"
-                class="deck-card"
-            >
-                <div :class="[
-                    'card',
-                    'deck-card-face',
-                    card.faketype ? card.faketype : card.type]">
+            <div v-for="(card, index) in cards.slice(0, settings)" :key="card.id" class="deck-card">
+                <div :class="[ 'card', 'deck-card-face', card.faketype ? card.faketype : card.type]">
+                    <div v-if="card.faketype" class="hidden-icon">
+                        {{ getCardType(card.faketype).icon }}
+                    </div>
+                    <div v-else class="hidden-icon">
+                        {{ getCardType(card.type).icon }}
+                    </div>
                 </div>
             </div>
         </div>

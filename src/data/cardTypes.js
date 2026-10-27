@@ -30,6 +30,7 @@ export const cardTypes = {
     megaheal: { name: 'Megaheal', icon: '💖' },
     heaven: { name: 'Heaven', icon: '👼' },
     storm: { name: 'Storm', icon: '🌩️' },
+    world: { name: 'World', icon: '🌎' },
     megaice: { name: 'Mega Ice', icon: '☃️' },
     mimic: { name: 'Mimic', icon: '🎭' },
     kaart: { name: 'Kaart', icon: '🎴' },
