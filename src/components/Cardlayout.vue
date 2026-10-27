@@ -33,6 +33,7 @@ defineProps({
             <p v-if="card.freeze" class="card-stat"><span>❄️</span></p>
             <p v-if="card.freezeadd" class="card-stat"><span>🧊</span><b></b></p>
             <p v-if="card.burn" class="card-stat"><span>🔥</span><b>{{ card.burn }} <small>⏳ {{ card.burnTurns }}</small></b></p>
+            <p v-if="card.lock" class="card-stat"><span>🔒</span><b>{{ card.lock }} <small>⏳ {{ card.lockTurns }}</small></b></p>
             <p v-if="card.healthbaradd" class="card-stat"><span>💚</span><b>{{ card.healthbaradd }}</b></p>
             <p v-if="card.healthbarremove" class="card-stat"><span>💔</span><b>{{ card.healthbarremove }}</b></p>
             <p v-if="card.attackadd" class="card-stat"><span>🔪</span><b>+{{ card.attackadd }}</b></p>
@@ -42,7 +43,6 @@ defineProps({
             <p v-if="card.removecardnummer" class="card-stat"><span>🗑️</span><b>{{ card.removecardnummer }}</b></p>
             <p v-if="card.morecards" class="card-stat"><span>🃏</span><b>{{ card.morecards }}</b></p>
             <p v-if="card.stapel" class="card-stat"><span>🎴</span><b>{{ card.stapel }}</b></p>
-            <p v-if="card.gamble" class="card-stat"><span>🎲</span><b>Gamble</b></p>
             <p v-if="card.gambleCards" class="card-stat"><span>🎲</span><b>{{ card.gambleCards }}</b></p>
      </div>
 

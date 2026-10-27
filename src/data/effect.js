@@ -13,7 +13,7 @@ function setEffects(card, effects) {
         : uniqueEffects[0] || ""
 }
 
-function addEffect(card, effect, value = "", turns = "") {
+export function addCardEffect(card, effect, value = "", turns = "") {
     const effects = effectList(card)
     if (!effects.includes(effect)) {
         effects.push(effect)
@@ -32,6 +32,14 @@ function addEffect(card, effect, value = "", turns = "") {
     // Keep the old fields available for existing cards and UI.
     card.effectvalue = value
     card.effectturns = turns
+}
+
+export function applyEffectToCards(cards, effect, value = "", turns = "") {
+    for (const card of cards) {
+        addCardEffect(card, effect, value, turns)
+    }
+
+    return cards
 }
 
 function removeEffect(card, effect) {
@@ -70,6 +78,38 @@ function effectValue(card, effect) {
     return card.effectvalues?.[effect] ?? card.effectvalue
 }
 
+function updateEffectTurns(card, effect) {
+    if (!hasEffect(card, effect)) {
+        return
+    }
+
+    const turns = Number(effectTurns(card, effect))
+    if (!Number.isFinite(turns)) {
+        return
+    }
+
+    if (turns <= 1) {
+        removeEffect(card, effect)
+        return
+    }
+
+    card.effectturnsmap = {
+        ...(card.effectturnsmap || {}),
+        [effect]: turns - 1
+    }
+    if (effectList(card).length === 1) {
+        card.effectturns = turns - 1
+    }
+}
+
+function updateEffectTurnsForCards(cards, effect) {
+    for (const card of cards) {
+        updateEffectTurns(card, effect)
+    }
+
+    return cards
+}
+
 function clearBurnAndFreeze(card) {
     removeEffect(card, "burn")
     removeEffect(card, "freeze")
@@ -81,7 +121,7 @@ function applyBurn(card, burnValue, burnTurns) {
         return
     }
 
-    addEffect(card, "burn", burnValue, burnTurns)
+    addCardEffect(card, "burn", burnValue, burnTurns)
 }
 
 function applyFreeze(card) {
@@ -90,11 +130,11 @@ function applyFreeze(card) {
         return
     }
 
-    addEffect(card, "freeze", "", "Forever")
+    addCardEffect(card, "freeze", "", "Forever")
 }
 
 function applyGamble(card) {
-    addEffect(card, "gamble", "", "Forever")
+    addCardEffect(card, "gamble", "", "Forever")
 }
 
 function applyGambleToCards(card, cards) {
@@ -143,6 +183,41 @@ function updateBurnDamage(card) {
 // ================================
 // SINGLEPLAYER
 // ================================
+
+export function applyLockEffect(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.lock) || 0, 0),
+        userCards.value.length
+    )
+    const selectedCards = getRandomCards(userCards.value, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "lock",
+        "",
+        card.lockTurns ?? "Forever"
+    )
+
+    return userCards
+}
+
+export function updateLockTurns(userCards) {
+    updateEffectTurnsForCards(userCards.value, "lock")
+    return userCards
+}
+
+function getRandomCards(cards, amount) {
+    const availableCards = [...cards]
+
+    for (let i = availableCards.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1))
+        const currentCard = availableCards[i]
+        availableCards[i] = availableCards[randomIndex]
+        availableCards[randomIndex] = currentCard
+    }
+
+    return availableCards.slice(0, amount)
+}
 
 export function BurnEffect(Card, UserCards) {
     for (const userCard of UserCards.value) {
@@ -215,6 +290,28 @@ export function FreezeEffectMultiplayer(UserCards) {
 export function GambleEffectMultiplayer(Card, UserCards) {
     applyGambleToCards(Card, UserCards)
     return UserCards
+}
+
+export function applyLockEffectMultiplayer(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.lock) || 0, 0),
+        userCards.length
+    )
+    const selectedCards = getRandomCards(userCards, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "lock",
+        "",
+        card.lockTurns ?? "Forever"
+    )
+
+    return userCards
+}
+
+export function updateLockTurnsMultiplayer(userCards) {
+    updateEffectTurnsForCards(userCards, "lock")
+    return userCards
 }
 
 export function applyFreezeAddMultiplayer(userCards) {

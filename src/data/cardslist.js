@@ -94,7 +94,8 @@ export const cards = [
         name: 'Unique Beast',
         attack: 10,
         heal: 10,
-        healadd: 3,
+        lock: 1,
+        lockTurns: 2,
         type: 'unique'
     },
     {
@@ -291,7 +292,8 @@ export const cards = [
         name: 'Lion',
         attack: 12,
         heal: 6,
-        attackadd: 1,
+        lock: 1,
+        lockTurns: 1,
         type: 'animal'
     },
     {
@@ -407,6 +409,14 @@ export const cards = [
         morecards: 1,
         type: 'dragon'
     },
+    {
+        name: 'Lock Dragon',
+        attack: 15,
+        heal: 0,
+        lock: 2,
+        lockTurns: 1,
+        type: 'dragon'
+    },
 
     // UNDEAD
     {
@@ -510,6 +520,8 @@ export const cards = [
         attack: 20,
         heal: 0,
         healthbaradd: 1,
+        lock: 1,
+        lockTurns: 1,
         healthbarremove: -1,
         type: 'space'
     },
@@ -550,6 +562,48 @@ export const cards = [
         heal: 0,
         attackadd: 2,
         type: 'dark'
+    },
+
+    // LOCK
+    {
+        name: 'Lockers',
+        attack: 4,
+        heal: 4,
+        lock: 3,
+        lockTurns: 1,
+        type: 'lock'
+    },
+    {
+        name: 'Locksmith',
+        attack: 5,
+        heal: 5,
+        lock: 2,
+        lockTurns: 2,
+        type: 'lock'
+    },
+    {
+        name: 'Lockdown',
+        attack: 6,
+        heal: 6,
+        lock: 1,
+        lockTurns: 3,
+        type: 'lock'
+    },
+    {
+        name: 'Lock Master',
+        attack: 7,
+        heal: 7,
+        lock: 2,
+        lockTurns: 1,
+        type: 'lock'
+    },
+    {
+        name: 'Lock King',
+        attack: 8,
+        heal: 8,
+        lock: 1,
+        lockTurns: 3,
+        type: 'lock'
     },
     
     // FREEZE
@@ -598,6 +652,8 @@ export const cards = [
         attack: -5,
         heal: 0,
         healthbaradd: 5,
+        lock: 1,
+        lockTurns: 1,
         healthbarremove: 3,
         type: 'lifesteal'
     },
@@ -606,6 +662,8 @@ export const cards = [
         attack: 5,
         heal: 25,
         healthbaradd: -1,
+        lock: 1,
+        lockTurns: 3,
         healthbarremove: 3,
         type: 'lifesteal'
     },
@@ -665,6 +723,8 @@ export const cards = [
         name: 'Ghostly Apparition',
         attack: 12,
         heal: 0,
+        lock: 1,
+        lockTurns: 1,
         removecardnummer: 1,
         type: 'ghost'
     },
@@ -672,6 +732,8 @@ export const cards = [
         name: 'Phantom',
         attack: 10,
         heal: 0,
+        lock: 2,
+        lockTurns: 1,
         healthbarremove: -1,
         removecardnummer: 2,
         type: 'ghost'
@@ -798,12 +860,30 @@ export const cards = [
         type: 'storm'
     },
 
+    // CLOSED
+    {
+        name: 'Closed',
+        attack: 0,
+        heal: 0,
+        lock: 10,
+        lockTurns: 1,
+        type: 'closed'
+    },
+    {
+        name: 'Closer',
+        attack: 0,
+        heal: 0,
+        lock: 1,
+        lockTurns: 10,
+        type: 'closed'
+    },
+
     // WORLD 
     {
         name: 'World',
         attack: 0,
         heal: 0,
-        morecards: 10,
+        morecards: 7,
         type: 'world'
     },
 
@@ -997,6 +1077,7 @@ export const cards = [
         type: 'gamble'
     },
 
+
     // RAINBOW
     {
         name: 'Rainbow',
@@ -1004,12 +1085,17 @@ export const cards = [
         heal: 25,
         healthbaradd: 10,
         healthbarremove: 5,
-        healadd: 1,
-        attackadd: 1,
         healaddadd: 1,
         attackaddadd: 1,
-        morecards: 5,
-        removecardnummer: 5,
+        morecards: 3,
+        removecardnummer: 3,
+        lock: 3,
+        lockTurns: 1,
+        burn: 3,
+        burnTurns: 1,
+        gamble: true,
+        gambleCards: 1,
+        freeze: true,
         freezeadd: true,
         type: 'rainbow'
     },

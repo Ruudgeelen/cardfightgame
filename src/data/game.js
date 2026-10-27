@@ -20,7 +20,11 @@ import {
     FreezeEffectMultiplayer,
     GambleEffect,
     GambleEffectMultiplayer,
-    hasCardEffect
+    hasCardEffect,
+    applyLockEffect,
+    applyLockEffectMultiplayer,
+    updateLockTurns,
+    updateLockTurnsMultiplayer,
 } from '../data/effect.js'
 
 import {
@@ -76,6 +80,7 @@ export function game(
         return
     }
 
+    updateLockTurns(userCards)
     lastuserCard.value = card
 
     const gambleReversed =
@@ -104,16 +109,6 @@ export function game(
         targetCards.value = AttackAdd(card, targetCards).value
     }
 
-    if (card.healadd) {
-        const targetCards = gambleReversed ? otheruserCards : userCards
-        targetCards.value = HealAdd(card, targetCards).value
-    }
-
-    if (card.healaddadd) {
-        const targetCards = gambleReversed ? otheruserCards : userCards
-        targetCards.value = HealAddAdd(card, targetCards).value
-    }
-
     if (card.attackaddadd) {
         const targetCards = gambleReversed ? otheruserCards : userCards
         targetCards.value = AttackAddAdd(card, targetCards).value
@@ -122,6 +117,11 @@ export function game(
     if (card.freezeadd) {
         const targetCards = gambleReversed ? otheruserCards : userCards
         targetCards.value = applyFreezeAdd(targetCards).value
+    }
+
+    if (card.lock) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        targetCards.value = applyLockEffect(card, targetCards).value
     }
 
     if (card.freeze) {
@@ -144,6 +144,16 @@ export function game(
         gambleReversed
             ? userMaxHealth.value = RemoveMaxHealth(card, userMaxHealth.value, userHealth.value)
             : otheruserMaxHealth.value = RemoveMaxHealth(card, otheruserMaxHealth.value, otheruserHealth.value)
+    }
+
+    if (card.healadd) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        targetCards.value = HealAdd(card, targetCards).value
+    }
+
+    if (card.healaddadd) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        targetCards.value = HealAddAdd(card, targetCards).value
     }
 
     if (card.gambleCards) {
@@ -320,6 +330,7 @@ export function gameMultiplayer(
         }
     }
 
+    updateLockTurnsMultiplayer(userCards)
 
     // =================================
     // GESPEELDE KAART
@@ -397,6 +408,11 @@ export function gameMultiplayer(
     if (card.freeze) {
         const targetCards = gambleReversed ? otheruserCards : userCards
         FreezeEffectMultiplayer(targetCards)
+    }
+
+    if (card.lock) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        applyLockEffectMultiplayer(card, targetCards)
     }
 
 

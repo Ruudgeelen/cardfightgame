@@ -27,6 +27,7 @@ export function cardTooltip(card) {
         card.freeze && 'Freeze your own cards',
         card.freezeadd && 'Add freeze power to your own cards',
         card.burn && `Burn the opponent cards: ${card.burn} (for ${card.burnTurns} turns)`,
+        card.lock && `Lock the opponent cards: ${card.lock} (for ${card.lockTurns} turns)`,
         card.attackadd && `Attack add to all your cards: ${card.attackadd}`,
         card.healadd && `Heal add to all your cards: ${card.healadd}`,
         card.attackaddadd && `Attack add add to all your cards: ${card.attackaddadd}`,

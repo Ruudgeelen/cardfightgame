@@ -3,7 +3,7 @@
 import '../assets/style.css'
 import Cardlayout from './Cardlayout.vue'
 import { cardTooltip } from '../data/tooltips.js'
-import { effectClasses } from '../data/effectClasses.js'
+import { effectClasses, heeftlockeffect } from '../data/effectClasses.js'
 
 defineProps({
     cards: {
@@ -36,37 +36,18 @@ const emit = defineEmits(['useCard'])
         >
             <h2>Last Player Card</h2>
 
-            <div
-                :class="[
-                    'card',
-                    lastPlayerCard.type,
-                    effectClasses(lastPlayerCard.effect),
-                    'card-modern'
-                ]"
-                :data-tooltip="`${lastPlayerCard.name}\n${cardTooltip(lastPlayerCard)}`"
-            >
-
+            <div :class="['card', lastPlayerCard.type, effectClasses(lastPlayerCard.effect), 'card-modern' ]" :data-tooltip="`${lastPlayerCard.name}\n${cardTooltip(lastPlayerCard)}`" >
                 <Cardlayout :card="lastPlayerCard" />
-
             </div>
-
         </div>
 
 
         <!-- PLAYER CARDS -->
         <div class="cards">
             <div
-                v-for="card, index in cards"
-                :key="card.id"
-                :class="[
-                    'card',
-                    card.type,
-                    effectClasses(card.effect),
-                    'card-modern',
-                    aiTurn ? 'card-disabled' : ''
-                ]"
+                v-for="card, index in cards" :key="card.id" :class="[ 'card', card.type, effectClasses(card.effect), 'card-modern', aiTurn ? 'card-disabled' : '' ]"
                 :data-tooltip="`${card.name}\n${cardTooltip(card)}`"
-                @click="!aiTurn && emit('useCard', card, index)"
+                @click="!aiTurn && !heeftlockeffect(card.effect) && emit('useCard', card, index)"
             >
                     <Cardlayout :card="card" />
 
