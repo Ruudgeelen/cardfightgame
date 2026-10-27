@@ -16,28 +16,97 @@ function effectDetails(card, property) {
     return card[property]
 }
 
+function valueDescription(value, positiveText, negativeText) {
+    const number = Number(value)
+
+    if (number < 0) {
+        return negativeText(Math.abs(number))
+    }
+
+    return positiveText(number)
+}
+
+export function cardStatDescription(card, stat) {
+    const value = card[stat]
+
+    if (value === undefined || value === null) {
+        return ''
+    }
+
+    const descriptions = {
+        attack: (amount) => valueDescription(
+            value,
+            (number) => `Deals ${number} damage to the opponent`,
+            (number) => `Heals the opponent for ${number}`
+        ),
+        heal: (amount) => valueDescription(
+            value,
+            (number) => `Heals you for ${number}`,
+            (number) => `Damages you for ${number}`
+        ),
+        attackadd: () => valueDescription(
+            value,
+            (number) => `Your cards gain ${number} attack`,
+            (number) => `Your cards lose ${number} attack`
+        ),
+        healadd: () => valueDescription(
+            value,
+            (number) => `Your cards gain ${number} healing`,
+            (number) => `Your cards lose ${number} healing`
+        ),
+        attackaddadd: () => valueDescription(
+            value,
+            (number) => `Your cards gain ${number} attack bonus`,
+            (number) => `Your cards lose ${number} attack bonus`
+        ),
+        healaddadd: () => valueDescription(
+            value,
+            (number) => `Your cards gain ${number} healing bonus`,
+            (number) => `Your cards lose ${number} healing bonus`
+        ),
+        healthbaradd: () => valueDescription(
+            value,
+            (number) => `Your maximum health increases by ${number}`,
+            (number) => `Your maximum health decreases by ${number}`
+        ),
+        healthbarremove: () => valueDescription(
+            value,
+            (number) => `Opponent maximum health decreases by ${number}`,
+            (number) => `Opponent maximum health increases by ${number}`
+        )
+    }
+
+    return descriptions[stat]?.() || `${stat}: ${value}`
+}
+
+function statTooltip(card, stat) {
+    return card[stat] !== undefined
+        ? cardStatDescription(card, stat)
+        : ''
+}
+
 export function cardTooltip(card) {
     const effects = effectNames(card)
 
     return [
         card.type && `Type: ${card.type}`,
-        card.faketype && `Fake Type: ${card.faketype}`,
-        card.attack && `Attack on the enemy: ${card.attack}`,
-        card.heal && `Heal your health: ${card.heal}`,
-        card.freeze && 'Freeze your own cards',
-        card.freezeadd && 'Add freeze power to your own cards',
-        card.burn && `Burn the opponent cards: ${card.burn} (for ${card.burnTurns} turns)`,
-        card.lock && `Lock the opponent cards: ${card.lock} (for ${card.lockTurns} turns)`,
-        card.attackadd && `Attack add to all your cards: ${card.attackadd}`,
-        card.healadd && `Heal add to all your cards: ${card.healadd}`,
-        card.attackaddadd && `Attack add add to all your cards: ${card.attackaddadd}`,
-        card.healaddadd && `Heal add add to all your cards: ${card.healaddadd}`,
-        card.removecardnummer && `Remove cards of the opponent: ${card.removecardnummer}`,
-        card.morecards && `Give more cards to yourself: ${card.morecards}`,
-        card.healthbaradd && `Add health to your healthbar: ${card.healthbaradd}`,
-        card.healthbarremove && `Remove health from the opponent healthbar: ${card.healthbarremove}`,
-        card.stapel && `Stapel: ${card.stapel}`,
-        card.gamble && `Maakt ${card.gambleCards || 3} kaarten gamble`,
+        card.faketype && `Fake type: ${card.faketype}`,
+        statTooltip(card, 'attack'),
+        statTooltip(card, 'heal'),
+        card.freeze && 'Freezes all of your cards until the effect is removed',
+        card.freezeadd && 'Makes your cards freeze-capable',
+        card.burn && `Burns all opponent cards for ${card.burn} damage each turn (${card.burnTurns} turn${card.burnTurns === 1 ? '' : 's'})`,
+        card.lock && `Locks ${card.lock} random opponent card${card.lock === 1 ? '' : 's'} for ${card.lockTurns} turn${card.lockTurns === 1 ? '' : 's'}. Locked cards cannot be played`,
+        statTooltip(card, 'attackadd'),
+        statTooltip(card, 'healadd'),
+        statTooltip(card, 'attackaddadd'),
+        statTooltip(card, 'healaddadd'),
+        card.removecardnummer && `Removes ${card.removecardnummer} opponent card${card.removecardnummer === 1 ? '' : 's'}`,
+        card.morecards && `Draws ${card.morecards} extra card${card.morecards === 1 ? '' : 's'}`,
+        statTooltip(card, 'healthbaradd'),
+        statTooltip(card, 'healthbarremove'),
+        card.stapel && `Deck effect: ${card.stapel}`,
+        card.gambleCards && `Makes ${card.gambleCards} random card${card.gambleCards === 1 ? '' : 's'} gamble`,
         effects && `Effects: ${effects}`,
         effectDetails(card, 'effectturnsmap') && `Effect durations: ${effectDetails(card, 'effectturnsmap')}`,
         effectDetails(card, 'effectvalues') && `Effect powers: ${effectDetails(card, 'effectvalues')}`
@@ -49,6 +118,8 @@ export function cardTooltiphide(card) {
 
     return [
         card.faketype ? `Type: ${card.faketype}` : `Type: ${card.type}`,
+        statTooltip(card, 'attack'),
+        statTooltip(card, 'heal'),
         effects && `Effects: ${effects}`,
         effectDetails(card, 'effectturnsmap') && `Effect durations: ${effectDetails(card, 'effectturnsmap')}`,
         effectDetails(card, 'effectvalues') && `Effect powers: ${effectDetails(card, 'effectvalues')}`
