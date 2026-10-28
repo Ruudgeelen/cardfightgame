@@ -95,6 +95,7 @@ export function cardTooltip(card) {
         statTooltip(card, 'heal'),
         card.freeze && 'Freezes all of your cards until the effect is removed',
         card.freezeadd && 'Makes your cards freeze-capable',
+        card.flip && `Flips ${card.flip} random opponent card${card.flip === 1 ? '' : 's'} for ${card.flipTurns} turn${card.flipTurns === 1 ? '' : 's'}. Flipped cards cannot be played`,
         card.burn && `Burns all opponent cards for ${card.burn} damage each turn (${card.burnTurns} turn${card.burnTurns === 1 ? '' : 's'})`,
         card.lock && `Locks ${card.lock} random opponent card${card.lock === 1 ? '' : 's'} for ${card.lockTurns} turn${card.lockTurns === 1 ? '' : 's'}. Locked cards cannot be played`,
         card.blind && `Blinds ${card.blind} random opponent card${card.blind === 1 ? '' : 's'} for ${card.blindTurns} turn${card.blindTurns === 1 ? '' : 's'}. Blinded cards cannot be seen by the person`,

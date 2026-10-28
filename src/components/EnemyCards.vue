@@ -3,7 +3,7 @@ import '../assets/style.css'
 import Cardlayout from './Cardlayout.vue'
 import { getCardType } from '../data/cardTypes.js'
 import { cardTooltip, cardTooltiphide } from '../data/tooltips.js'
-import { effectClasses, heeftlockEffect, heeftburnEffect, heeftfreezeEffect, heeftgambleEffect, heeftblindEffect, heeftlightEffect } from '../data/effectClasses.js'
+import { effectClasses, heeftlockEffect, heeftburnEffect, heeftfreezeEffect, heeftgambleEffect, heeftblindEffect, heeftlightEffect, heeftflipEffect } from '../data/effectClasses.js'
 import { cardStatDescription } from '../data/tooltips.js'
 
 
@@ -58,7 +58,7 @@ defineProps({
 
             <div  v-for="card, index in cards" :key="card.id" :class="[ 'card', card.faketype ? card.faketype : card.type,  effectClasses(card.effect),'card-modern']" :data-tooltip="`${card.name}\n${cardTooltip(card)}`">
                 <!-- SHOW CARDS -->
-                <div v-if="settings || heeftlightEffect(card.effect)">
+                <div v-if="settings || heeftlightEffect(card.effect) || heeftflipEffect(card.effect)">
                     <Cardlayout :card="card" />
                 </div>
 
@@ -75,6 +75,7 @@ defineProps({
                         {{ getCardType(card.type).icon }}
                     </div>
                     <div class="card-stats">
+                        <p v-if="heeftflipEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔄</span><b>{{  }}</b></p>
                         <p v-if="heeftblindEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>👁️</span><b>{{  }}</b></p>
                         <p v-if="heeftgambleEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🎲</span><b>{{  }}</b></p>
                         <p v-if="heeftfreezeEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>❄️</span><b>{{  }}</b></p>

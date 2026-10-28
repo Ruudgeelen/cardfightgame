@@ -57,3 +57,12 @@ export function heeftlightEffect(effect) {
     )
     return activeEffects.some((value) => value === 'light')
 }
+
+export function heeftflipEffect(effect) {
+    const effects = Array.isArray(effect) ? effect : [effect]
+    const activeEffects = effects.filter(
+        (value) => typeof value === 'string' && value.trim()
+    )
+    console.log('Active effects:', activeEffects)
+    return activeEffects.some((value) => value === 'flip')
+}

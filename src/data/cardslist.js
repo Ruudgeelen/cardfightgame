@@ -293,12 +293,13 @@ export const cards = [
 
     // ANIMAL
     {
-        name: 'Wolf',
+        name: 'Shark',
         attack: 8,
         heal: 5,
         healadd: 1,
-        light: 1,
-        lightTurns: 1,
+        healthbaradd: 1,
+        lock: 3,
+        lockTurns: 1,
         type: 'animal'
     },
     {
@@ -966,6 +967,14 @@ export const cards = [
         lightTurns: 3,
         type: 'hole'
     },
+    {
+        name: 'Dark Hole',
+        attack: 0,
+        heal: 0,
+        blind: 5,
+        blindTurns: 3,
+        type: 'hole'
+    },
 
     // STORM
     {
@@ -1008,8 +1017,8 @@ export const cards = [
         name: 'Lightning Strike',
         attack: 15,
         heal: 0,
-        light: 10,
-        lightTurns: 5,
+        light: 25,
+        lightTurns: 3,
         type: 'lightning'
     },
     {
@@ -1055,6 +1064,8 @@ export const cards = [
         attack: 0,
         heal: 25,
         freeze: true,
+        flip: 3,
+        flipTurns: 3,
         morecards:  1,
         healthbaradd: 5,
         type: 'ocean'
@@ -1143,11 +1154,30 @@ export const cards = [
 
     // BOSS
     {
-        name: 'Boss',
-        attack: 20,
+        name: 'Boss Health',
+        attack: 15,
         heal: 20,
         healthbaradd: 10,
         healthbarremove: 10,
+        type: 'boss'
+    },
+    {
+        name: 'Boss HotCold',
+        attack: 15,
+        heal: 20,
+        burn: 5,
+        burnTurns: 1,
+        freeze: true,
+        type: 'boss'
+    },
+    {
+        name: 'Boss FlipLock',
+        attack: 15,
+        heal: 20,
+        flip: 3,
+        flipTurns: 3,
+        lock: 3,
+        lockTurns: 3,
         type: 'boss'
     },
 
@@ -1185,6 +1215,8 @@ export const cards = [
         healthbarremove: 1,
         blind: 3,
         blindTurns: 1,
+        flip: 1,
+        flipTurns: 2,
         type: 'lucky'
     },
 
@@ -1204,11 +1236,13 @@ export const cards = [
         type: 'bonus'
     },
 
-     // MIMIC
+    // MIMIC
     {
         name: 'Mimic',
         attack: 20,
         heal: 20,
+        blind: 1,
+        blindTurns: 1,
         faketype: getRandomCardType(),
         type: 'mimic'
     },
@@ -1217,7 +1251,7 @@ export const cards = [
         attack: 10,
         heal: 10,
         attackadd: 1,
-        healadd: 1,
+        healadd: 2,
         faketype: getRandomCardType(),
         type: 'mimic'
     },
@@ -1227,6 +1261,8 @@ export const cards = [
         heal: 15,
         removecardnummer: 1,
         morecards: 1,
+        flip: 1,
+        flipTurns: 3,
         faketype: getRandomCardType(),
         type: 'mimic'
     },
@@ -1283,6 +1319,8 @@ export const cards = [
         blindTurns: 1,
         light: 3,
         lightTurns: 1,
+        flip: 3,
+        flipTurns: 1,
         freeze: true,
         freezeadd: true,
         type: 'rainbow'

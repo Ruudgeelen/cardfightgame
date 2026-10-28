@@ -97,7 +97,9 @@ export function chooseAiCard(cards, playerCards, enemyHealth, playerHealth, enem
         if (card.effect && card.effect.includes('blind')) {
             score -= 10
         }
-
+        if (card.effect && card.effect.includes('flip')) {
+            score -= 10
+        }
 
         // console.log(card.name, "AI score:", score)
 

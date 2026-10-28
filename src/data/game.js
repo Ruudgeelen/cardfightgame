@@ -32,7 +32,11 @@ import {
     applyLightEffect,
     applyLightEffectMultiplayer,
     updateLightTurns,
-    updateLightTurnsMultiplayer
+    updateLightTurnsMultiplayer,
+    applyFlipEffect,
+    applyFlipEffectMultiplayer,
+    updateFlipTurns,
+    updateFlipTurnsMultiplayer
 } from '../data/effect.js'
 
 import {
@@ -91,6 +95,7 @@ export function game(
     updateLockTurns(userCards)
     updateBlindTurns(userCards)
     updateLightTurns(userCards)
+    updateFlipTurns(userCards)
 
     lastuserCard.value = card
 
@@ -154,6 +159,11 @@ export function game(
     if (card.light) {
         const targetCards = gambleReversed ? userCards : otheruserCards
         targetCards.value = applyLightEffect(card, targetCards).value
+    }
+
+    if (card.flip) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        targetCards.value = applyFlipEffect(card, targetCards).value
     }
 
     if (card.freeze) {
@@ -353,6 +363,7 @@ export function gameMultiplayer(
     updateLockTurnsMultiplayer(userCards)
     updateBlindTurnsMultiplayer(userCards)
     updateLightTurnsMultiplayer(userCards)
+    updateFlipTurnsMultiplayer(userCards)
 
     // =================================
     // GESPEELDE KAART
@@ -462,6 +473,11 @@ export function gameMultiplayer(
     if (card.light) {
         const targetCards = gambleReversed ? userCards : otheruserCards
         applyLightEffectMultiplayer(card, targetCards)
+    } 
+
+    if (card.flip) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        applyFlipEffectMultiplayer(card, targetCards)
     }
 
 
