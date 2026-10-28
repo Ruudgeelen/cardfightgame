@@ -560,6 +560,35 @@ export const cards = [
         type: 'light'
     },
 
+    // BLUR
+    {
+        name: 'Blurer',
+        attack: 5,
+        heal: 5,
+        blind: 2,
+        blindTurns: 1,
+        healthbaradd: 1,
+        type: 'blur'
+    },
+    {
+        name: 'Blur Mage',
+        attack: 7,
+        heal: 3,
+        blind: 3,
+        blindTurns: 2,
+        healthbaradd: 2,
+        type: 'blur'
+    },
+    {
+        name: 'Blur Knight',
+        attack: 6,
+        heal: 4,
+        blind: 4,
+        blindTurns: 3,
+        healthbaradd: 3,
+        type: 'blur'
+    },
+
     // SPACE
     {
         name: 'Sun',
@@ -760,7 +789,7 @@ export const cards = [
         name: 'Nosferatu',
         attack: 15,
         heal: 10,
-        healadd: -2,
+        healadd: -1,
         healthbaradd: -3,
         healthbarremove: 7,
         blind: 1,
@@ -852,7 +881,7 @@ export const cards = [
     {
         name: 'Poison Card',
         attack: 5,
-        heal: 5,
+        heal: 15,
         healadd: -1,
         healthbarremove: 5,
         type: 'poison'
@@ -860,7 +889,7 @@ export const cards = [
     {
         name: 'Toxic Cloud',
         attack: 7,
-        heal: 3,
+        heal: 13,
         healadd: -1,
         healthbarremove: 5,
         type: 'poison'
@@ -868,8 +897,8 @@ export const cards = [
     {
         name: 'Venomous Bite',
         attack: 10,
-        heal: 0,
-        healadd: -2,
+        heal: 15,
+        healadd: -1,
         healthbarremove: 7,
         type: 'poison'
     },
@@ -1140,7 +1169,7 @@ export const cards = [
     // BATSIE
     {
         name: 'Batsie',
-        attack: 5,
+        attack: 10,
         heal: 25,
         healthbaradd: 7,
         lock: 3,
@@ -1150,6 +1179,22 @@ export const cards = [
         cardremove: 1,
         healthbarremove: 3,
         type: 'batsie'
+    },
+    
+    // FRIKANDELCAT
+    {
+        name: 'Frikandelcat',
+        attack: 10,
+        heal: 10,
+        healthbaradd: 5,
+        healthbarremove: 5,
+        lock: 2,
+        lockTurns: 2,
+        blind: 2,
+        blindTurns: 2,
+        gamble: true,
+        gambleCards: 1,
+        type: 'frikandelcat'
     },
 
     // BOSS
