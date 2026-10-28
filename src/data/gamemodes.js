@@ -24,6 +24,32 @@ export function GetGameModeCards(GameMode, cardslist) {
             addStartingFreezeEffect(cardslist.value[i])
         }
     }
+    else if (GameMode.value === "lock") {
+        for (let i = 0; i < cardslist.value.length; i++) {
+            cardslist.value[i].effectTurns = Math.floor(Math.random() * 3) -1
+            if (cardslist.value[i].effectTurns > 0) {
+                cardslist.value[i].effect = "lock"
+            }
+        }
+    }
+    else if (GameMode.value === "light") {
+        for (let i = 0; i < cardslist.value.length; i++) {
+            cardslist.value[i].effect = "light"
+            cardslist.value[i].effectTurns = 100
+        }
+    }
+    else if (GameMode.value === "blind") {
+        for (let i = 0; i < cardslist.value.length; i++) {
+            cardslist.value[i].effect = "blind"
+            cardslist.value[i].effectTurns = 100
+        }
+    }
+    else if (GameMode.value === "flip") {
+        for (let i = 0; i < cardslist.value.length; i++) {
+            cardslist.value[i].effect = "flip"
+            cardslist.value[i].effectTurns = 100
+        }
+    }
     else if (GameMode.value === "wind") {
         for (let i = 0; i < cardslist.value.length; i++) {
             if (cardslist.value[i].removecardnummer) {
@@ -66,6 +92,32 @@ export function GetGameModeCardsMultplayer(GameMode, cardslist) {
     else if (GameMode === "freeze") {
         for (let i = 0; i < cardslist.length; i++) {
             addStartingFreezeEffect(cardslist[i])
+        }
+    }
+    else if (GameMode === "lock") {
+        for (let i = 0; i < cardslist.length; i++) {
+            cardslist[i].effectTurns = Math.floor(Math.random() * 3) -1
+            if (cardslist[i].effectTurns > 0) {
+                cardslist[i].effect = "lock"
+            }
+        }
+    }
+    else if (GameMode === "light") {
+        for (let i = 0; i < cardslist.length; i++) {
+            cardslist[i].effect = "light"
+            cardslist[i].effectTurns = 100
+        }
+    }
+    else if (GameMode === "blind") {
+        for (let i = 0; i < cardslist.length; i++) {
+            cardslist[i].effect = "blind"
+            cardslist[i].effectTurns = 100
+        }
+    }
+    else if (GameMode === "flip") {
+        for (let i = 0; i < cardslist.length; i++) {
+            cardslist[i].effect = "flip"
+            cardslist[i].effectTurns = 100
         }
     }
     else if (GameMode === "wind") {

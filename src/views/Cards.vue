@@ -27,6 +27,7 @@ const effectFilters = [
     { value: 'lock', label: 'Lock' },
     { value: 'blind', label: 'Blind' },
     { value: 'light', label: 'Light' },
+    { value: 'flip', label: 'Flip' },
     { value: 'attackadd', label: 'Attack boost' },
     { value: 'healadd', label: 'Heal boost' },
     { value: 'attackaddadd', label: 'Attack double boost' },

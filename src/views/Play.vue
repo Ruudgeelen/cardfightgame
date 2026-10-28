@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 import '../assets/style.css'
 
 function getRandomGameMode() {
-    const gameModes = ['normal', 'gamble', 'mimic', 'burn', 'freeze', 'wind', 'earth']
+    const gameModes = ['normal', 'gamble', 'mimic', 'burn', 'freeze', 'wind', 'earth', 'lock', 'light', 'blind', 'flip']
     const randomIndex = Math.floor(Math.random() * gameModes.length)
     return gameModes[randomIndex]
 }
@@ -70,6 +70,22 @@ onMounted(() => {
                 🃏 Earth Game
             </RouterLink> 
 
+            <RouterLink class="lock-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: 'lock'}, }">
+                🃏 Lock Game
+            </RouterLink> 
+
+            <RouterLink class="light-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: 'light'}, }">
+                🃏 Light Game
+            </RouterLink> 
+
+            <RouterLink class="blind-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: 'blind'}, }">
+                🃏 Blind Game
+            </RouterLink> 
+
+            <RouterLink class="flip-button" @click="reloadpage()" :to="{ name: 'PlaySingleplayer', params: { gamemode: 'flip'}, }">
+                🃏 Flip Game
+            </RouterLink> 
+
             </div>
 
             <div class="gamemodemultiplayer">
@@ -106,6 +122,22 @@ onMounted(() => {
 
             <RouterLink class="earth-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'earth'}, }">
                 🃏 Earth Game
+            </RouterLink>
+
+            <RouterLink class="lock-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'lock'}, }">
+                🃏 Lock Game
+            </RouterLink>
+
+            <RouterLink class="light-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'light'}, }">
+                🃏 Light Game
+            </RouterLink>
+
+            <RouterLink class="blind-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'blind'}, }">
+                🃏 Blind Game
+            </RouterLink>
+
+            <RouterLink class="flip-button" @click="reloadpage()" :to="{ name: 'Multiplayer', params: { gamemode: 'flip'}, }">
+                🃏 Flip Game
             </RouterLink>
             </div>
         </div>
@@ -189,6 +221,10 @@ onMounted(() => {
 .freeze-button,
 .wind-button,
 .earth-button,
+.lock-button,
+.blind-button,
+.flip-button,
+.light-button,
 .random-button {
     display: block;
     width: 220px;
@@ -247,7 +283,22 @@ onMounted(() => {
     background: linear-gradient(135deg, #a3e635, #4d7c0f);
     box-shadow: 0 5px 15px rgba(163, 230, 53, 0.3);
 }
-
+.lock-button {
+    background: linear-gradient(135deg, #9b9b9b, #4a4a4a);
+    box-shadow: 0 5px 15px rgba(102, 102, 102, 0.3);
+}
+.blind-button {
+    background: linear-gradient(135deg, #f43f5e, #9d174d);
+    box-shadow: 0 5px 15px rgba(244, 63, 94, 0.3);
+}
+.flip-button {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+}
+.light-button {
+    background: linear-gradient(135deg, #fef08a, #b45309);
+    box-shadow: 0 5px 15px rgba(254, 224, 130, 0.3);
+}
 .normal-button:hover,
 .gamble-button:hover,
 .mimic-button:hover,
@@ -255,6 +306,10 @@ onMounted(() => {
 .freeze-button:hover,
 .wind-button:hover,
 .earth-button:hover,
+.lock-button:hover,
+.blind-button:hover,
+.flip-button:hover,
+.light-button:hover,
 .random-button:hover {
     transform: translateY(-3px);
 }
@@ -266,6 +321,10 @@ onMounted(() => {
 .freeze-button:active,
 .wind-button:active,
 .earth-button:active,
+.lock-button:active,
+.blind-button:active,
+.flip-button:active,
+.light-button:active,
 .random-button:active {
     transform: translateY(0);
 }
