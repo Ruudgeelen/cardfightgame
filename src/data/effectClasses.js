@@ -41,3 +41,11 @@ export function heeftgambleEffect(effect) {
     )
     return activeEffects.some((value) => value === 'gamble')
 }
+
+export function heeftblindEffect(effect) {
+    const effects = Array.isArray(effect) ? effect : [effect]
+    const activeEffects = effects.filter(
+        (value) => typeof value === 'string' && value.trim()
+    )
+    return activeEffects.some((value) => value === 'blind')
+}

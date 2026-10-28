@@ -25,6 +25,10 @@ import {
     applyLockEffectMultiplayer,
     updateLockTurns,
     updateLockTurnsMultiplayer,
+    applyblindEffect,
+    applyblindEffectMultiplayer,
+    updateBlindTurns,
+    updateBlindTurnsMultiplayer
 } from '../data/effect.js'
 
 import {
@@ -81,6 +85,8 @@ export function game(
     }
 
     updateLockTurns(userCards)
+    updateBlindTurns(userCards)
+
     lastuserCard.value = card
 
     const gambleReversed =
@@ -133,6 +139,11 @@ export function game(
     if (card.lock) {
         const targetCards = gambleReversed ? userCards : otheruserCards
         targetCards.value = applyLockEffect(card, targetCards).value
+    }
+
+    if (card.blind) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        targetCards.value = applyblindEffect(card, targetCards).value
     }
 
     if (card.freeze) {
@@ -330,6 +341,7 @@ export function gameMultiplayer(
     }
 
     updateLockTurnsMultiplayer(userCards)
+    updateBlindTurnsMultiplayer(userCards)
 
     // =================================
     // GESPEELDE KAART
@@ -430,6 +442,7 @@ export function gameMultiplayer(
         const targetCards = gambleReversed ? userCards : otheruserCards
         applyLockEffectMultiplayer(card, targetCards)
     }
+    
 
 
     // =================================

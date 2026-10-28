@@ -72,6 +72,8 @@ export const cards = [
         attack: 7,
         heal: 8,
         healadd: 1,
+        blind: 1,
+        blindTurns: 1,
         type: 'rare'
     },
     {
@@ -102,6 +104,8 @@ export const cards = [
         name: 'Unique Flower',
         attack: 9,
         heal: 9,
+        blind: 1,
+        blindTurns: 2,
         healthbaradd: 3,
         type: 'unique'
     },
@@ -109,6 +113,8 @@ export const cards = [
         name: 'Unique Warrior',
         attack: 11,
         heal: 8,
+        blind: 3,
+        blindTurns: 2,
         attackadd: 3,
         type: 'unique'
     },
@@ -135,6 +141,8 @@ export const cards = [
         heal: 15,
         attackadd: 3,
         healadd: 1,
+        lock: 2,
+        lockTurns: 2,
         type: 'legendary'
     },
     {
@@ -151,6 +159,8 @@ export const cards = [
         attack: 18,
         heal: 12,
         freeze: true,
+        blind: 2,
+        blindTurns: 2,
         attackadd: 1,
         type: 'legendary'
     },
@@ -286,6 +296,8 @@ export const cards = [
         name: 'Snake',
         attack: 10,
         heal: 8,
+        blind: 1,
+        blindTurns: 1,
         type: 'animal'
     },
     {
@@ -324,6 +336,8 @@ export const cards = [
         attack: -6,
         heal: 20,
         healthbaradd: 2,
+        burn: 1,
+        burnTurns: 1,
         type: 'plant'
     },
     {
@@ -417,6 +431,14 @@ export const cards = [
         lockTurns: 1,
         type: 'dragon'
     },
+    {
+        name: 'Blind Dragon',
+        attack: 15,
+        heal: 0,
+        blind: 1,
+        blindTurns: 1,
+        type: 'dragon'
+    },
 
     // UNDEAD
     {
@@ -424,6 +446,8 @@ export const cards = [
         attack: 21,
         heal: 0,
         attackadd: -1,
+        blind: 1,
+        blindTurns: 1,
         type: 'undead'
     },
     {
@@ -441,17 +465,19 @@ export const cards = [
         type: 'undead'
     },
     {
-        name: 'Flesh Eater',
-        attack: 23,
-        heal: -7,
-        attackadd: -1,
-        type: 'undead'
-    },
-    {
         name: 'Bone Collector',
         attack: 22,
         heal: 0,
         attackadd: -1,
+        type: 'undead'
+    },
+    {
+        name: 'Warden',
+        attack: 25,
+        heal: 0,
+        blind: 3,
+        blindTurns: 1,
+        attackadd: -2,
         type: 'undead'
     },
 
@@ -540,6 +566,8 @@ export const cards = [
         attack: 10,
         heal: 1,
         attackadd: 2,
+        blind: 3,
+        blindTurns: 1,
         type: 'dark'
     },
     {
@@ -547,13 +575,17 @@ export const cards = [
         attack: 14,
         heal: 0,
         attackadd: 3,
+        blind: 2,
+        blindTurns: 2,
         type: 'dark'
     },
     {
         name: 'Necromancer',
         attack: 12,
         heal: 2,
-        attackadd: 1,
+        attackadd: 1,   
+        blind: 1,
+        blindTurns: 3,
         type: 'dark'
     },
     {
@@ -561,6 +593,8 @@ export const cards = [
         attack: 15,
         heal: 0,
         attackadd: 2,
+        blind: 2,
+        blindTurns: 1,
         type: 'dark'
     },
 
@@ -674,6 +708,17 @@ export const cards = [
         healadd: -1,
         healthbaradd: -2,
         healthbarremove: 5,
+        type: 'lifesteal'
+    },
+    {
+        name: 'Nosferatu',
+        attack: 15,
+        heal: 10,
+        healadd: -2,
+        healthbaradd: -3,
+        healthbarremove: 7,
+        blind: 1,
+        blindTurns: 1,
         type: 'lifesteal'
     },
 
@@ -926,6 +971,16 @@ export const cards = [
         type: 'megaice'
     },
 
+    // EYE
+    {
+        name: 'Eye of the Storm',
+        attack: 0,
+        heal: 0,
+        blind: 10,
+        blindTurns: 2,
+        type: 'eye'
+    },
+
     // MEGAHEAL
     {
         name: 'Megaheal',
@@ -1093,6 +1148,8 @@ export const cards = [
         lockTurns: 1,
         burn: 3,
         burnTurns: 1,
+        blind: 3,
+        blindTurns: 1,
         freeze: true,
         freezeadd: true,
         type: 'rainbow'

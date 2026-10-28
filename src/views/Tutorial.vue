@@ -100,6 +100,29 @@ const cardTypeList = Object.values(cardTypes)
                 </div>
 
                 <div class="rule">
+                    <span>🔒</span>
+                    <div>
+                        <h2>Lock</h2>
+                        <p>
+                            Lock prevents the affected player from using
+                            cards for a limited number of turns.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <span>👁️</span>
+                    <div>
+                        <h2>Blind</h2>
+                        <p>
+                            Blind hides the affected player's cards for a
+                            limited number of turns. The player can still
+                            use the cards, but cannot see their values.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
                     <span>🎲</span>
                     <div>
                         <h2>Game Modes</h2>

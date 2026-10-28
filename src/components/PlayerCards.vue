@@ -2,8 +2,10 @@
 <script setup>
 import '../assets/style.css'
 import Cardlayout from './Cardlayout.vue'
-import { cardTooltip } from '../data/tooltips.js'
-import { effectClasses, heeftlockeffect } from '../data/effectClasses.js'
+import { cardTooltip, cardTooltiphide } from '../data/tooltips.js'
+import { getCardType } from '../data/cardTypes.js'
+import { cardStatDescription } from '../data/tooltips.js'
+import { effectClasses, heeftlockeffect, heeftburneffect, heeftfreezeEffect, heeftgambleEffect, heeftblindEffect } from '../data/effectClasses.js'
 
 defineProps({
     cards: {
@@ -30,12 +32,8 @@ const emit = defineEmits(['useCard'])
     <div class="player-card-area">
 
         <!-- LAST PLAYED CARD -->
-        <div
-            v-if="lastPlayerCard.name"
-            class="last-player-wrapper"
-        >
+        <div v-if="lastPlayerCard.name" class="last-player-wrapper">
             <h2>Last Player Card</h2>
-
             <div :class="['card', lastPlayerCard.type, effectClasses(lastPlayerCard.effect), 'card-modern' ]" :data-tooltip="`${lastPlayerCard.name}\n${cardTooltip(lastPlayerCard)}`" >
                 <Cardlayout :card="lastPlayerCard" />
             </div>
@@ -44,13 +42,31 @@ const emit = defineEmits(['useCard'])
 
         <!-- PLAYER CARDS -->
         <div class="cards">
-            <div
-                v-for="card, index in cards" :key="card.id" :class="[ 'card', card.type, effectClasses(card.effect), 'card-modern', aiTurn ? 'card-disabled' : '' ]"
-                :data-tooltip="`${card.name}\n${cardTooltip(card)}`"
-                @click="!aiTurn && !heeftlockeffect(card.effect) && emit('useCard', card, index)"
-            >
+            <div v-for="card, index in cards" :key="card.id" :class="[ 'card', card.type, effectClasses(card.effect), 'card-modern', aiTurn ? 'card-disabled' : '' ]" :data-tooltip="`${card.name}\n${cardTooltip(card)}`" @click="!aiTurn && !heeftlockeffect(card.effect) && emit('useCard', card, index)" >
+                <div v-if="!heeftblindEffect(card.effect)">
                     <Cardlayout :card="card" />
+                </div>
 
+
+                <!-- HIDE CARDS -->
+                <div v-else class="hidden-card">
+                    <div class="card-tooltip" role="tooltip">
+                        <span>{{ cardTooltiphide(card) }}</span>
+                    </div>
+                    <div v-if="card.faketype" class="hidden-icon">
+                         {{ getCardType(card.faketype).icon }}
+                    </div>
+                    <div v-else class="hidden-icon">
+                        {{ getCardType(card.type).icon }}
+                    </div>
+                    <div class="card-stats">
+                        <p v-if="heeftblindEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>👁️</span><b>{{  }}</b></p>
+                        <p v-if="heeftgambleEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🎲</span><b>{{  }}</b></p>
+                        <p v-if="heeftfreezeEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>❄️</span><b>{{  }}</b></p>
+                        <p v-if="heeftlockeffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔒</span><b>{{  }}</b></p>
+                        <p v-if="heeftburneffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔥</span><b>{{ }}</b></p>
+                    </div>
+                 </div>
             </div>
 
         </div>

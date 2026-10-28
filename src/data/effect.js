@@ -184,6 +184,22 @@ function updateBurnDamage(card) {
 // SINGLEPLAYER
 // ================================
 
+export function applyblindEffect(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.blind) || 0, 0),
+        userCards.value.length
+    )
+    const selectedCards = getRandomCards(userCards.value, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "blind",
+        "",
+        card.blindTurns ?? "Forever"
+    )
+
+    return userCards
+}
 export function applyLockEffect(card, userCards) {
     const amount = Math.min(
         Math.max(Number(card.lock) || 0, 0),
@@ -203,6 +219,11 @@ export function applyLockEffect(card, userCards) {
 
 export function updateLockTurns(userCards) {
     updateEffectTurnsForCards(userCards.value, "lock")
+    return userCards
+}
+
+export function updateBlindTurns(userCards) {
+    updateEffectTurnsForCards(userCards.value, "blind")
     return userCards
 }
 
@@ -309,8 +330,30 @@ export function applyLockEffectMultiplayer(card, userCards) {
     return userCards
 }
 
+export function applyblindEffectMultiplayer(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.blind) || 0, 0),
+        userCards.length
+    )
+    const selectedCards = getRandomCards(userCards, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "blind",
+        "",
+        card.blindTurns ?? "Forever"
+    )
+
+    return userCards
+}
+
 export function updateLockTurnsMultiplayer(userCards) {
     updateEffectTurnsForCards(userCards, "lock")
+    return userCards
+}
+
+export function updateBlindTurnsMultiplayer(userCards) {
+    updateEffectTurnsForCards(userCards, "blind")
     return userCards
 }
 
