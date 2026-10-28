@@ -2,6 +2,7 @@
 import '../assets/style.css'
 import { getCardType } from '../data/cardTypes.js'
 import { cardStatDescription, cardTooltip } from '../data/tooltips.js'
+import { effectClasses, heeftlockeffect, heeftburneffect, heeftfreezeEffect, heeftgambleEffect } from '../data/effectClasses.js'
 
 defineProps({
     card: {
@@ -26,8 +27,11 @@ defineProps({
             Fake Type: {{ getCardType(card.faketype).name }}
             {{ getCardType(card.faketype).icon }}
         </p>
-
         <div class="card-stats">
+            <p v-if="heeftgambleEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🎲</span><b>{{  }}</b></p>
+            <p v-if="heeftfreezeEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>❄️</span><b>{{  }}</b></p>
+            <p v-if="heeftlockeffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔒</span><b>{{  }}</b></p>
+            <p v-if="heeftburneffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔥</span><b>{{ }}</b></p>
             <p v-if="card.attack" class="card-stat" :title="cardStatDescription(card, 'attack')"><span>⚔️</span><b>{{ card.attack }}</b></p>
             <p v-if="card.heal" class="card-stat" :title="cardStatDescription(card, 'heal')"><span>❤️</span><b>{{ card.heal }}</b></p>
             <p v-if="card.freeze" class="card-stat"><span>❄️</span></p>

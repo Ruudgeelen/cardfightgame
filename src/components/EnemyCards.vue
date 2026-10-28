@@ -3,8 +3,8 @@ import '../assets/style.css'
 import Cardlayout from './Cardlayout.vue'
 import { getCardType } from '../data/cardTypes.js'
 import { cardTooltip, cardTooltiphide } from '../data/tooltips.js'
-import { effectClasses } from '../data/effectClasses.js'
-
+import { effectClasses, heeftlockeffect, heeftburneffect, heeftfreezeEffect, heeftgambleEffect } from '../data/effectClasses.js'
+import { cardStatDescription } from '../data/tooltips.js'
 
 
 defineProps({
@@ -87,8 +87,13 @@ defineProps({
                     <div v-else class="hidden-icon">
                         {{ getCardType(card.type).icon }}
                     </div>
-
-                </div>
+                    <div class="card-stats">
+                        <p v-if="heeftgambleEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🎲</span><b>{{  }}</b></p>
+                        <p v-if="heeftfreezeEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>❄️</span><b>{{  }}</b></p>
+                        <p v-if="heeftlockeffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔒</span><b>{{  }}</b></p>
+                        <p v-if="heeftburneffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔥</span><b>{{ }}</b></p>
+                    </div>
+                 </div>
 
             </div>
 

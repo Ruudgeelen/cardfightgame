@@ -87,6 +87,17 @@ export function game(
         hasCardEffect(card, 'gamble') &&
         Math.random() < 0.5
 
+        if (card.healthbaradd) {
+        gambleReversed
+            ? otheruserMaxHealth.value = AddMaxHealth(card, otheruserMaxHealth.value)
+            : userMaxHealth.value = AddMaxHealth(card, userMaxHealth.value)
+    }
+
+    if (card.healthbarremove) {
+        gambleReversed
+            ? userMaxHealth.value = RemoveMaxHealth(card, userMaxHealth.value, userHealth.value)
+            : otheruserMaxHealth.value = RemoveMaxHealth(card, otheruserMaxHealth.value, otheruserHealth.value)
+    }
     const attackResult = gambleReversed
         ? EnemyAttack(
             card,
@@ -132,18 +143,6 @@ export function game(
     if (card.burn > 0) {
         const targetCards = gambleReversed ? userCards : otheruserCards
         targetCards.value = BurnEffect(card, targetCards).value
-    }
-
-    if (card.healthbaradd) {
-        gambleReversed
-            ? otheruserMaxHealth.value = AddMaxHealth(card, otheruserMaxHealth.value)
-            : userMaxHealth.value = AddMaxHealth(card, userMaxHealth.value)
-    }
-
-    if (card.healthbarremove) {
-        gambleReversed
-            ? userMaxHealth.value = RemoveMaxHealth(card, userMaxHealth.value, userHealth.value)
-            : otheruserMaxHealth.value = RemoveMaxHealth(card, otheruserMaxHealth.value, otheruserHealth.value)
     }
 
     if (card.healadd) {
@@ -349,6 +348,27 @@ export function gameMultiplayer(
     // ATTACK / HEAL
     // =================================
 
+    // =================================
+    // MAX HEALTH ADD
+    // =================================
+
+    if (card.healthbaradd) {
+        gambleReversed
+            ? otheruserMaxHealth = AddMaxHealthMultiplayer(card, otheruserMaxHealth)
+            : userMaxHealth = AddMaxHealthMultiplayer(card, userMaxHealth)
+    }
+
+
+    // =================================
+    // MAX HEALTH REMOVE
+    // =================================
+
+    if (card.healthbarremove) {
+        gambleReversed
+            ? userMaxHealth = RemoveMaxHealthMultiplayer(card, userMaxHealth, userHealth)
+            : otheruserMaxHealth = RemoveMaxHealthMultiplayer(card, otheruserMaxHealth, otheruserHealth)
+    }
+
     const result = gambleReversed
         ? EnemyAttackMultiplayer(
             card,
@@ -381,10 +401,6 @@ export function gameMultiplayer(
         AttackAddAddMultiplayer(card, targetCards)
     }
 
-
-    // =================================
-    // HEAL ADD
-    // =================================
 
     if (card.healadd) {
         const targetCards = gambleReversed ? otheruserCards : userCards
@@ -425,27 +441,6 @@ export function gameMultiplayer(
         BurnEffectMultiplayer(card, targetCards)
     }
 
-
-    // =================================
-    // MAX HEALTH ADD
-    // =================================
-
-    if (card.healthbaradd) {
-        gambleReversed
-            ? otheruserMaxHealth = AddMaxHealthMultiplayer(card, otheruserMaxHealth)
-            : userMaxHealth = AddMaxHealthMultiplayer(card, userMaxHealth)
-    }
-
-
-    // =================================
-    // MAX HEALTH REMOVE
-    // =================================
-
-    if (card.healthbarremove) {
-        gambleReversed
-            ? userMaxHealth = RemoveMaxHealthMultiplayer(card, userMaxHealth, userHealth)
-            : otheruserMaxHealth = RemoveMaxHealthMultiplayer(card, otheruserMaxHealth, otheruserHealth)
-    }
 
     if (card.gambleCards) {
         const targetCards =

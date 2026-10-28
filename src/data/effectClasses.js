@@ -17,3 +17,27 @@ export function heeftlockeffect(effect) {
     )
     return activeEffects.some((value) => value === 'lock')
 }
+
+export function heeftburneffect(effect) {
+    const effects = Array.isArray(effect) ? effect : [effect]
+    const activeEffects = effects.filter(
+        (value) => typeof value === 'string' && value.trim()
+    )
+    return activeEffects.some((value) => value === 'burn')
+}
+
+export function heeftfreezeEffect(effect) {
+    const effects = Array.isArray(effect) ? effect : [effect]
+    const activeEffects = effects.filter(
+        (value) => typeof value === 'string' && value.trim()
+    )
+    return activeEffects.some((value) => value === 'freeze')
+}
+
+export function heeftgambleEffect(effect) {
+    const effects = Array.isArray(effect) ? effect : [effect]
+    const activeEffects = effects.filter(
+        (value) => typeof value === 'string' && value.trim()
+    )
+    return activeEffects.some((value) => value === 'gamble')
+}

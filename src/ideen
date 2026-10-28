@@ -3,14 +3,12 @@ game over zie je andere mensen zijn kaarten
 Naam bij multiplayer
 
 Types: 
-- Lock
 
 Effects: 
 - Posion (attack over meer turns)
 - Blind (kan je eigen kaart niet zien)
 - Light (kan je de ander kaart zien)
 - Flip (flip de kaart)
-- Lock (locks je kaart)
 - Healer (heal je over meer turns)
 
 gamemodes:

@@ -1093,8 +1093,6 @@ export const cards = [
         lockTurns: 1,
         burn: 3,
         burnTurns: 1,
-        gamble: true,
-        gambleCards: 1,
         freeze: true,
         freezeadd: true,
         type: 'rainbow'

@@ -118,8 +118,6 @@ export function cardTooltiphide(card) {
 
     return [
         card.faketype ? `Type: ${card.faketype}` : `Type: ${card.type}`,
-        statTooltip(card, 'attack'),
-        statTooltip(card, 'heal'),
         effects && `Effects: ${effects}`,
         effectDetails(card, 'effectturnsmap') && `Effect durations: ${effectDetails(card, 'effectturnsmap')}`,
         effectDetails(card, 'effectvalues') && `Effect powers: ${effectDetails(card, 'effectvalues')}`
