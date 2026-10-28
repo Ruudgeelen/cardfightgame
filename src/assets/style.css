@@ -586,6 +586,17 @@ body {
     background: linear-gradient(145deg, rgb(85, 85, 85) 0%, rgb(51, 51, 51) 50%, rgb(85, 85, 85) 100%);
 }
 
+.card.ocean {
+    border-color: #0066ff;
+    background: linear-gradient(145deg, rgb(0, 102, 255) 0%, rgb(0, 51, 204) 50%, rgb(0, 102, 255) 100%);
+}
+
+.card.batsie {
+    border-color: #5b3200;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(148, 96, 0) 0%, rgb(115, 49, 2) 50%,  rgb(160, 104, 1) 100%);
+}
+
 .card.troll {
     border-color: #ff00ff;
     background: linear-gradient(145deg, rgb(244, 122, 255) 0%, rgb(255, 0, 247) 50%, rgb(255, 155, 247) 100%);
@@ -692,6 +703,14 @@ body {
         0 0 10px rgba(0, 0, 0, 0.9),
         0 0 15px rgba(0, 0, 0, 0.7),
         0 0 25px rgb(10, 10, 10);
+}
+
+.card.effect-light {
+    box-shadow:
+        0 0 5px rgba(255, 255, 0, 1),
+        0 0 10px rgba(255, 255, 0, 0.9),
+        0 0 15px rgba(255, 255, 0, 0.7),
+        0 0 25px rgba(255, 255, 0, 0.5);
 }
 
 .card.effect-multiple {

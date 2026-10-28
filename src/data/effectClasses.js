@@ -10,7 +10,7 @@ export function effectClasses(effect) {
     ]
 }
 
-export function heeftlockeffect(effect) {
+export function heeftlockEffect(effect) {
     const effects = Array.isArray(effect) ? effect : [effect]
     const activeEffects = effects.filter(
         (value) => typeof value === 'string' && value.trim()
@@ -18,7 +18,7 @@ export function heeftlockeffect(effect) {
     return activeEffects.some((value) => value === 'lock')
 }
 
-export function heeftburneffect(effect) {
+export function heeftburnEffect(effect) {
     const effects = Array.isArray(effect) ? effect : [effect]
     const activeEffects = effects.filter(
         (value) => typeof value === 'string' && value.trim()
@@ -48,4 +48,12 @@ export function heeftblindEffect(effect) {
         (value) => typeof value === 'string' && value.trim()
     )
     return activeEffects.some((value) => value === 'blind')
+}
+
+export function heeftlightEffect(effect) {
+    const effects = Array.isArray(effect) ? effect : [effect]
+    const activeEffects = effects.filter(
+        (value) => typeof value === 'string' && value.trim()
+    )
+    return activeEffects.some((value) => value === 'light')
 }

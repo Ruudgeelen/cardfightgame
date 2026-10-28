@@ -25,6 +25,8 @@ const effectFilters = [
     { value: 'freeze', label: 'Freeze' },
     { value: 'gamble', label: 'Gamble' },
     { value: 'lock', label: 'Lock' },
+    { value: 'blind', label: 'Blind' },
+    { value: 'light', label: 'Light' },
     { value: 'attackadd', label: 'Attack boost' },
     { value: 'healadd', label: 'Heal boost' },
     { value: 'attackaddadd', label: 'Attack double boost' },

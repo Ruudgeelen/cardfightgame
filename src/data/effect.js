@@ -216,7 +216,22 @@ export function applyLockEffect(card, userCards) {
 
     return userCards
 }
+export function applyLightEffect(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.light) || 0, 0),
+        userCards.value.length
+    )
+    const selectedCards = getRandomCards(userCards.value, amount)
 
+    applyEffectToCards(
+        selectedCards,
+        "light",
+        "",
+        card.lightTurns ?? "Forever"
+    )
+
+    return userCards
+}
 export function updateLockTurns(userCards) {
     updateEffectTurnsForCards(userCards.value, "lock")
     return userCards
@@ -224,6 +239,11 @@ export function updateLockTurns(userCards) {
 
 export function updateBlindTurns(userCards) {
     updateEffectTurnsForCards(userCards.value, "blind")
+    return userCards
+}
+
+export function updateLightTurns(userCards) { 
+    updateEffectTurnsForCards(userCards.value, "light")
     return userCards
 }
 
@@ -347,6 +367,23 @@ export function applyblindEffectMultiplayer(card, userCards) {
     return userCards
 }
 
+export function applyLightEffectMultiplayer(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.light) || 0, 0),
+        userCards.length
+    )
+    const selectedCards = getRandomCards(userCards, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "light",
+        "",
+        card.lightTurns ?? "Forever"
+    )
+
+    return userCards
+}
+
 export function updateLockTurnsMultiplayer(userCards) {
     updateEffectTurnsForCards(userCards, "lock")
     return userCards
@@ -354,6 +391,11 @@ export function updateLockTurnsMultiplayer(userCards) {
 
 export function updateBlindTurnsMultiplayer(userCards) {
     updateEffectTurnsForCards(userCards, "blind")
+    return userCards
+}
+
+export function updateLightTurnsMultiplayer(userCards) {
+    updateEffectTurnsForCards(userCards, "light")
     return userCards
 }
 

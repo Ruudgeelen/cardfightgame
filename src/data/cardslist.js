@@ -88,6 +88,8 @@ export const cards = [
         attack: 9,
         heal: 4,
         attackadd: 1,
+        light: 1,
+        lightTurns: 1,
         type: 'rare'
     },
 
@@ -143,6 +145,8 @@ export const cards = [
         healadd: 1,
         lock: 2,
         lockTurns: 2,
+        light: 1,
+        lightTurns: 1,
         type: 'legendary'
     },
     {
@@ -161,6 +165,8 @@ export const cards = [
         freeze: true,
         blind: 2,
         blindTurns: 2,
+        light: 2,
+        lightTurns: 2,
         attackadd: 1,
         type: 'legendary'
     },
@@ -209,10 +215,9 @@ export const cards = [
         type: 'lava'
     },
 
-
     // WATER
     {
-        name: 'Water Card',
+        name: 'Water Spray',
         attack: 5,
         heal: 8,
         healthbaradd: 1,
@@ -222,6 +227,7 @@ export const cards = [
         name: 'Water Mage',
         attack: 9,
         heal: 6,
+        healthbaradd: 2,
         freeze: true,
         type: 'water'
     },
@@ -237,10 +243,11 @@ export const cards = [
         attack: 6,
         heal: 9,
         healthbaradd: 1,
+        freeze: true,
         type: 'water'
     },
     {
-        name: 'Ocean Guardian',
+        name: 'Water Guardian',
         attack: 8,
         heal: 8,
         healthbaradd: 3,
@@ -290,6 +297,8 @@ export const cards = [
         attack: 8,
         heal: 5,
         healadd: 1,
+        light: 1,
+        lightTurns: 1,
         type: 'animal'
     },
     {
@@ -344,6 +353,8 @@ export const cards = [
         name: 'Sunflower',
         attack: 5,
         heal: 15,
+        light: 3,
+        lightTurns: 1,
         healthbaradd: 1,
         type: 'plant'
     },
@@ -353,6 +364,13 @@ export const cards = [
         heal: 14,
         healthbaradd: 1,
         healthbarremove: 1,
+        type: 'plant'
+    },
+    {
+        name: 'Bamboo',
+        attack: 8,
+        heal: 12,
+        healthbaradd: 2,
         type: 'plant'
     },
 
@@ -439,6 +457,14 @@ export const cards = [
         blindTurns: 1,
         type: 'dragon'
     },
+    {
+        name: 'Light Dragon',
+        attack: 15,
+        heal: 0,
+        light: 2,
+        lightTurns: 3,
+        type: 'dragon'
+    },
 
     // UNDEAD
     {
@@ -488,6 +514,8 @@ export const cards = [
         heal: 12,
         healadd: 1,
         healthbaradd: 3,
+        light: 3,
+        lightTurns: 1,
         type: 'light'
     },
     {
@@ -496,6 +524,8 @@ export const cards = [
         heal: 10,
         healadd: 2,
         healthbaradd: 2,
+        light: 1,
+        lightTurns: 1,
         type: 'light'
     },
     {
@@ -504,6 +534,8 @@ export const cards = [
         heal: 15,   
         healadd: 3,
         healthbaradd: 1,
+        light: 1,
+        lightTurns: 2,
         type: 'light'
     },
     {
@@ -512,6 +544,18 @@ export const cards = [
         heal: 13,
         healadd: 2,
         healthbaradd: 2,
+        light: 2,
+        lightTurns: 1,
+        type: 'light'
+    },
+    {
+        name: 'Sun Priest',
+        attack: 6,
+        heal: 14,
+        healadd: 3,
+        healthbaradd: 3,
+        light: 2,
+        lightTurns: 2,
         type: 'light'
     },
 
@@ -522,6 +566,8 @@ export const cards = [
         heal: 10,
         burn: 1,
         burnTurns: 1,
+        light: 1,
+        lightTurns: 1,
         healthbarremove: -1,
         type: 'space'
     },
@@ -595,6 +641,15 @@ export const cards = [
         attackadd: 2,
         blind: 2,
         blindTurns: 1,
+        type: 'dark'
+    },
+    {
+        name: 'Shadow Lord',
+        attack: 18,
+        heal: 0,
+        attackadd: 3,
+        blind: 3,
+        blindTurns: 2,
         type: 'dark'
     },
 
@@ -692,16 +747,6 @@ export const cards = [
         type: 'lifesteal'
     },
     {
-        name: 'Batsie',
-        attack: 5,
-        heal: 25,
-        healthbaradd: -1,
-        lock: 1,
-        lockTurns: 3,
-        healthbarremove: 3,
-        type: 'lifesteal'
-    },
-    {
         name: 'Bloodthirsty',
         attack: 10,
         heal: 15,
@@ -752,6 +797,8 @@ export const cards = [
         attack: 0,
         heal: 28,
         healthbaradd: 3,
+        light: 1,
+        lightTurns: 1,
         type: 'heal'
     },
     {
@@ -791,6 +838,14 @@ export const cards = [
         removecardnummer: 1,
         type: 'ghost'
     },
+    {
+        name: 'Wraith',
+        attack: 20,
+        heal: 0,
+        healthbarremove: -3,
+        removecardnummer: 3,
+        type: 'ghost'
+    },
 
     // POISON
     {
@@ -807,6 +862,14 @@ export const cards = [
         heal: 3,
         healadd: -1,
         healthbarremove: 5,
+        type: 'poison'
+    },
+    {
+        name: 'Venomous Bite',
+        attack: 10,
+        heal: 0,
+        healadd: -2,
+        healthbarremove: 7,
         type: 'poison'
     },
     
@@ -895,6 +958,14 @@ export const cards = [
         morecards: 3,
         type: 'hole'
     },
+    {
+        name: 'Light Hole',
+        attack: 0,
+        heal: 0,
+        light: 5,
+        lightTurns: 3,
+        type: 'hole'
+    },
 
     // STORM
     {
@@ -935,11 +1006,18 @@ export const cards = [
     // LIGHTNING
     {
         name: 'Lightning Strike',
-        attack: 25,
+        attack: 15,
         heal: 0,
-        healthbarremove: 10,
-        burn: 3,
-        burnTurns: 1,
+        light: 10,
+        lightTurns: 5,
+        type: 'lightning'
+    },
+    {
+        name: 'Thunderbolt',
+        attack: 15,
+        heal: 0,
+        light: 1,
+        lightTurns: 25,
         type: 'lightning'
     },
 
@@ -971,13 +1049,32 @@ export const cards = [
         type: 'megaice'
     },
 
+    // OCEAN
+    {
+        name: 'Ocean',
+        attack: 0,
+        heal: 25,
+        freeze: true,
+        morecards:  1,
+        healthbaradd: 5,
+        type: 'ocean'
+    },
+
     // EYE
     {
         name: 'Eye of the Storm',
         attack: 0,
         heal: 0,
         blind: 10,
-        blindTurns: 2,
+        blindTurns: 1,
+        type: 'eye'
+    },
+    {
+        name: 'Eye of the Beholder',
+        attack: 0,
+        heal: 0,
+        blind: 1,
+        blindTurns: 10,
         type: 'eye'
     },
 
@@ -998,6 +1095,10 @@ export const cards = [
         heal: 5,
         attackadd: 5,
         healadd: 5,
+        light: 5,
+        lightTurns: 5,
+        healthbaradd: 5,
+        healthbarremove: 5,
         type: 'heaven'
     },
 
@@ -1025,6 +1126,21 @@ export const cards = [
         type: 'troll'
     },
 
+    // BATSIE
+    {
+        name: 'Batsie',
+        attack: 5,
+        heal: 25,
+        healthbaradd: 7,
+        lock: 3,
+        lockTurns: 3,
+        blind: 3,
+        blindTurns: 3,
+        cardremove: 1,
+        healthbarremove: 3,
+        type: 'batsie'
+    },
+
     // BOSS
     {
         name: 'Boss',
@@ -1043,6 +1159,8 @@ export const cards = [
         healadd: 2,
         attackadd: 1,
         morecards: 1,
+        light: 1,
+        lightTurns: 1,
         removecardnummer: 1,
         type: 'lucky'
     },
@@ -1052,7 +1170,21 @@ export const cards = [
         heal: 10,
         attackadd: 2,
         removecardnummer: 1,
+        lock: 1,
+        lockTurns: 1,
         healthbaradd: 2,
+        type: 'lucky'
+    },
+    {
+        name: 'Lucky Coin',
+        attack: 15,
+        heal: 15,
+        morecards: 2,
+        removecardnummer: 1,
+        healthbaradd: 10,
+        healthbarremove: 1,
+        blind: 3,
+        blindTurns: 1,
         type: 'lucky'
     },
 
@@ -1132,7 +1264,6 @@ export const cards = [
         type: 'gamble'
     },
 
-
     // RAINBOW
     {
         name: 'Rainbow',
@@ -1150,6 +1281,8 @@ export const cards = [
         burnTurns: 1,
         blind: 3,
         blindTurns: 1,
+        light: 3,
+        lightTurns: 1,
         freeze: true,
         freezeadd: true,
         type: 'rainbow'
