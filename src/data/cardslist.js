@@ -979,6 +979,7 @@ export const cards = [
         name: 'Phantom',
         attack: 10,
         heal: 0,
+        attackadd: 1,
         lock: 2,
         lockTurns: 1,
         healthbarremove: -1,
@@ -1016,6 +1017,7 @@ export const cards = [
         attack: 5,
         heal: 15,
         healadd: -1,
+        attackadd: 1,
         healthbarremove: 5,
         type: 'poison'
     },
@@ -1078,6 +1080,7 @@ export const cards = [
         name: 'Fortress',
         attack: 0,
         heal: 8,
+        healadd: 1,
         healthbaradd: 8,
         type: 'shield'
     },

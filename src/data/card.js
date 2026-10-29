@@ -10,9 +10,9 @@ const selectedCards = ref([])
 export function getRandomCard() {
     const card = []
     card.name = 'Random Card'
-    card.attack = Math.floor(Math.random() * 31) - 6
+    card.attack = Math.floor(Math.random() * 33) - 6
     card.heal = Math.floor(Math.random() * 31) - 6
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.06) {
         card.attackadd = Math.floor(Math.random() * 3) - 1
     }
     if (Math.random() < 0.05) {
