@@ -1,10 +1,83 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { cards } from '../data/cardslist.js'
+import { getRandomCardType } from '../data/cardTypes.js'
 import { GetGameModeCards, GetGameModeCardsMultplayer } from '../data/gamemodes.js'
 const cardslist = ref(cards)
 const deck = ref([])
 const selectedCards = ref([])
+
+export function getRandomCard() {
+    const card = ref([])
+    card.name = 'Random Card'
+    card.attack = Math.floor(Math.random() * 31) - 6
+    card.heal = Math.floor(Math.random() * 31) - 6
+    if (Math.random() < 0.05) {
+        card.attackadd = Math.floor(Math.random() * 3) - 1
+    }
+    if (Math.random() < 0.05) {
+        card.healadd = Math.floor(Math.random() * 3) - 1
+    }
+    if (Math.random() < 0.005) {
+        card.attackaddadd = 1
+    }
+    if (Math.random() < 0.005) {
+        card.healaddadd = 1
+    }
+    if (Math.random() < 0.05) {
+        card.healthbaradd = Math.floor(Math.random() * 11) - 3
+    }
+    if (Math.random() < 0.05) {
+        card.healthbarremove = Math.floor(Math.random() * 11) - 3
+    }
+    if (Math.random() < 0.05) {
+        card.freeze = true
+    }
+    if (Math.random() < 0.005) {
+        card.freezeadd = true
+    }
+    if (Math.random() < 0.05) {
+        card.burn = Math.floor(Math.random() * 6) + 1
+        card.burnTurns = Math.floor(Math.random() * 3) + 1
+    }
+    if (Math.random() < 0.03) {
+        card.flip = Math.floor(Math.random() * 3) + 1
+        card.flipTurns = Math.floor(Math.random() * 3) + 1
+    }
+    if (Math.random() < 0.005) {
+        card.gamble = true
+        card.gambleCards = Math.floor(Math.random() * 3) + 1
+    }
+    if (Math.random() < 0.05) {
+        card.lock = Math.floor(Math.random() * 3) + 1
+        card.lockTurns = Math.floor(Math.random() * 3) + 1
+    }
+    if (Math.random() < 0.05) {
+        card.blind = Math.floor(Math.random() * 3) + 1
+        card.blindTurns = Math.floor(Math.random() * 3) + 1
+    }
+    if (Math.random() < 0.05) {
+        card.light = Math.floor(Math.random() * 3) + 1
+        card.lightTurns = Math.floor(Math.random() * 3) + 1
+    }
+    if (Math.random() < 0.05) {
+        card.removecardnummer = Math.floor(Math.random() * 4) + 1
+    }
+    if (Math.random() < 0.05) {
+        card.morecards = Math.floor(Math.random() * 3) + 1
+    }
+    if (Math.random() < 0.05) {
+        card.faketype = getRandomCardType()
+    }
+    if (Math.random() < 0.005) {
+        card.stapel = Math.random() < 0.5 ? 'shake' : Math.random() < 0.5 ? 'newdeckother' : 'newdeck'
+    }
+    card.type = 'random'
+    return card
+}
+
+
+
 
 // ================================
 // SINGLEPLAYER

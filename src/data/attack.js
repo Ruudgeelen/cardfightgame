@@ -61,10 +61,10 @@ export function AttackAddAdd(Card, UserCards) {
 export function AttackAddAddMultiplayer(Card, UserCards) {
     for (let i = 0; i < UserCards.length; i++) {
         if (UserCards[i].attackadd) {
-            UserCards[i].attackadd += Card.attackadd
+            UserCards[i].attackadd += Card.attackaddadd
         }
         else {
-            UserCards[i].attackadd = Card.attackadd || 0
+            UserCards[i].attackadd = Card.attackaddadd || 0
         }
     }
     return UserCards

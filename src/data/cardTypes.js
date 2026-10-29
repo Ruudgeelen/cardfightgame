@@ -8,6 +8,7 @@ export const cardTypes = {
     dragon: { name: 'Dragon', icon: '🐉' },
     undead: { name: 'Undead', icon: '💀' },
     light: { name: 'Light', icon: '✨' },
+    random: { name: 'Random', icon: '🔀' },
     space: { name: 'Space', icon: '🚀' },
     dark: { name: 'Dark', icon: '🌑' },
     freeze: { name: 'Freeze', icon: '❄️' },

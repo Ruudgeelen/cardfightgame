@@ -554,6 +554,11 @@ body {
     background: linear-gradient(145deg, #a7baba, #495f5f);
 }
 
+.card.random {
+    border-color: #0f00b0;
+    background: linear-gradient(145deg, #2a83ff, #0009b3);
+}
+
 .card.hell {
     border-color: #e86901;
     background: linear-gradient(145deg, rgb(255, 123, 0) 0%, rgb(255, 81, 0) 50%, rgb(255, 132, 0) 100%);

@@ -123,14 +123,35 @@ const cardTypeList = Object.values(cardTypes)
                 </div>
 
                 <div class="rule">
+                    <span>💡</span>
+                    <div>
+                        <h2>Light</h2>
+                        <p>
+                            Light reveals the affected player's cards for a
+                            limited number of turns. The player can see the
+                            cards, but cannot use them.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <span>🔄</span>
+                    <div>
+                        <h2>Flip</h2>
+                        <p>
+                            Flip reverses the affected player's cards for a
+                            limited number of turns. The player can see the
+                            cards, but their values are inverted.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
                     <span>🎲</span>
                     <div>
                         <h2>Game Modes</h2>
                         <p>
-                            Normal uses the cards as they are. Gamble gives
-                            cards the Gamble effect, which can affect random
-                            cards. Mimic gives cards a random displayed type
-                            while keeping their original values.
+                            Choose a game mode to play. Each mode has its own rules and effects. Some modes are more challenging than others, so choose wisely!
                         </p>
                     </div>
                 </div>
