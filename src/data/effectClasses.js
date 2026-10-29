@@ -63,6 +63,5 @@ export function heeftflipEffect(effect) {
     const activeEffects = effects.filter(
         (value) => typeof value === 'string' && value.trim()
     )
-    console.log('Active effects:', activeEffects)
     return activeEffects.some((value) => value === 'flip')
 }

@@ -8,7 +8,7 @@ const deck = ref([])
 const selectedCards = ref([])
 
 export function getRandomCard() {
-    const card = ref([])
+    const card = []
     card.name = 'Random Card'
     card.attack = Math.floor(Math.random() * 31) - 6
     card.heal = Math.floor(Math.random() * 31) - 6
