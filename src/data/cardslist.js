@@ -45,6 +45,12 @@ export const cards = [
         heal: 2,
         type: 'normal'
     },
+    {
+        name: 'Berserker',
+        attack: 12,
+        heal: 0,
+        type: 'normal'
+    },
 
     // RARE
     {
@@ -91,6 +97,13 @@ export const cards = [
         attackadd: 1,
         light: 1,
         lightTurns: 1,
+        type: 'rare'
+    },
+    {
+        name: 'Rare Assassin',
+        attack: 11,
+        heal: 0,
+        attackadd: 2,
         type: 'rare'
     },
 
@@ -197,6 +210,22 @@ export const cards = [
         burn: 1,
         burnTurns: 3
     },
+    {
+        name: 'Flame Spirit',
+        attack: 9,
+        heal: 5,
+        burn: 2,
+        burnTurns: 2,
+        type: 'fire',
+    },
+    {
+        name: 'Fire Elemental',
+        attack: 11,
+        heal: 3,
+        burn: 1,
+        burnTurns: 2,
+        type: 'fire',
+    },
 
     // LAVA 
     {
@@ -213,6 +242,30 @@ export const cards = [
         heal: 0,
         burn: 2,
         burnTurns: 2,
+        type: 'lava'
+    },
+    {
+        name: 'Lava Elemental',
+        attack: 16,
+        heal: 0,
+        burn: 3,
+        burnTurns: 2,
+        type: 'lava'
+    },
+    {
+        name: 'Lava Spirit',
+        attack: 14,
+        heal: 0,
+        burn: 2,
+        burnTurns: 2,
+        type: 'lava'
+    },
+    {
+        name: 'Lava Guardian',
+        attack: 15,
+        heal: 0,
+        burn: 3,
+        burnTurns: 1,   
         type: 'lava'
     },
 
@@ -585,8 +638,26 @@ export const cards = [
         attack: 6,
         heal: 4,
         blind: 4,
-        blindTurns: 3,
+        blindTurns: 1,
         healthbaradd: 3,
+        type: 'blur'
+    },
+    {
+        name: 'Blur Assassin',
+        attack: 8,
+        heal: 2,
+        blind: 3,
+        blindTurns: 2,
+        healthbaradd: 4,
+        type: 'blur'
+    },
+    {
+        name: 'Blur Healer',
+        attack: 4,
+        heal: 16,
+        blind: 2,
+        blindTurns: 1,
+        healthbaradd: 5,
         type: 'blur'
     },
 
@@ -748,6 +819,20 @@ export const cards = [
         freeze: true,
         type: 'freeze'
     },
+    {
+        name: 'Freeze Barrier',
+        attack: 6,
+        heal: 4,
+        freeze: true,
+        type: 'freeze'
+    },
+    {
+        name: 'Freeze Prison',
+        attack: 7,
+        heal: 3,
+        freeze: true,
+        type: 'freeze'
+    },
 
     // ICE
     {
@@ -764,6 +849,27 @@ export const cards = [
         freeze: true,
         type: 'ice'
     },
+    {
+        name: 'Ice Elemental',
+        attack: 10,
+        heal: 4,
+        freeze: true,
+        type: 'ice'
+    },
+    {
+        name: 'Ice Spirit',
+        attack: 8,
+        heal: 6,
+        freeze: true,
+        type: 'ice'
+    },
+    {
+        name: 'Ice Guardian',
+        attack: 11,
+        heal: 3,
+        freeze: true,
+        type: 'ice'
+    },
     
 
     // LIFESTEAL
@@ -774,7 +880,7 @@ export const cards = [
         healthbaradd: 5,
         lock: 1,
         lockTurns: 1,
-        healthbarremove: 3,
+        healthbarremove: 1,
         type: 'lifesteal'
     },
     {
@@ -782,8 +888,8 @@ export const cards = [
         attack: 10,
         heal: 15,
         healadd: -1,
-        healthbaradd: -2,
-        healthbarremove: 5,
+        healthbaradd: 2,
+        healthbarremove: 1,
         type: 'lifesteal'
     },
     {
@@ -791,10 +897,28 @@ export const cards = [
         attack: 15,
         heal: 10,
         healadd: -1,
-        healthbaradd: -3,
-        healthbarremove: 7,
+        healthbaradd: 1,
+        healthbarremove: 1,
         blind: 1,
         blindTurns: 1,
+        type: 'lifesteal'
+    },
+    {
+        name: 'Blood Pact',
+        attack: 10,
+        heal: 5,
+        healadd: -1,
+        healthbaradd: -4,
+        healthbarremove: 4,
+        type: 'lifesteal'
+    },
+    {
+        name: 'Vampiric Ritual',
+        attack: 15,
+        heal: 10,
+        healadd: -1,
+        healthbaradd: 5,
+        healthbarremove: 2,
         type: 'lifesteal'
     },
 
@@ -871,10 +995,18 @@ export const cards = [
     },
     {
         name: 'Wraith',
-        attack: 20,
+        attack: 11,
         heal: 0,
         healthbarremove: -3,
         removecardnummer: 3,
+        type: 'ghost'
+    },
+    {
+        name: 'Banshee',
+        attack: 15,
+        heal: 0,
+        healthbarremove: -4,
+        removecardnummer: 2,
         type: 'ghost'
     },
 
@@ -900,10 +1032,115 @@ export const cards = [
         attack: 10,
         heal: 15,
         healadd: -1,
-        healthbarremove: 7,
+        healthbarremove: 4,
+        type: 'poison'
+    },
+    {
+        name: 'Poisonous Gas',
+        attack: 8,
+        heal: 12,
+        healadd: -1,
+        healthbarremove: 2,
+        type: 'poison'
+    },
+    {
+        name: 'Toxic Spill',
+        attack: 9,
+        heal: 14,
+        healadd: -1,
+        healthbarremove: 1,
         type: 'poison'
     },
     
+    // SHIELD
+    {
+        name: 'Shield Card',
+        attack: 0,
+        heal: 10,
+        healthbaradd: 5,
+        type: 'shield'
+    },
+    {
+        name: 'Barrier',
+        attack: 0,
+        heal: 9,
+        healthbaradd: 7,
+        type: 'shield'
+    },
+    {
+        name: 'Protective Ward',
+        attack: 0,
+        heal: 10,
+        healthbaradd: 6,
+        type: 'shield'
+    },
+    {
+        name: 'Fortress',
+        attack: 0,
+        heal: 8,
+        healthbaradd: 8,
+        type: 'shield'
+    },
+    {
+        name: 'Shield',
+        attack: 0,
+        heal: 11,
+        healthbaradd: 5,
+        type: 'shield'
+    },
+
+    // MAGIC
+    {
+        name: 'Magic Card',
+        attack: 10,
+        heal: 10,
+        light: 1,
+        lightTurns: 1,
+        blind: 1,
+        blindTurns: 1,
+        type: 'magic'
+    },
+    {
+        name: 'Wizard',
+        attack: 15,
+        heal: 15,
+        light: 1,
+        lightTurns: 1,
+        blind: 1,
+        blindTurns: 1,
+        type: 'magic'
+    
+    },
+    {
+        name: 'Sorcerer',
+        attack: 20,
+        heal: 5,
+        light: 1,
+        lightTurns: 1,
+        blind: 1,
+        blindTurns: 1,
+        type: 'magic'
+    },
+    {
+        name: 'Enchanter',
+        attack: 5,
+        heal: 20,
+        light: 1,
+        lightTurns: 1,
+        blind: 1,
+        blindTurns: 1,
+        type: 'magic'
+    },
+    {
+        name: 'Magician',
+        attack: 12,
+        heal: 12,
+        light: 1,
+        lightTurns: 1,
+        blind: 1,
+        blindTurns: 1,
+        type: 'magic'
+    },
 
     // TNT
     {
@@ -917,7 +1154,7 @@ export const cards = [
         name: 'Dynamite',
         attack: 20,
         heal: 0,
-        healthbarremove: 7,
+        healthbarremove: 3,
         type: 'tnt'
     },
     {
@@ -926,6 +1163,61 @@ export const cards = [
         heal: 0,
         healthbarremove: 3,
         type: 'tnt'
+    },
+    {
+        name: 'Bomb',
+        attack: 22,
+        heal: 0,
+        healthbarremove: 4,
+        type: 'tnt'
+    },
+    {
+        name: 'Grenade',
+        attack: 18,
+        heal: 0,
+        healthbarremove: 2,
+        type: 'tnt'
+    },
+
+    // WEATHER
+    {
+        name: 'Rain',
+        attack: 0,
+        heal: 10,
+        healthbaradd: 2,
+        type: 'weather'
+    },
+    {
+        name: 'Snow',
+        attack: 0,
+        heal: 8,
+        freeze: true,
+        healthbaradd: 3,
+        type: 'weather'
+    },
+    {
+        name: 'Wind',
+        attack: 0,
+        heal: 5,
+        removecardnummer: 1,
+        type: 'weather'
+    },
+    {
+        name: 'Sunny Day',
+        attack: 0,
+        heal: 12,
+        light: 1,
+        lightTurns: 1,
+        healthbaradd: 2,
+        type: 'weather'
+    },
+    {
+        name: 'Hailstorm',
+        attack: 0,
+        heal: 7,
+        freeze: true,
+        healthbaradd: 3,
+        type: 'weather'
     },
 
     // SOFT
@@ -1011,6 +1303,13 @@ export const cards = [
         name: 'Storm',
         attack: 0,
         heal: 0,
+        removecardnummer: 7,
+        type: 'storm'
+    },
+    {
+        name: 'Heavy Storm',
+        attack: 0,
+        heal: 0,
         removecardnummer: 10,
         type: 'storm'
     },
@@ -1039,6 +1338,13 @@ export const cards = [
         attack: 0,
         heal: 0,
         morecards: 7,
+        type: 'world'
+    },
+    {
+        name: 'World Boss',
+        attack: 0,
+        heal: 0,
+        morecards: 8,
         type: 'world'
     },
 
@@ -1077,11 +1383,27 @@ export const cards = [
         burnTurns: 1,
         type: 'hell'
     },
+    {
+        name: 'Infernal',
+        attack: 0,
+        heal: 0,
+        burn: 5,
+        burnTurns: 3,
+        type: 'hell'
+    },
 
     // MEGAICE
     {
         name: 'Mega Ice',
         attack: 0,
+        heal: 10,
+        freeze: true,
+        freezeadd: true,
+        type: 'megaice'
+    },
+    {
+        name: 'Mega Freeze',
+        attack: 10,
         heal: 0,
         freeze: true,
         freezeadd: true,
@@ -1098,6 +1420,17 @@ export const cards = [
         flipTurns: 3,
         morecards:  1,
         healthbaradd: 5,
+        type: 'ocean'
+    },
+    {
+        name: 'Ocean Wave',
+        attack: 0,
+        heal: 20,
+        freeze: true,
+        flip: 2,
+        flipTurns: 2,
+        morecards:  2,
+        healthbaradd: 3,
         type: 'ocean'
     },
 
@@ -1128,6 +1461,13 @@ export const cards = [
         healthbaradd: 10,
         type: 'megaheal'
     },
+    {
+        name: 'Megaheal Plus',
+        attack: 0,
+        heal: 55,
+        healthbaradd: 15,
+        type: 'megaheal'
+    },
 
     // HEAVEN
     {
@@ -1140,6 +1480,18 @@ export const cards = [
         lightTurns: 5,
         healthbaradd: 5,
         healthbarremove: 5,
+        type: 'heaven'
+    },
+    {
+        name: 'Heavenly Wrath',
+        attack: 10,
+        heal: 10,
+        attackadd: 4,
+        healadd: 4,
+        light: 4,
+        lightTurns: 4,
+        healthbaradd: 4,
+        healthbarremove: 4,
         type: 'heaven'
     },
 
@@ -1395,6 +1747,11 @@ export const cards = [
     getRandomCard(),
     getRandomCard(),
     getRandomCard(),
+    getRandomCard(),
+    getRandomCard(),
+    getRandomCard(),
+
+    // other
     getRandomCard(),
     getRandomCard(),
     getRandomCard(),

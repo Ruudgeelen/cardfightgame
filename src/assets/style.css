@@ -479,12 +479,27 @@ body {
 
 .card.freeze {
     border-color: #00ffff;
-    background: linear-gradient(145deg, #9effff, #00cece);
+    background: linear-gradient(145deg, #85f6f6, #00cece);
+}
+
+.card.magic {
+    border-color: #8a34fa;
+    background: linear-gradient(145deg, #b6a3ff, #8a34fa);
+}
+
+.card.weather {
+    border-color: #00a0a0;
+    background: linear-gradient(145deg, #2ecbff, #0098ac);
+}
+
+.card.shield {
+    border-color: #1900ff;
+    background: linear-gradient(145deg, #3f31ff, #8a34fa);
 }
 
 .card.ice {
-    border-color: #b0ffff;
-    background: linear-gradient(145deg, #d2ffff, #3cd0d0);
+    border-color: #00a0a0;
+    background: linear-gradient(145deg, #2ecbff, #0098ac);
 }
 
 .card.heal {
