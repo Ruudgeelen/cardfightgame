@@ -10,8 +10,8 @@ const selectedCards = ref([])
 export function getRandomCard() {
     const card = []
     card.name = 'Random Card'
-    card.attack = Math.floor(Math.random() * 33) - 6
-    card.heal = Math.floor(Math.random() * 31) - 6
+    card.attack = Math.floor(Math.random() * 21) - 3
+    card.heal = Math.floor(Math.random() * 20) - 3
     if (Math.random() < 0.06) {
         card.attackadd = Math.floor(Math.random() * 3) - 1
     }
@@ -25,10 +25,10 @@ export function getRandomCard() {
         card.healaddadd = 1
     }
     if (Math.random() < 0.05) {
-        card.healthbaradd = Math.floor(Math.random() * 11) - 3
+        card.healthbaradd = Math.floor(Math.random() * 6) - 2
     }
     if (Math.random() < 0.05) {
-        card.healthbarremove = Math.floor(Math.random() * 11) - 3
+        card.healthbarremove = Math.floor(Math.random() * 6) - 2
     }
     if (Math.random() < 0.05) {
         card.freeze = true
@@ -37,8 +37,8 @@ export function getRandomCard() {
         card.freezeadd = true
     }
     if (Math.random() < 0.05) {
-        card.burn = Math.floor(Math.random() * 6) + 1
-        card.burnTurns = Math.floor(Math.random() * 3) + 1
+        card.burn = Math.floor(Math.random() * 3) + 1
+        card.burnTurns = Math.floor(Math.random() * 2) + 1
     }
     if (Math.random() < 0.03) {
         card.flip = Math.floor(Math.random() * 3) + 1
