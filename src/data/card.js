@@ -63,10 +63,10 @@ export function getRandomCard() {
     if (Math.random() < 0.05) {
         card.removecardnummer = Math.floor(Math.random() * 4) + 1
     }
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.04) {
         card.morecards = Math.floor(Math.random() * 3) + 1
     }
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.01) {
         card.faketype = getRandomCardType()
     }
     if (Math.random() < 0.005) {
