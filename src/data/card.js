@@ -326,7 +326,7 @@ export function RemoveCardMultiplayer(cardlist) {
 
 export function StealCardMultiplayer(card, userCards, otheruserCards) {
     const stealid = Math.floor(Math.random() * otheruserCards.length)
-    const stolenCard = otheruserCards.splice(stealid, 1)
+    const [stolenCard] = otheruserCards.splice(stealid, 1)
     userCards.push(stolenCard)
     return userCards
 }

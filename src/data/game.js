@@ -565,7 +565,7 @@ export function gameMultiplayer(
     // =================================
     // NIEUWE STAPEL
     // =================================
-    if (steal) {
+    if (card.steal) {
         for (let i = 0; i < card.steal; i++) {
             if (otheruserCards.length <= 1) {
                 break
