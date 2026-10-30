@@ -180,15 +180,35 @@ function updateBurnDamage(card) {
     }
 }
 
+function updatePoisonDamage(card) {
+    if (!hasEffect(card, "poison")) {
+        return
+    }
+
+    const turns = Number(effectTurns(card, "poison")) - 1
+    const value = Number(effectValue(card, "poison")) || 0
+
+    card.heal = (Number(card.heal) || 0) - value
+
+    if (turns <= 0) {
+        removeEffect(card, "poison")
+    } else {
+        card.effectturnsmap = {
+            ...(card.effectturnsmap || {}),
+            poison: turns
+        }
+        if (effectList(card).length === 1) {
+            card.effectturns = turns
+        }
+    }
+}
+
 // ================================
 // SINGLEPLAYER
 // ================================
 
 export function applyblindEffect(card, userCards) {
-    const amount = Math.min(
-        Math.max(Number(card.blind) || 0, 0),
-        userCards.value.length
-    )
+    const amount = Math.min( Math.max(Number(card.blind) || 0, 0), userCards.value.length)
     const selectedCards = getRandomCards(userCards.value, amount)
 
     applyEffectToCards(
@@ -247,6 +267,33 @@ export function applyFlipEffect(card, userCards) {
         card.flipTurns ?? "Forever"
     )
 
+    return userCards
+}
+
+export function applyPoisonEffect(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.poison) || 0, 0),
+        userCards.value.length
+    )
+    const selectedCards = getRandomCards(userCards.value, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "poison",
+        card.poisonDamage ?? '',
+        card.poisonTurns ?? "Forever"
+    )
+
+    return userCards
+}
+
+export function PoisonDamage(userCards) {
+    for (const userCard of userCards.value) {
+        if (!hasEffect(userCard, "poison")) {
+            continue
+        }
+        updatePoisonDamage(userCard)
+    }
     return userCards
 }
 
@@ -343,6 +390,13 @@ export function BurnDamageMultiplayer(UserCards) {
     return UserCards
 }
 
+export function PoisonDamageMultiplayer(UserCards) {
+    for (const userCard of UserCards) {
+        updatePoisonDamage(userCard)
+    }
+    return UserCards
+}
+
 export function FreezeEffectMultiplayer(UserCards) {
     for (const userCard of UserCards) {
         applyFreeze(userCard)
@@ -368,6 +422,23 @@ export function applyLockEffectMultiplayer(card, userCards) {
         "lock",
         "",
         card.lockTurns ?? "Forever"
+    )
+
+    return userCards
+}
+
+export function applyPoisonEffectMultiplayer(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.poison) || 0, 0),
+        userCards.length
+    )
+    const selectedCards = getRandomCards(userCards, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "poison",
+        card.poisonDamage ?? '',
+        card.poisonTurns ?? "Forever"
     )
 
     return userCards

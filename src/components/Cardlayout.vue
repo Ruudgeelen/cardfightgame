@@ -2,7 +2,7 @@
 import '../assets/style.css'
 import { getCardType } from '../data/cardTypes.js'
 import { cardStatDescription, cardTooltip } from '../data/tooltips.js'
-import { effectClasses, heeftlockEffect, heeftburnEffect, heeftfreezeEffect, heeftgambleEffect, heeftblindEffect, heeftlightEffect, heeftflipEffect } from '../data/effectClasses.js'
+import { effectClasses, heeftlockEffect, heeftburnEffect, heeftfreezeEffect, heeftgambleEffect, heeftblindEffect, heeftlightEffect, heeftflipEffect, heeftpoisonEffect } from '../data/effectClasses.js'
 
 defineProps({
     card: {
@@ -35,6 +35,7 @@ defineProps({
             <p v-if="heeftlockEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔒</span><b>{{  }}</b></p>
             <p v-if="heeftburnEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔥</span><b>{{ }}</b></p>
             <p v-if="heeftlightEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>💡</span><b>{{ }}</b></p>
+            <p v-if="heeftpoisonEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🍷</span><b>{{ }}</b></p>
             <p v-if="card.attack" class="card-stat" :title="cardStatDescription(card, 'attack')"><span>⚔️</span><b>{{ card.attack }}</b></p>
             <p v-if="card.heal" class="card-stat" :title="cardStatDescription(card, 'heal')"><span>❤️</span><b>{{ card.heal }}</b></p>
             <p v-if="card.freeze" class="card-stat"><span>❄️</span></p>
@@ -44,6 +45,7 @@ defineProps({
             <p v-if="card.blind" class="card-stat"><span>👁️</span><b>{{ card.blind }} <small>⏳ {{ card.blindTurns }}</small></b></p>
             <p v-if="card.light" class="card-stat"><span>💡</span><b>{{ card.light }} <small>⏳ {{ card.lightTurns }}</small></b></p>
             <p v-if="card.flip" class="card-stat"><span>🔄</span><b>{{ card.flip }} <small>⏳ {{ card.flipTurns }}</small></b></p>
+            <p v-if="card.poison" class="card-stat"><span>🍷</span><b>{{ card.poison }} <small>⏳ {{ card.poisonTurns }}</small> <small> ⚔️ {{ card.poisonDamage }}</small></b></p>
             <p v-if="card.healthbaradd" class="card-stat" :title="cardStatDescription(card, 'healthbaradd')"><span>💚</span><b>{{ card.healthbaradd }}</b></p>
             <p v-if="card.healthbarremove" class="card-stat" :title="cardStatDescription(card, 'healthbarremove')"><span>💔</span><b>{{ card.healthbarremove }}</b></p>
             <p v-if="card.attackadd" class="card-stat" :title="cardStatDescription(card, 'attackadd')"><span>🔪</span><b>{{ card.attackadd > 0 ? '+' : '' }}{{ card.attackadd }}</b></p>

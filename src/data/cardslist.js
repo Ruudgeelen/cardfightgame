@@ -140,6 +140,9 @@ export const cards = [
         heal: 11,
         healthbarremove: 3,
         removecardnummer: 1,
+        poison: 2,
+        poisonTurns: 3,
+        poisonDamage: 1,
         type: 'unique'
     },
     {
@@ -362,6 +365,9 @@ export const cards = [
         heal: 8,
         blind: 1,
         blindTurns: 1,
+        poison: 1,
+        poisonTurns: 1,
+        poisonDamage: 1,
         type: 'animal'
     },
     {
@@ -419,6 +425,9 @@ export const cards = [
         heal: 14,
         healthbaradd: 1,
         healthbarremove: 1,
+        poison: 1,
+        poisonTurns: 1,
+        poisonDamage: 1,
         type: 'plant'
     },
     {
@@ -518,6 +527,15 @@ export const cards = [
         heal: 0,
         light: 2,
         lightTurns: 3,
+        type: 'dragon'
+    },
+    {
+        name: 'Poison Dragon',
+        attack: 15,
+        heal: 0,
+        poison: 2,
+        poisonTurns: 1,
+        poisonDamage: 2,
         type: 'dragon'
     },
 
@@ -1018,7 +1036,10 @@ export const cards = [
         heal: 15,
         healadd: -1,
         attackadd: 1,
-        healthbarremove: 5,
+        poison: 3,
+        poisonTurns: 1,
+        poisonDamage: 1,
+        healthbarremove: 3,
         type: 'poison'
     },
     {
@@ -1027,6 +1048,9 @@ export const cards = [
         heal: 13,
         healadd: -1,
         healthbarremove: 5,
+        poison: 2,
+        poisonTurns: 1,
+        poisonDamage: 4,
         type: 'poison'
     },
     {
@@ -1034,6 +1058,9 @@ export const cards = [
         attack: 10,
         heal: 15,
         healadd: -1,
+        poison: 1,
+        poisonTurns: 2,
+        poisonDamage: 1,
         healthbarremove: 4,
         type: 'poison'
     },
@@ -1042,6 +1069,9 @@ export const cards = [
         attack: 8,
         heal: 12,
         healadd: -1,
+        poison: 2,
+        poisonTurns: 1,
+        poisonDamage: 2,
         healthbarremove: 2,
         type: 'poison'
     },
@@ -1050,6 +1080,9 @@ export const cards = [
         attack: 9,
         heal: 14,
         healadd: -1,
+        poison: 1,
+        poisonTurns: 3,
+        poisonDamage: 2,
         healthbarremove: 1,
         type: 'poison'
     },
@@ -1472,6 +1505,28 @@ export const cards = [
         type: 'megaheal'
     },
 
+    // POISONOUS
+    {
+        name: 'Poisonous',
+        attack: 0,
+        heal: 0,
+        poison: 1,
+        poisonTurns: 5,
+        poisonDamage: 5,
+        healthbarremove: 3,
+        type: 'poisonous'
+    },
+    {
+        name: 'Poisonous Plus',
+        attack: 0,
+        heal: 0,
+        poison: 15,
+        poisonTurns: 1,
+        poisonDamage: 2,
+        healthbarremove: 3,
+        type: 'poisonous'
+    },
+
     // HEAVEN
     {
         name: 'Heavenly Blessing',
@@ -1716,10 +1771,6 @@ export const cards = [
         lockTurns: 1,
         burn: 3,
         burnTurns: 1,
-        blind: 3,
-        blindTurns: 1,
-        light: 3,
-        lightTurns: 1,
         flip: 3,
         flipTurns: 1,
         freeze: true,

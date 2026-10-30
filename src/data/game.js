@@ -36,7 +36,11 @@ import {
     applyFlipEffect,
     applyFlipEffectMultiplayer,
     updateFlipTurns,
-    updateFlipTurnsMultiplayer
+    updateFlipTurnsMultiplayer,
+    applyPoisonEffect,
+    applyPoisonEffectMultiplayer,
+    PoisonDamage,
+    PoisonDamageMultiplayer,
 } from '../data/effect.js'
 
 import {
@@ -166,6 +170,11 @@ export function game(
         targetCards.value = applyFlipEffect(card, targetCards).value
     }
 
+    if (card.poison) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        targetCards.value = applyPoisonEffect(card, targetCards).value
+    }
+
     if (card.freeze) {
         const targetCards = gambleReversed ? otheruserCards : userCards
         targetCards.value = FreezeEffect(targetCards).value
@@ -196,10 +205,8 @@ export function game(
 
     }
 
-        userCards.value =
-        BurnDamage(
-            userCards
-        ).value
+    userCards.value = BurnDamage( userCards ).value
+    userCards.value = PoisonDamage( userCards ).value
 
     if ( cardstapel.value.length === 0 || card.stapel === 'shake') {
         cardstapel.value =
@@ -480,6 +487,11 @@ export function gameMultiplayer(
         applyFlipEffectMultiplayer(card, targetCards)
     }
 
+    if (card.poison) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        applyPoisonEffectMultiplayer(card, targetCards)
+    }
+
 
     // =================================
     // BURN
@@ -504,10 +516,8 @@ export function gameMultiplayer(
     // BURN DAMAGE
     // =================================
 
-    userCards =
-        BurnDamageMultiplayer(
-            userCards
-        )
+    userCards = BurnDamageMultiplayer(userCards)
+    userCards = PoisonDamageMultiplayer(userCards)
 
 
     // =================================

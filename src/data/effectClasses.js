@@ -65,3 +65,11 @@ export function heeftflipEffect(effect) {
     )
     return activeEffects.some((value) => value === 'flip')
 }
+
+export function heeftpoisonEffect(effect) {
+    const effects = Array.isArray(effect) ? effect : [effect]
+    const activeEffects = effects.filter(
+        (value) => typeof value === 'string' && value.trim()
+    )
+    return activeEffects.some((value) => value === 'poison')
+}

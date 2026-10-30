@@ -100,6 +100,7 @@ export function cardTooltip(card) {
         card.lock && `Locks ${card.lock} random opponent card${card.lock === 1 ? '' : 's'} for ${card.lockTurns} turn${card.lockTurns === 1 ? '' : 's'}. Locked cards cannot be played`,
         card.blind && `Blinds ${card.blind} random opponent card${card.blind === 1 ? '' : 's'} for ${card.blindTurns} turn${card.blindTurns === 1 ? '' : 's'}. Blinded cards cannot be seen by the person`,
         card.light && `Reveals ${card.light} opponent cards for ${card.lightTurns} turn${card.lightTurns === 1 ? '' : 's'}. Revealed cards can be seen by the person playing the card`,
+        card.poison && `Poisons ${card.poison} opponent cards for ${card.poisonDamage} damage each turn (${card.poisonTurns} turn${card.poisonTurns === 1 ? '' : 's'})`,
         statTooltip(card, 'attackadd'),
         statTooltip(card, 'healadd'),
         statTooltip(card, 'attackaddadd'),

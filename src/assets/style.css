@@ -647,6 +647,11 @@ body {
     background: linear-gradient(145deg, rgb(254, 97, 209) 0%, rgb(218, 0, 156) 50%, rgb(255, 114, 220) 100%);
 }
 
+.card.poisonous {
+    border-color: #7200a8;
+    background: linear-gradient(145deg, rgb(199, 125, 255) 0%, rgb(114, 0, 168) 50%, rgb(199, 125, 255) 100%);
+}
+
 .card.boss {
     border-color: #780000;
     color: #fff;
@@ -742,6 +747,14 @@ body {
         0 0 10px rgba(255, 255, 0, 0.9),
         0 0 15px rgba(255, 255, 0, 0.7),
         0 0 25px rgba(255, 255, 0, 0.5);
+}
+
+.card.effect-poison {
+    box-shadow:
+        0 0 5px rgb(114, 0, 168),
+        0 0 10px rgba(114, 0, 168, 0.9),
+        0 0 15px rgba(114, 0, 168, 0.7),
+        0 0 25px rgba(114, 0, 168, 0.5);
 }
 
 .card.effect-flip {

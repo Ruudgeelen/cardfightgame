@@ -61,6 +61,11 @@ export function getRandomCard() {
         card.lightTurns = Math.floor(Math.random() * 3) + 1
     }
     if (Math.random() < 0.05) {
+        card.poison = Math.floor(Math.random() * 3) + 1
+        card.poisonTurns = Math.floor(Math.random() * 2) + 1
+        card.poisonDamage = Math.floor(Math.random() * 2) + 1
+    }
+    if (Math.random() < 0.05) {
         card.removecardnummer = Math.floor(Math.random() * 4) + 1
     }
     if (Math.random() < 0.04) {
