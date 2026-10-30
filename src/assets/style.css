@@ -697,6 +697,12 @@ body {
     background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(0, 255, 128) 25%, rgb(0, 0, 0) 50%, rgb(0, 227, 113) 75%, rgb(11, 0, 0) 100%);
 }
 
+.card.steal {
+    border-color:rgb(85, 0, 78) ;
+    color: #fff;
+    background: linear-gradient(145deg, rgb(0, 0, 0) 0%, rgb(85, 0, 78) 25%, rgb(0, 0, 0) 50%, rgb(65, 0, 58) 75%, rgb(11, 0, 0) 100%);
+}
+
 .card.gamble {
     border-color: #da0000;
     color: #fff;

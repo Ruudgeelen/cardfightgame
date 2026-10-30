@@ -8,7 +8,7 @@ const deck = ref([])
 const selectedCards = ref([])
 
 export function getRandomCard() {
-    const card = []
+    const card = {}
     card.name = 'Random Card'
     card.attack = Math.floor(Math.random() * 21) - 3
     card.heal = Math.floor(Math.random() * 20) - 3
@@ -60,7 +60,7 @@ export function getRandomCard() {
         card.light = Math.floor(Math.random() * 3) + 1
         card.lightTurns = Math.floor(Math.random() * 3) + 1
     }
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.04) {
         card.poison = Math.floor(Math.random() * 3) + 1
         card.poisonTurns = Math.floor(Math.random() * 2) + 1
         card.poisonDamage = Math.floor(Math.random() * 2) + 1
@@ -74,13 +74,16 @@ export function getRandomCard() {
     if (Math.random() < 0.01) {
         card.faketype = getRandomCardType()
     }
-    if (Math.random() < 0.05) {
+    if (Math.random() < 0.03) {
         card.weak = Math.floor(Math.random() * 3) + 1
         card.weakTurns = Math.floor(Math.random() * 2) + 1
         card.weakDamage = Math.floor(Math.random() * 2) + 1
     }
     if (Math.random() < 0.005) {
         card.stapel = Math.random() < 0.5 ? 'shake' : Math.random() < 0.5 ? 'newdeckother' : 'newdeck'
+    }
+    if (Math.random() < 0.005) {
+        card.steal = Math.floor(Math.random() * 3) + 1
     }
     card.type = 'random'
     return card
@@ -191,6 +194,14 @@ export function RemoveCard(cardlist) {
     cardlist.splice(randomIndex, 1)
 
     return cardlist
+}
+
+export function StealCard(card, userCards, otheruserCards) {
+    const stealid = Math.floor(Math.random() * otheruserCards.value.length)
+    const stolenCard = otheruserCards.value[stealid]
+    otheruserCards.value.splice(stealid, 1)
+    userCards.value.push(stolenCard).value
+    return userCards
 }
 
 // ================================
@@ -308,4 +319,11 @@ export function RemoveCardMultiplayer(cardlist) {
     cardlist.splice(randomIndex, 1)
 
     return cardlist
+}
+
+export function StealCardMultiplayer(card, userCards, otheruserCards) {
+    const stealid = Math.floor(Math.random() * otheruserCards.length)
+    const stolenCard = otheruserCards.splice(stealid, 1)
+    userCards.push(stolenCard)
+    return userCards
 }

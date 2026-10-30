@@ -113,6 +113,7 @@ export function cardTooltip(card) {
         card.stapel && `Deck effect: ${card.stapel}`,
         card.gambleCards && `Makes ${card.gambleCards} random card${card.gambleCards === 1 ? '' : 's'} gamble`,
         effects && `Effects: ${effects}`,
+        statTooltip(card, 'steal') && `Steals ${card.steal} random card${card.steal === 1 ? '' : 's'} from the opponent`,
         effectDetails(card, 'effectturnsmap') && `Effect durations: ${effectDetails(card, 'effectturnsmap')}`,
         effectDetails(card, 'effectvalues') && `Effect powers: ${effectDetails(card, 'effectvalues')}`
     ].filter(Boolean).join('\n')

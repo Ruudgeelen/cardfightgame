@@ -1878,6 +1878,22 @@ export const cards = [
         type: 'mimic'
     },
 
+    // STEAL
+    {
+        name: 'Steal Card',
+        attack: 0,
+        heal: 0,
+        steal: Math.floor(Math.random() * 5) + 1,
+        type: 'steal'
+    },
+    {
+        name: 'Steal Card',
+        attack: 0,
+        heal: 0,
+        steal: Math.floor(Math.random() * 5) + 1,
+        type: 'steal'
+    },
+
     // KAART
     {
         name: 'Shake',
@@ -1907,7 +1923,7 @@ export const cards = [
         attack: 0,
         heal: 0,
         gamble: true,
-        gambleCards: 3,
+        gambleCards: Math.floor(Math.random() * 5) + 1,
         type: 'gamble'
     },
 
@@ -1961,8 +1977,6 @@ export const cards = [
     getRandomCard(),
 
     // other
-    getRandomCard(),
-    getRandomCard(),
     getRandomCard(),
     getRandomCard(),
     getRandomCard(),

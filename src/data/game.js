@@ -68,7 +68,9 @@ import {
     GetNewCardMultiplayer,
     GetNewStapelMultiplayer,
     RemoveCard,
-    RemoveCardMultiplayer
+    RemoveCardMultiplayer,
+    StealCard,
+    StealCardMultiplayer
 } from '../data/card.js'
 
 
@@ -217,6 +219,15 @@ export function game(
     userCards.value = BurnDamage( userCards ).value
     userCards.value = PoisonDamage( userCards ).value
     userCards.value = WeakDamage( userCards ).value
+
+    if (card.steal) {
+        for (let i = 0; i < card.steal; i++) {
+            if (otheruserCards.value.length <= 1) {
+                break
+            }
+            userCards.value = StealCard(card, userCards, otheruserCards).value
+        }
+    }
 
     if ( cardstapel.value.length === 0 || card.stapel === 'shake') {
         cardstapel.value =
@@ -539,6 +550,14 @@ export function gameMultiplayer(
     // =================================
     // NIEUWE STAPEL
     // =================================
+    if (steal) {
+        for (let i = 0; i < card.steal; i++) {
+            if (otheruserCards.length <= 1) {
+                break
+            }
+            userCards = StealCardMultiplayer(card, userCards, otheruserCards)
+        }
+    }
 
     if ( cardstapel.length === 0 || card.stapel === 'shake') {
         cardstapel =

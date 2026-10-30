@@ -48,12 +48,13 @@ export const cardTypes = {
     megaice: { name: 'Mega Ice', icon: '☃️' },
     eye: { name: 'Eye', icon: '👁️' },
     closed: { name: 'Closed', icon: '🔐' },
-    mimic: { name: 'Mimic', icon: '🎭' },
-    kaart: { name: 'Kaart', icon: '🎴' },
-    gamble: { name: 'Gamble', icon: '🎲' },
     lucky: { name: 'Lucky', icon: '🍀' },
     boss: { name: 'Boss', icon: '👺' },
     bonus: { name: 'Bonus', icon: '🎁' },
+    mimic: { name: 'Mimic', icon: '🎭' },
+    kaart: { name: 'Kaart', icon: '🎴' },
+    gamble: { name: 'Gamble', icon: '🎲' },
+    steal: { name: 'steal', icon: '🥷' },
     rainbow: { name: 'Rainbow', icon: '🌈' }
 }
 
