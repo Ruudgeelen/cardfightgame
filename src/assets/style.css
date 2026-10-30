@@ -680,8 +680,8 @@ body {
 }
 
 .card.forcefield {
-    border-color: #00ffff;
-    background: linear-gradient(145deg, rgb(0, 255, 255) 0%, rgb(0, 170, 255) 50%, rgb(0, 255, 238) 100%);
+    border-color: #00ccff;
+    background: linear-gradient(145deg, rgb(0, 187, 255) 0%, rgb(0, 51, 255) 50%, rgb(0, 179, 255) 100%);
 }
 
 .card.frikandelcat {
