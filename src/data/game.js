@@ -495,7 +495,7 @@ export function gameMultiplayer(
 
     if (card.shield) {
         const targetCards = gambleReversed ? otheruserCards : userCards
-        applyShieldEffectMultiplayer(targetCards)
+        applyShieldEffectMultiplayer(card, targetCards)
     }
 
     if (card.freeze) {
