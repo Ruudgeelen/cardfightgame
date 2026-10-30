@@ -2,7 +2,7 @@
 import '../assets/style.css'
 import { getCardType } from '../data/cardTypes.js'
 import { cardStatDescription, cardTooltip } from '../data/tooltips.js'
-import { effectClasses, heeftlockEffect, heeftburnEffect, heeftfreezeEffect, heeftgambleEffect, heeftblindEffect, heeftlightEffect, heeftflipEffect, heeftpoisonEffect, heeftweakEffect } from '../data/effectClasses.js'
+import { effectClasses, heeftlockEffect, heeftburnEffect, heeftfreezeEffect, heeftgambleEffect, heeftblindEffect, heeftlightEffect, heeftflipEffect, heeftpoisonEffect, heeftweakEffect, heeftshieldEffect } from '../data/effectClasses.js'
 
 defineProps({
     card: {
@@ -28,6 +28,7 @@ defineProps({
             {{ getCardType(card.faketype).icon }}
         </p>
         <div class="card-stats">
+            <p v-if="heeftshieldEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🛡️</span><b>{{  }}</b></p>
             <p v-if="heeftflipEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🔄</span><b>{{  }}</b></p>
             <p v-if="heeftblindEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>👁️</span><b>{{  }}</b></p>
             <p v-if="heeftgambleEffect(card.effect)" class="effect-stat" :title="cardStatDescription(card, 'effect')"><span>🎲</span><b>{{  }}</b></p>
@@ -50,6 +51,7 @@ defineProps({
             <p v-if="card.weak" class="card-stat"><span>💪</span><b>{{ card.weak }} <small>⏳ {{ card.weakTurns }}</small><small> ⚔️ {{ card.weakDamage }}</small></b></p>
             <p v-if="card.healthbaradd" class="card-stat" :title="cardStatDescription(card, 'healthbaradd')"><span>💚</span><b>{{ card.healthbaradd }}</b></p>
             <p v-if="card.healthbarremove" class="card-stat" :title="cardStatDescription(card, 'healthbarremove')"><span>💔</span><b>{{ card.healthbarremove }}</b></p>
+            <p v-if="card.shield" class="card-stat" title="Protects 3 random cards from all effects forever"><span>🛡️</span><b>{{ card.shield }}</b></p>
             <p v-if="card.attackadd" class="card-stat" :title="cardStatDescription(card, 'attackadd')"><span>🔪</span><b>{{ card.attackadd > 0 ? '+' : '' }}{{ card.attackadd }}</b></p>
             <p v-if="card.healadd" class="card-stat" :title="cardStatDescription(card, 'healadd')"><span>💖</span><b>{{ card.healadd > 0 ? '+' : '' }}{{ card.healadd }}</b></p>
             <p v-if="card.attackaddadd" class="card-stat" :title="cardStatDescription(card, 'attackaddadd')"><span>🔪</span><b>{{ card.attackaddadd > 0 ? '++' : '' }}{{ card.attackaddadd }}</b></p>

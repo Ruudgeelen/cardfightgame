@@ -147,6 +147,53 @@ const cardTypeList = Object.values(cardTypes)
                 </div>
 
                 <div class="rule">
+                    <span>🍷</span>
+                    <div>
+                        <h2>Poison</h2>
+                        <p>
+                            Poison reduces the affected player's HP for a
+                            limited number of turns. The player can still
+                            use their cards, but their HP will decrease.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <span>💪</span>
+                    <div>
+                        <h2>Weak</h2>
+                        <p>
+                            Weak reduces the affected player's Attack for a
+                            limited number of turns. The player can still
+                            use their cards, but their Attack will be lower.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <span>🛡️</span>
+                    <div>
+                        <h2>Shield</h2>
+                        <p>
+                            Shield protects the affected player's cards from
+                            being affected by Burn, Freeze, Lock, Blind,
+                            Light, Flip, Poison and Weak for a limited
+                            number of turns.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
+                    <span>🥷</span>
+                    <div>
+                        <h2>Steal</h2>
+                        <p>
+                            Steal allows the player to take one of the opponent's cards and add it to their hand.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="rule">
                     <span>🎲</span>
                     <div>
                         <h2>Game Modes</h2>

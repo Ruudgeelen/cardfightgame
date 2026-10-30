@@ -85,6 +85,9 @@ export function getRandomCard() {
     if (Math.random() < 0.005) {
         card.steal = Math.floor(Math.random() * 3) + 1
     }
+    if (Math.random() < 0.01) {
+        card.shield = Math.floor(Math.random() * 3) + 1
+    }
     card.type = 'random'
     return card
 }

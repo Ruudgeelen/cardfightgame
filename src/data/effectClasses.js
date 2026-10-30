@@ -81,3 +81,11 @@ export function heeftweakEffect(effect) {
     )
     return activeEffects.some((value) => value === 'weak')
 }
+
+export function heeftshieldEffect(effect) {
+    const effects = Array.isArray(effect) ? effect : [effect]
+    const activeEffects = effects.filter(
+        (value) => typeof value === 'string' && value.trim()
+    )
+    return activeEffects.some((value) => value === 'shield')
+}

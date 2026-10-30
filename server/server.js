@@ -532,7 +532,7 @@ io.on('connection', (socket) => {
                 generateRoomCode()
 
             const selectedGameMode =
-                ['normal', 'gamble', 'mimic', 'burn', 'freeze', 'wind', 'earth', 'lock', 'light', 'blind', 'flip'].includes(
+            ['normal', 'gamble', 'mimic', 'burn', 'freeze', 'wind', 'earth', 'lock', 'light', 'blind', 'flip'].includes(
                     gameMode
                 )
                     ? gameMode

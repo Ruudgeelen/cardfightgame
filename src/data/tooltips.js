@@ -110,6 +110,7 @@ export function cardTooltip(card) {
         card.morecards && `Draws ${card.morecards} extra card${card.morecards === 1 ? '' : 's'}`,
         statTooltip(card, 'healthbaradd'),
         statTooltip(card, 'healthbarremove'),
+        card.shield && `Protects ${card.shield} random cards from all card effects forever`,
         card.stapel && `Deck effect: ${card.stapel}`,
         card.gambleCards && `Makes ${card.gambleCards} random card${card.gambleCards === 1 ? '' : 's'} gamble`,
         effects && `Effects: ${effects}`,

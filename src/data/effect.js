@@ -36,6 +36,9 @@ export function addCardEffect(card, effect, value = "", turns = "") {
 
 export function applyEffectToCards(cards, effect, value = "", turns = "") {
     for (const card of cards) {
+        if (hasEffect(card, "shield") && effect !== "shield") {
+            continue
+        }
         addCardEffect(card, effect, value, turns)
     }
 
@@ -115,7 +118,16 @@ function clearBurnAndFreeze(card) {
     removeEffect(card, "freeze")
 }
 
+function clearBlindAndLight(card) {
+    removeEffect(card, "blind")
+    removeEffect(card, "light")
+}
+
 function applyBurn(card, burnValue, burnTurns) {
+    if (hasEffect(card, "shield")) {
+        return
+    }
+
     if (hasEffect(card, "freeze")) {
         clearBurnAndFreeze(card)
         return
@@ -124,7 +136,46 @@ function applyBurn(card, burnValue, burnTurns) {
     addCardEffect(card, "burn", burnValue, burnTurns)
 }
 
+function applyLight(card, lightTurns) {
+    if (hasEffect(card, "shield")) {
+        return
+    }
+
+    if (hasEffect(card, "blind")) {
+        clearBlindAndLight(card)
+        return
+    }
+
+    addCardEffect(card, "light", "", lightTurns)
+}
+
+function applyBlind(card, blindTurns) {
+    if (hasEffect(card, "shield")) {
+        return
+    }
+
+    if (hasEffect(card, "light")) {
+        clearBlindAndLight(card)
+        return
+    }
+
+    addCardEffect(card, "blind", "", blindTurns)
+}
+
+function applyOpposingEffect(cards, effect, turns) {
+    for (const card of cards) {
+        if (effect === "light") {
+            applyLight(card, turns)
+        } else {
+            applyBlind(card, turns)
+        }
+    }
+}
 function applyFreeze(card) {
+    if (hasEffect(card, "shield")) {
+        return
+    }
+
     if (hasEffect(card, "burn")) {
         clearBurnAndFreeze(card)
         return
@@ -134,6 +185,10 @@ function applyFreeze(card) {
 }
 
 function applyGamble(card) {
+    if (hasEffect(card, "shield")) {
+        return
+    }
+
     addCardEffect(card, "gamble", "", "Forever")
 }
 
@@ -157,7 +212,7 @@ function applyGambleToCards(card, cards) {
 }
 
 function updateBurnDamage(card) {
-    if (!hasEffect(card, "burn")) {
+    if (hasEffect(card, "shield") || !hasEffect(card, "burn")) {
         return
     }
 
@@ -181,7 +236,7 @@ function updateBurnDamage(card) {
 }
 
 function updatePoisonDamage(card) {
-    if (!hasEffect(card, "poison")) {
+    if (hasEffect(card, "shield") || !hasEffect(card, "poison")) {
         return
     }
 
@@ -204,7 +259,7 @@ function updatePoisonDamage(card) {
 }
 
 function updateWeakDamage(card) {
-    if (!hasEffect(card, "weak")) {
+    if (hasEffect(card, "shield") || !hasEffect(card, "weak")) {
         return
     }
 
@@ -234,10 +289,9 @@ export function applyblindEffect(card, userCards) {
     const amount = Math.min( Math.max(Number(card.blind) || 0, 0), userCards.value.length)
     const selectedCards = getRandomCards(userCards.value, amount)
 
-    applyEffectToCards(
+    applyOpposingEffect(
         selectedCards,
         "blind",
-        "",
         card.blindTurns ?? "Forever"
     )
 
@@ -259,6 +313,23 @@ export function applyLockEffect(card, userCards) {
 
     return userCards
 }
+
+export function applyShieldEffect(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.shield) || 0, 0),
+        userCards.value.length
+    )
+    const selectedCards = getRandomCards(userCards.value, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "shield",
+        "",
+        'Forever'
+    )
+
+    return userCards
+}
 export function applyLightEffect(card, userCards) {
     const amount = Math.min(
         Math.max(Number(card.light) || 0, 0),
@@ -266,10 +337,9 @@ export function applyLightEffect(card, userCards) {
     )
     const selectedCards = getRandomCards(userCards.value, amount)
 
-    applyEffectToCards(
+    applyOpposingEffect(
         selectedCards,
         "light",
-        "",
         card.lightTurns ?? "Forever"
     )
 
@@ -406,6 +476,9 @@ export function FreezeEffect(UserCards) {
 
 export function applyFreezeAdd(userCards) {
     for (let i = 0; i < userCards.value.length; i++) {
+        if (hasEffect(userCards.value[i], "shield")) {
+            continue
+        }
         userCards.value[i].freeze = true
     }
     return userCards
@@ -484,6 +557,23 @@ export function applyLockEffectMultiplayer(card, userCards) {
     return userCards
 }
 
+export function applyShieldEffectMultiplayer(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.shield) || 0, 0),
+        userCards.length
+    )
+    const selectedCards = getRandomCards(userCards, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "shield",
+        "",
+        card.shieldTurns ?? "Forever"
+    )
+
+    return userCards
+}
+
 export function applyWeakEffectMultiplayer(card, userCards) {
     const amount = Math.min(
         Math.max(Number(card.weak) || 0, 0),
@@ -525,10 +615,9 @@ export function applyblindEffectMultiplayer(card, userCards) {
     )
     const selectedCards = getRandomCards(userCards, amount)
 
-    applyEffectToCards(
+    applyOpposingEffect(
         selectedCards,
         "blind",
-        "",
         card.blindTurns ?? "Forever"
     )
 
@@ -542,10 +631,9 @@ export function applyLightEffectMultiplayer(card, userCards) {
     )
     const selectedCards = getRandomCards(userCards, amount)
 
-    applyEffectToCards(
+    applyOpposingEffect(
         selectedCards,
         "light",
-        "",
         card.lightTurns ?? "Forever"
     )
 
@@ -591,6 +679,9 @@ export function updateFlipTurnsMultiplayer(userCards) {
 
 export function applyFreezeAddMultiplayer(userCards) {
     for (let i = 0; i < userCards.length; i++) {
+        if (hasEffect(userCards[i], "shield")) {
+            continue
+        }
         userCards[i].freeze = true
     }
     return userCards

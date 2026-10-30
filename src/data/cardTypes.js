@@ -51,6 +51,7 @@ export const cardTypes = {
     lucky: { name: 'Lucky', icon: '🍀' },
     boss: { name: 'Boss', icon: '👺' },
     bonus: { name: 'Bonus', icon: '🎁' },
+    forcefield: { name: 'Forcefield', icon: '🛡️' },
     mimic: { name: 'Mimic', icon: '🎭' },
     kaart: { name: 'Kaart', icon: '🎴' },
     gamble: { name: 'Gamble', icon: '🎲' },

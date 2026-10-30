@@ -23,6 +23,8 @@ import {
     hasCardEffect,
     applyLockEffect,
     applyLockEffectMultiplayer,
+    applyShieldEffect,
+    applyShieldEffectMultiplayer,
     updateLockTurns,
     updateLockTurnsMultiplayer,
     applyblindEffect,
@@ -154,6 +156,11 @@ export function game(
     if (card.freezeadd) {
         const targetCards = gambleReversed ? otheruserCards : userCards
         targetCards.value = applyFreezeAdd(targetCards).value
+    }
+
+    if (card.shield) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        targetCards.value = applyShieldEffect(card, targetCards).value
     }
 
     if (card.lock) {
@@ -290,10 +297,13 @@ export function game(
                     otheruserCards.value
                 )
             }
-    userCards.value[index] =
-        GetNewCard(
-            cardstapel.value
-        )
+    const playedCardIndex = userCards.value.indexOf(card)
+    const newCard = GetNewCard(cardstapel.value)
+    if (playedCardIndex === -1) {
+        userCards.value.push(newCard)
+    } else {
+        userCards.value[playedCardIndex] = newCard
+    }
     
 if (userCards.value.length < aantalcards) {
         if (cardstapel.value.length === 0) {
@@ -483,6 +493,11 @@ export function gameMultiplayer(
         applyFreezeAddMultiplayer(targetCards)
     }
 
+    if (card.shield) {
+        const targetCards = gambleReversed ? otheruserCards : userCards
+        applyShieldEffectMultiplayer(targetCards)
+    }
+
     if (card.freeze) {
         const targetCards = gambleReversed ? otheruserCards : userCards
         FreezeEffectMultiplayer(targetCards)
@@ -637,10 +652,13 @@ export function gameMultiplayer(
                 gameMode
             )
     }
-    userCards[index] =
-        GetNewCardMultiplayer(
-            cardstapel
-        )
+    const playedCardIndex = userCards.indexOf(card)
+    const newCard = GetNewCardMultiplayer(cardstapel)
+    if (playedCardIndex === -1) {
+        userCards.push(newCard)
+    } else {
+        userCards[playedCardIndex] = newCard
+    }
     if (userCards.length < aantalcards) {
         if (cardstapel.length === 0) {
             cardstapel =

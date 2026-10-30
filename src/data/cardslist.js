@@ -547,6 +547,13 @@ export const cards = [
         weakDamage: 2,
         type: 'dragon'
     },
+    {
+        name: 'Shield Dragon',
+        attack: 15,
+        heal: 0,
+        shield: 1,
+        type: 'dragon'
+    },
 
     // UNDEAD
     {
@@ -646,6 +653,7 @@ export const cards = [
         attack: 10,
         heal: 5,
         healthbaradd: 1,
+        shield: 1,
         type: 'alien'
     },
     {
@@ -670,6 +678,7 @@ export const cards = [
         attack: 6,
         heal: 10,
         healthbaradd: 1,
+        shield: 1,
         type: 'alien'
     },
     {
@@ -1142,21 +1151,21 @@ export const cards = [
         name: 'Shield Card',
         attack: 0,
         heal: 10,
-        healthbaradd: 5,
+        shield: 2,
         type: 'shield'
     },
     {
         name: 'Barrier',
         attack: 0,
         heal: 9,
-        healthbaradd: 7,
+        shield: 1,
         type: 'shield'
     },
     {
         name: 'Protective Ward',
         attack: 0,
         heal: 10,
-        healthbaradd: 6,
+        shield: 1,
         type: 'shield'
     },
     {
@@ -1164,14 +1173,14 @@ export const cards = [
         attack: 0,
         heal: 8,
         healadd: 1,
-        healthbaradd: 8,
+        shield: 3,
         type: 'shield'
     },
     {
         name: 'Shield',
         attack: 0,
         heal: 11,
-        healthbaradd: 5,
+        shield: 2,
         type: 'shield'
     },
 
@@ -1482,6 +1491,13 @@ export const cards = [
         removecardnummer: 10,
         type: 'storm'
     },
+    {
+        name: 'Thunderstorm',
+        attack: 0,
+        heal: 0,
+        removecardnummer: 5,
+        type: 'storm'
+    },
 
     // CLOSED
     {
@@ -1786,6 +1802,22 @@ export const cards = [
         type: 'boss'
     },
 
+    // FORCEFIELD
+    {
+        name: 'Forcefield',
+        attack: 0,
+        heal: 0,
+        shield: 10,
+        type: 'forcefield'
+    },
+    {
+        name: 'Forcefield Plus',
+        attack: 0,
+        heal: 0,
+        shield: 20,
+        type: 'forcefield'
+    },
+
     // LUCKY
     {
         name: 'Lucky Charm',
@@ -1813,6 +1845,7 @@ export const cards = [
         weak: 1,
         weakTurns: 1,
         weakDamage: 1,
+        shield: 1,
         healthbaradd: 2,
         type: 'lucky'
     },
@@ -1846,6 +1879,15 @@ export const cards = [
         attackaddadd: 1,
         type: 'bonus'
     },
+    {
+        name: 'Bonus Card',
+        attack: 10,
+        heal: 10,
+        shield: 3,
+        attackadd: 5,
+        healadd: 5,
+        type: 'bonus'
+    },
 
     // MIMIC
     {
@@ -1863,6 +1905,7 @@ export const cards = [
         heal: 10,
         attackadd: 1,
         healadd: 2,
+        shield: 1,
         faketype: getRandomCardType(),
         type: 'mimic'
     },
@@ -1944,8 +1987,7 @@ export const cards = [
         burnTurns: 1,
         flip: 3,
         flipTurns: 1,
-        freeze: true,
-        freezeadd: true,
+        shield: 5,
         type: 'rainbow'
     },
 
@@ -1970,13 +2012,6 @@ export const cards = [
     getRandomCard(),
     getRandomCard(),
     getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-
-    // other
     getRandomCard(),
     getRandomCard(),
     getRandomCard(),

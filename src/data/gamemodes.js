@@ -1,4 +1,5 @@
 import { getRandomCardType } from './cardTypes.js'
+import { addCardEffect } from './effect.js'
 
 export function GetGameModeCards(GameMode, cardslist) {
     if (GameMode.value === "normal") {
@@ -26,28 +27,25 @@ export function GetGameModeCards(GameMode, cardslist) {
     }
     else if (GameMode.value === "lock") {
         for (let i = 0; i < cardslist.value.length; i++) {
-            cardslist.value[i].effectTurns = Math.floor(Math.random() * 3) -1
-            if (cardslist.value[i].effectTurns > 0) {
+            cardslist.value[i].effectturnsmap = Math.floor(Math.random() * 3) -1
+            if (cardslist.value[i].effectturnsmap > 0) {
                 cardslist.value[i].effect = "lock"
             }
         }
     }
     else if (GameMode.value === "light") {
         for (let i = 0; i < cardslist.value.length; i++) {
-            cardslist.value[i].effect = "light"
-            cardslist.value[i].effectTurns = 100
+            addCardEffect(cardslist.value[i], "light", "", 100)
         }
     }
     else if (GameMode.value === "blind") {
         for (let i = 0; i < cardslist.value.length; i++) {
-            cardslist.value[i].effect = "blind"
-            cardslist.value[i].effectTurns = 100
+            addCardEffect(cardslist.value[i], "blind", "", 100)
         }
     }
     else if (GameMode.value === "flip") {
         for (let i = 0; i < cardslist.value.length; i++) {
-            cardslist.value[i].effect = "flip"
-            cardslist.value[i].effectTurns = 100
+            addCardEffect(cardslist.value[i], "flip", "", 100)
         }
     }
     else if (GameMode.value === "wind") {
@@ -104,20 +102,17 @@ export function GetGameModeCardsMultplayer(GameMode, cardslist) {
     }
     else if (GameMode === "light") {
         for (let i = 0; i < cardslist.length; i++) {
-            cardslist[i].effect = "light"
-            cardslist[i].effectTurns = 100
+            addCardEffect(cardslist[i], "light", "", 100)
         }
     }
     else if (GameMode === "blind") {
         for (let i = 0; i < cardslist.length; i++) {
-            cardslist[i].effect = "blind"
-            cardslist[i].effectTurns = 100
+            addCardEffect(cardslist[i], "blind", "", 100)
         }
     }
     else if (GameMode === "flip") {
         for (let i = 0; i < cardslist.length; i++) {
-            cardslist[i].effect = "flip"
-            cardslist[i].effectTurns = 100
+            addCardEffect(cardslist[i], "flip", "", 100)
         }
     }
     else if (GameMode === "wind") {
@@ -144,28 +139,8 @@ export function GetGameModeCardsMultplayer(GameMode, cardslist) {
 // ================================
 
 function addStartingBurnEffect(card) {
-    card.effect = 'burn'
-    card.effectvalue = 1
-    card.effectturns = 100
-    card.effectvalues = {
-        ...(card.effectvalues || {}),
-        burn: 1
-    }
-    card.effectturnsmap = {
-        ...(card.effectturnsmap || {}),
-        burn: 100
-    }
+    addCardEffect(card, "burn", 1, 100)
 }
 function addStartingFreezeEffect(card) {
-    card.effect = 'freeze'
-    card.effectvalue = 1
-    card.effectturns = "forever"
-    card.effectvalues = {
-        ...(card.effectvalues || {}),
-        freeze: 1
-    }
-    card.effectturnsmap = {
-        ...(card.effectturnsmap || {}),
-        freeze: "forever"
-    }
+    addCardEffect(card, "freeze", 1, "forever")
 }
