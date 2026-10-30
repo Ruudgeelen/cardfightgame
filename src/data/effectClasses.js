@@ -73,3 +73,11 @@ export function heeftpoisonEffect(effect) {
     )
     return activeEffects.some((value) => value === 'poison')
 }
+
+export function heeftweakEffect(effect) {
+    const effects = Array.isArray(effect) ? effect : [effect]
+    const activeEffects = effects.filter(
+        (value) => typeof value === 'string' && value.trim()
+    )
+    return activeEffects.some((value) => value === 'weak')
+}

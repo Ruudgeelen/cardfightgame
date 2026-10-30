@@ -538,6 +538,15 @@ export const cards = [
         poisonDamage: 2,
         type: 'dragon'
     },
+    {
+        name: 'Weak Dragon',
+        attack: 15,
+        heal: 0,
+        weak: 2,
+        weakTurns: 1,
+        weakDamage: 2,
+        type: 'dragon'
+    },
 
     // UNDEAD
     {
@@ -630,6 +639,47 @@ export const cards = [
         light: 2,
         lightTurns: 2,
         type: 'light'
+    },
+    // ALIEN
+    {
+        name: 'Alien Invader',
+        attack: 10,
+        heal: 5,
+        healthbaradd: 1,
+        type: 'alien'
+    },
+    {
+        name: 'Alien Warrior',
+        attack: 12,
+        heal: 3,
+        healthbaradd: 2,
+        type: 'alien'
+    },
+    {
+        name: 'Alien Mage',
+        attack: 8,
+        heal: 7,
+        poison: 1,
+        poisonTurns: 1,
+        poisonDamage: 1,
+        healthbaradd: 1,
+        type: 'alien'
+    },
+    {
+        name: 'Alien Healer',
+        attack: 6,
+        heal: 10,
+        healthbaradd: 1,
+        type: 'alien'
+    },
+    {
+        name: 'Alien Assassin',
+        attack: 14,
+        heal: 2,
+        healthbaradd: 2,
+        lock: 1,
+        lockTurns: 1,
+        type: 'alien'
     },
 
     // BLUR
@@ -1214,6 +1264,42 @@ export const cards = [
         healthbarremove: 2,
         type: 'tnt'
     },
+    // FOOD
+    {
+        name: 'Apple',
+        attack: 0,
+        heal: 5,
+        healthbaradd: 1,
+        type: 'food'
+    },
+    {
+        name: 'Bread',
+        attack: 0,
+        heal: 8,
+        healthbaradd: 2,
+        type: 'food'
+    },
+    {
+        name: 'Cheese',
+        attack: 0,
+        heal: 10,
+        healthbaradd: 3,
+        type: 'food'
+    },
+    {
+        name: 'Meat',
+        attack: 0,
+        heal: 12,
+        healthbaradd: 4,
+        type: 'food'
+    },
+    {
+        name: 'Cake',
+        attack: 0,
+        heal: 15,
+        healthbaradd: 5,
+        type: 'food'
+    },
 
     // WEATHER
     {
@@ -1292,6 +1378,53 @@ export const cards = [
         attack: -1,
         heal: -1,
         type: 'soft'
+    },
+
+    // DEAD
+    {
+        name: 'Skeleton Warrior',
+        attack: 10,
+        heal: 0,
+        weak: 1,
+        weakTurns: 1,
+        weakDamage: 1,
+        type: 'dead'
+    },
+    {
+        name: 'Dead Brute',
+        attack: 15,
+        heal: 0,
+        weak: 1,
+        weakTurns: 1,
+        weakDamage: 1,
+        type: 'dead'
+    },
+    {
+        name: 'Dead Mage',
+        attack: 10,
+        heal: 0,
+        weak: 3,
+        weakTurns: 3,
+        weakDamage: 1,
+        type: 'dead'
+    },
+    {
+        name: 'Dead Assassin',
+        attack: 12,
+        heal: 0,
+        weak: 2,
+        weakTurns: 2,
+        weakDamage: 1,
+        type: 'dead'
+    },
+    {
+        name: 'Dead Healer',
+        attack: 8,
+        heal: 0,
+        weak: 1,
+        weakTurns: 1,
+        weakDamage: 1,
+        type: 'dead'
     },
 
     // HOLE
@@ -1505,6 +1638,22 @@ export const cards = [
         type: 'megaheal'
     },
 
+    // DEADLY
+    {
+        name: 'Deadly Strike',  
+        weak: 10,
+        weakTurns: 1,
+        weakDamage: 5,
+        type: 'deadly'
+    },
+    {
+        name: 'Deadly Strike Plus',
+        weak: 1,
+        weakTurns: 2,
+        weakDamage: 10,
+        type: 'deadly'
+    },
+
     // POISONOUS
     {
         name: 'Poisonous',
@@ -1647,6 +1796,9 @@ export const cards = [
         morecards: 1,
         light: 1,
         lightTurns: 1,
+        poison: 1,
+        poisonTurns: 1,
+        poisonDamage: 1,
         removecardnummer: 1,
         type: 'lucky'
     },
@@ -1658,6 +1810,9 @@ export const cards = [
         removecardnummer: 1,
         lock: 1,
         lockTurns: 1,
+        weak: 1,
+        weakTurns: 1,
+        weakDamage: 1,
         healthbaradd: 2,
         type: 'lucky'
     },
@@ -1806,27 +1961,6 @@ export const cards = [
     getRandomCard(),
 
     // other
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
-    getRandomCard(),
     getRandomCard(),
     getRandomCard(),
     getRandomCard(),

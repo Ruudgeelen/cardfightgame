@@ -203,6 +203,29 @@ function updatePoisonDamage(card) {
     }
 }
 
+function updateWeakDamage(card) {
+    if (!hasEffect(card, "weak")) {
+        return
+    }
+
+    const turns = Number(effectTurns(card, "weak")) - 1
+    const value = Number(effectValue(card, "weak")) || 0
+
+    card.attack = (Number(card.attack) || 0) - value
+
+    if (turns <= 0) {
+        removeEffect(card, "weak")
+    } else {
+        card.effectturnsmap = {
+            ...(card.effectturnsmap || {}),
+            weak: turns
+        }
+        if (effectList(card).length === 1) {
+            card.effectturns = turns
+        }
+    }
+}
+
 // ================================
 // SINGLEPLAYER
 // ================================
@@ -287,12 +310,39 @@ export function applyPoisonEffect(card, userCards) {
     return userCards
 }
 
+export function applyWeakEffect(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.weak) || 0, 0),
+        userCards.value.length
+    )
+    const selectedCards = getRandomCards(userCards.value, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "weak",
+        card.weakDamage ?? '',
+        card.weakTurns ?? "Forever"
+    )
+
+    return userCards
+}
+
 export function PoisonDamage(userCards) {
     for (const userCard of userCards.value) {
         if (!hasEffect(userCard, "poison")) {
             continue
         }
         updatePoisonDamage(userCard)
+    }
+    return userCards
+}
+
+export function WeakDamage(userCards) {
+    for (const userCard of userCards.value) {
+        if (!hasEffect(userCard, "weak")) {
+            continue
+        }
+        updateWeakDamage(userCard)
     }
     return userCards
 }
@@ -397,6 +447,13 @@ export function PoisonDamageMultiplayer(UserCards) {
     return UserCards
 }
 
+export function WeakDamageMultiplayer(UserCards) {
+    for (const userCard of UserCards) {
+        updateWeakDamage(userCard)
+    }
+    return UserCards
+}
+
 export function FreezeEffectMultiplayer(UserCards) {
     for (const userCard of UserCards) {
         applyFreeze(userCard)
@@ -422,6 +479,23 @@ export function applyLockEffectMultiplayer(card, userCards) {
         "lock",
         "",
         card.lockTurns ?? "Forever"
+    )
+
+    return userCards
+}
+
+export function applyWeakEffectMultiplayer(card, userCards) {
+    const amount = Math.min(
+        Math.max(Number(card.weak) || 0, 0),
+        userCards.length
+    )
+    const selectedCards = getRandomCards(userCards, amount)
+
+    applyEffectToCards(
+        selectedCards,
+        "weak",
+        card.weakDamage ?? '',
+        card.weakTurns ?? "Forever"
     )
 
     return userCards

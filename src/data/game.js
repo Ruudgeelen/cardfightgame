@@ -41,6 +41,10 @@ import {
     applyPoisonEffectMultiplayer,
     PoisonDamage,
     PoisonDamageMultiplayer,
+    applyWeakEffect,
+    applyWeakEffectMultiplayer,
+    WeakDamage,
+    WeakDamageMultiplayer
 } from '../data/effect.js'
 
 import {
@@ -195,6 +199,11 @@ export function game(
         targetCards.value = HealAddAdd(card, targetCards).value
     }
 
+    if (card.weak > 0) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        targetCards.value = applyWeakEffect(card, targetCards).value
+    }
+
     if (card.gambleCards) {
         const targetCards =
             Math.random() < 0.5
@@ -207,6 +216,7 @@ export function game(
 
     userCards.value = BurnDamage( userCards ).value
     userCards.value = PoisonDamage( userCards ).value
+    userCards.value = WeakDamage( userCards ).value
 
     if ( cardstapel.value.length === 0 || card.stapel === 'shake') {
         cardstapel.value =
@@ -492,6 +502,11 @@ export function gameMultiplayer(
         applyPoisonEffectMultiplayer(card, targetCards)
     }
 
+    if (card.weak > 0) {
+        const targetCards = gambleReversed ? userCards : otheruserCards
+        applyWeakEffectMultiplayer(card, targetCards)
+    }
+
 
     // =================================
     // BURN
@@ -518,16 +533,14 @@ export function gameMultiplayer(
 
     userCards = BurnDamageMultiplayer(userCards)
     userCards = PoisonDamageMultiplayer(userCards)
+    userCards = WeakDamageMultiplayer(userCards)
 
 
     // =================================
     // NIEUWE STAPEL
     // =================================
 
-    if (
-        cardstapel.length === 0 ||
-        card.stapel === 'shake'
-    ) {
+    if ( cardstapel.length === 0 || card.stapel === 'shake') {
         cardstapel =
             GetNewStapelMultiplayer(
                 userCards,

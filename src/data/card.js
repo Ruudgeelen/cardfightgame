@@ -74,6 +74,11 @@ export function getRandomCard() {
     if (Math.random() < 0.01) {
         card.faketype = getRandomCardType()
     }
+    if (Math.random() < 0.05) {
+        card.weak = Math.floor(Math.random() * 3) + 1
+        card.weakTurns = Math.floor(Math.random() * 2) + 1
+        card.weakDamage = Math.floor(Math.random() * 2) + 1
+    }
     if (Math.random() < 0.005) {
         card.stapel = Math.random() < 0.5 ? 'shake' : Math.random() < 0.5 ? 'newdeckother' : 'newdeck'
     }

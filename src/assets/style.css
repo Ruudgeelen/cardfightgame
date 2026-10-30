@@ -489,7 +489,7 @@ body {
 
 .card.weather {
     border-color: #00a0a0;
-    background: linear-gradient(145deg, #2ecbff, #0098ac);
+    background: linear-gradient(145deg, #abeaff, #0098ac);
 }
 
 .card.shield {
@@ -536,6 +536,22 @@ body {
 .card.soft {
     border-color: #ff69b4;
     background: linear-gradient(145deg, #ffb6c1, #ff69b4);
+}
+
+.card.food {
+    border-color: #945200;
+    background: linear-gradient(145deg, #ffa600, #915000);
+}
+
+.card.alien {
+    border-color: #55c500;
+    background: linear-gradient(145deg, #7cf800, #4a8102);
+}
+
+.card.dead {
+    border-color: #555555;
+    color: #fff;
+    background: linear-gradient(145deg, #555555, #9e9d9d);
 }
 
 .card.ghost {
@@ -592,6 +608,11 @@ body {
 .card.megaice {
     border-color: #00ffff;
     background: linear-gradient(145deg, rgb(0, 255, 255) 0%, rgb(0, 170, 255) 50%, rgb(0, 255, 238) 100%);
+}
+
+.card.deadly {
+    border-color: #ff0059;
+    background: linear-gradient(145deg, rgb(255, 0, 102) 0%, rgb(170, 0, 45) 50%,rgb(255, 0, 85) 100%);
 }
 
 .card.heaven {
@@ -739,6 +760,14 @@ body {
         0 0 10px rgba(0, 0, 0, 0.9),
         0 0 15px rgba(0, 0, 0, 0.7),
         0 0 25px rgb(10, 10, 10);
+}
+
+.card.effect-weak {
+    box-shadow:
+        0 0 5px rgb(255, 0, 123),
+        0 0 10px rgb(191, 2, 96),
+        0 0 15px rgb(173, 1, 87),
+        0 0 25px rgb(149, 1, 72);
 }
 
 .card.effect-light {
